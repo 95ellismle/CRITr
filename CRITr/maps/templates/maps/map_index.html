@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block addtionalScriptsHead %}
+<!-- ESRI (arcGIS maps) API and stylesheet -->
+<link rel="stylesheet" href="https://js.arcgis.com/4.12/esri/themes/light/main.css">
+<script src="https://js.arcgis.com/4.12/"></script>
+
+<!-- My Scripts -->
+<script>
+  const reportIncidentPage="{% url 'reportIncident' %}";
+  const urls = {
+        'img_folder': '{% static "img/" %}',
+  };
+</script>
+{# <!-- 'tracking_view': "{% url 'track_view' %}", --> #}
+<script src="{% static 'js/maps.js' %}" type="text/javascript"></script>
+<link rel="stylesheet" href="{% static 'css/startActivityOverlay.css' %}">
+
+{% endblock %}
+
+{% block content %}
+<!-- The gray overlay that comes up when thigns are pressed -->
+<div id="fullOverlay" onclick="resetMapsPage()"></div>
+
+ <!-- Reporting incident navbar -->
+  <div id="reportIncidentBar" style="display: none";>
+      <div style="float: left; width: 60px; display: inline-block; height:100%">
+          <button class="navBtn"
+                  onclick="cancelCreate()">
+              <i class="material-icons" class="btnIcon">arrow_back</i>
+          </button>
+      </div>
+      <div style="width: calc(100% - 120px); display: inline-block; height:100%; vertical-align: 'middle'">
+          <p  class="titleReportTxt" style="padding: 0; margin: 0;">
+              Tap to select a location
+          </p>
+      </div>
+      <div id='submitReportBtn' style="float: right; width: 60px; display: none; height: 100%">
+        {% if user.is_authenticated %}
+          <button class="navBtn"
+                  onclick="submitReport()">
+              OK
+          </button>
+        {% else %}
+        <script>
+          const loginPage = "{% url 'login' %}";
+        </script>
+        <button class="navBtn"
+                onclick="window.location.href = loginPage;">
+            OK
+        </button>
+        {% endif %}
+      </div>
+  </div>
+
+  <!-- ESRI Maps Stuff -->
+  <div id="viewDiv">
+      <!-- Button to show activities to start -->
+      <div id="topbar" style="background-color: rgba(0,0,0,0);">
+          <button class="action-button" id="openActivities"
+                  type="button" style="align: center;">
+              <i class="material-icons" style="font-size: 50px;">add</i>
+          </button>
+      </div>
+
+      <!-- Button to show cards -->
+      <!-- <div id="overlayBtn"
+           style="position: absolute: bottom:0; left:5%; display: block; width: 90%;">
+          <button class="action-button" id="activitiesBtn"
+                  type="button" style="width: 30%; height: 50px; margin-left: 35%;"
+                  onclick="showCards()"><i class="material-icons" style="font-size: 50px;">keyboard_arrow_up</i></button>
+      </div> -->
+
+      <div id="overlayAdd" style="display: none;">
+        <div class="addDiv">
+          <button type="button" id="pointButton"
+          style="position: absolute; z-index: 2; width: 100%; height: 30px; opacity: 0;"></button>
+          <span class="addPara"><i class="material-icons" style="font-size: 18px;">note_add</i> Report Incident</span>
+        </div>
+        <div class="addDiv inactive">
+          <span class="addPara"><i class="material-icons" style="font-size: 18px;">local_parking</i> Plan Activity</span>
+        </div>
+        <div class="addDiv" id="startAct" onclick="openStartActivity()">
+          <span class="addPara"><i class="material-icons" style="font-size: 18px;">play_arrow</i> Start Activity</span>
+        </div>
+      </div>
+  </div>
+
+  <!-- The start activity overlay -->
+  <div id="startActivityOverlay">
+      <div class="title">
+        Select Activity Type
+      </div>
+
+      <div id="activityChoices">
+        <div class="actChoice active selected" id="patrolAct" onclick="selectActivity(this)">
+          <img src="{% static 'img/walkingIcon.png' %}" class="imgIcon">
+          <p class="imgTxt">Patrol</p>
+        </div>
+        <div class="inactive actChoice" onclick="selectActivity(this)">
+          <img src="{% static 'img/speedometerIcon.png' %}" id="speedWatchAct" class="imgIcon">
+          <p class="imgTxt">Speedwatch</p>
+        </div>
+        <div class="inactive actChoice" style="margin-right: 0;" onclick="selectActivity(this)">
+          <img src="{% static 'img/starredCalendarIcon.png' %}" id="commEventAct" class="imgIcon">
+          <p class="imgTxt">Event</p>
+        </div>
+      </div>
+      <!-- <div class="addRow">
+        <p class="rowHead">Add Other Members</p>
+        <p class="rowSubHead">Tap to add other members (if applicable)</p>
+      </div> -->
+      <button class="startActivityBtn" onclick="startActivity()">Start Activity</button>
+    </div>
+
+    <div id="patrolOverlay">
+      <div class="addRow" style="margin: 0; padding: 0;">
+        <p style="margin: 0; padding: 0; color: rgba(0,0,0,0.54)"><i class="material-icons" style="margin: 0; padding: 0; width: 25px;">directions_walking</i>Patrol</p>
+      </div>
+      <p style="height: 40px;	width: 208px;	color: rgba(0,0,0,0.54);
+      	       font-size: 31px;	letter-spacing: 1.11px;	line-height: 40px;
+               font-family: 'Courier New' width: 100%; margin: auto;
+               text-align: center;" id="patrolTimer">
+               00:00:00
+      </p>
+      <button class="startActivityBtn" onclick="endPatrol()" style="margin-top: 10px; padding: 0;">End Patrol</button>
+    </div>
+  <!-- Start the card interface -->
+  <!-- <div id="overlayCards" style="display: none;">
+      <div class="hideScroll container-fluid card-block">
+          <div id="cardRow" class="row flex-nowrap card-block">
+          </div>
+      </div>
+  </div> -->
+
+</body>
+
+{% block additionalScriptsFoot %}
+
+<script src="{% static 'js/cards.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/startActivity.js' %}" type="text/javascript"></script>
+<script>
+    // activities = getActivities();
+    // // Loop over all activities and add them to the screen
+    // var len = activities.length;
+    // if (len > 10) {
+    //     len = 10;
+    // }
+    // for (var i=0; i<activities.length; i++) {
+    //     currDict = activities[i];
+    //     var cardRow = document.getElementById("cardRow");
+    //
+    //     var cardDiv = createCardOverlay(currDict, i);
+    //     cardRow.appendChild(cardDiv);
+    // }
+
+    $('#openActivities').click(function() {
+      $('#openActivities').hide();
+      $('#fullOverlay').show();
+      $('#overlayAdd').show();
+    });
+</script>
+<script type="text/javascript">
+
+</script>
+{% endblock %}
+
+
+{% endblock %}

@@ -1,0 +1,111 @@
+#startActivityOverlay {
+	position: fixed;
+  display: none;
+  width: 80%;
+  max-height: 600px;
+  max-width: 600px;
+  box-shadow: 0 0 24px 0 rgba(0,0,0,0.22);
+  background-color: #fff;
+	left: 0;
+	top: 0;
+  z-index: 3;
+  padding: 10px;
+}
+.title {
+  margin: 20px 0 20px 10px;
+  width: 100%;
+  text-align: left;
+  vertical-align: middle;
+  font-size: 17px;
+}
+#activityChoices {
+  height: 25%;
+  width: 100%;
+  display: block;
+}
+.actChoice {
+  display: inline-block;
+  border-radius: 10px;
+  width: 30%;
+  margin-right: 1%;
+  height: 100%;
+  background-color: #eee;
+}
+.actChoice:hover {
+  /* background-color: #ddd; */
+  cursor: pointer;
+}
+.actChoice:active {
+  background-color: #ddd;
+  cursor: pointer;
+}
+.addRow {
+  margin: 10px;
+  width: calc(100% - 20px);
+}
+.addRow:hover {
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
+.rowHead {
+  font-size: 16px;
+  line-height: 24px;
+}
+.rowSubHead {
+  color: #555;
+  font-size: 14px;
+}
+.selected {
+  	box-shadow: 0 0 7px 0 #FF5722;
+}
+.startActivityBtn {
+  width: 50%;
+  margin-left: 25%;
+  height: 40px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  background-color: #ff7222;
+  border: 0;
+  color: white;
+  font-weight: 600;
+}
+.startActivityBtn:hover {
+    background-color: #ef6211;
+    cursor: pointer;
+}
+.imgIcon {
+  /*width: 70%;*/
+  height: 60%;
+  margin-left: 20%;
+  margin-top: 5%;
+  border: 0;
+}
+.imgTxt {
+  margin: 0;
+  padding: 0;
+  display: block;
+  text-align: center;
+  font-size: 10px;
+  color: #333;
+}
+.inactive {
+		opacity: 0.4;
+    background-color: #f4f4f4;
+}
+.inactive:hover {
+		background-color: #f4f4f4;
+		cursor: default;
+}
+
+/* Patrol Overlay */
+#patrolOverlay {
+	height: 129px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 3;
+	display: none;
+	background-color: #fff;
+	padding: 5px;
+}

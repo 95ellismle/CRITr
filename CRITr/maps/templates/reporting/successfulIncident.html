@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+<div class="overlayBox  " style="display: block;">
+  <div class="center" style="height: 25%">
+    <h2 style="color: green;">
+      <i class="material-icons" style="font-size: 76px">check</i>
+    </h2>
+  </div>
+   <div class="center" style="height: 25%">
+     <h2 style="text-align: center;">
+       Incident Saved
+     </h2>
+   </div>
+   <div class="center" style="height: 25%">
+     <p style="color: #6f6f6f;">
+       The system will automatically generate activities based on this incident.</p>
+   </div>
+   <div class="center" style="height: 25%">
+     <a class="btn btn-primary" href="{% url 'maps' %}">Return To Map</a>
+   </div>
+</div>
+{% endblock %}

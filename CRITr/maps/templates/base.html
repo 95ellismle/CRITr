@@ -1,0 +1,50 @@
+{% load static %}
+
+<!doctype html>
+<html>
+    <head>
+
+        <!--=== META TAGS ===-->
+        <meta content="text/html" charset="utf-8" />
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>{% block title %}CRITr{% endblock %}</title>
+        <meta charset="utf-8" />
+        <meta name="description" content="A webapp to organise CRITr. Includes mapping functionality, reporting tools and event management.">
+        <meta name="author" content="Matt Ellis">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+
+        <!-- My styling-->
+        <link rel="stylesheet" href="{% static 'css/maps.css' %}">
+
+        <!-- Material Design Icons -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+        <!-- W3 Schools CSS styling -->
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+        {% block addtionalScriptsHead %}
+        {% endblock %}
+    </head>
+
+
+    <body>
+    {% block content %}
+    {% endblock %}
+    </body>
+
+
+    <footer>
+
+      <!-- Bootstrap -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+      {% block additionalScriptsFoot %}
+      {% endblock %}
+    </footer>
+
+</html>

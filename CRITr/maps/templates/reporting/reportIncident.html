@@ -1,0 +1,201 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Report an incident{% endblock %}
+
+{% block addtionalScriptsHead %}
+  <!-- Nice Date Picker -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/themes/dark.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.js"></script>
+{% endblock %}
+
+{% block additionalScriptsFoot %}
+<style>
+  body {
+    overflow-y: auto;
+  }
+  .flatpickr-prev-month, .flatpickr-next-month {
+    display: none;
+  }
+</style>
+
+  <script src="{% static 'js/forms.js' %}"></script>
+  <script>
+    var coords = JSON.parse(window.localStorage.getItem("coords"));
+    document.getElementById("id_latitude").value = coords['lat'];
+    document.getElementById("id_longitude").value = coords['lon'];
+    document.getElementById("id_x").value = coords['x'];
+    document.getElementById("id_y").value = coords['y'];
+
+    getValsFromForm();
+  </script>
+{% endblock %}
+
+{% block content %}
+<!-- Reporting incident navbar -->
+<div id="reportIncidentBar" style="display: block">
+    <!-- Back Button -->
+    <a href="{% url 'maps' %}" style="color: inherit;">
+        <div class="navBarElm" style="width: 60px; float: left; display:flex; align-items:center;">
+           <i class="material-icons" style="margin-left: 25%;">arrow_back</i>
+        </div>
+    </a>
+
+    <!-- NavBar Title -->
+    <div class="navBarElm" style="width: calc(100% - 60px); float: right;">
+      <p  class="titleReportTxt" style="height: 40%;">
+        Report Incident
+      </p>
+      <p style="margin: 0; padding: 0">
+        (Fill out the form below)
+      </p>
+    </div>
+</div>
+
+<!-- Create the form -->
+<div class="form" style="margin-left: 5%; width: 90%;">
+  <div class="formRow"
+       onclick="openIncidentSelect()"
+       id="incidentDiv">
+    <p class="formTitle" id="incidentTypeTitle">
+      Incident Type
+    </p>
+    <p class="formSubTitle" id="incidentToChange">
+  	  Tap to Select
+    <p>
+  </div>
+  <div class="formRow">
+      <input type="text" class="hiddenInput" id="datePicker" onchange="setDate()">
+      <p class="formTitle">Date Identified</p>
+      <p class="formSubTitle" id="dateToChange">Tap to Change
+  	<p>
+  </div>
+  <div class="formRow">
+    <input type="text" class="hiddenInput" id="timePicker" onchange="setTime()">
+    <p class="formTitle">Time Identified</p>
+    <p class="formSubTitle" id="timeToChange">Tap to Select
+  	<p>
+  </div>
+
+  <div class="formRow"
+       onclick="openDetails()"
+  	 onchange="getExtraDetails()">
+    <p class="formTitle">Extra Details</p>
+    <p class="formSubTitle" id="detailsToChange">Tap to Select<p>
+  </div>
+
+  <form action="" onclick="getValsFromForm()" method="POST" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>
+    {% csrf_token %}
+    <div style="display: none">{{ form.as_p }}</div>
+    <div class="formRow">
+  	  {{ form.photoPath }}
+      <!-- <input type="file"> -->
+  	  <p class="formTitle">Add Photo </p>
+  	  <p class="formSubTitle" id="photoToChange">Tap to Select</p>
+  	</div>
+  	<div class="col-12 buttonRow">
+    		<input type="submit" value="Submit"
+  				class="btn btn-success"
+  				style="display: block; float: right;"
+          id="submitButton"
+          onclick="validateForm()">
+  	</div>
+  </form>
+
+
+</div>
+
+<script>
+  $(function() {
+     $("input:file").change(function (){
+       var fileName = $(this).val().split("\\").pop();
+       $("#photoToChange").html(fileName);
+     });
+  });
+</script>
+
+
+
+<!-- The incident type overlay -->
+<div id="grayOverlay" onclick="closeOverlay()">
+</div>
+<div class="overlayBox" id="overlayIncident">
+  <div style="padding: 0; height: 100%; margin: 20px;">
+    <h2 style="height: 15%;">&nbsp; Incident Type</h2>
+    <div class="formBoxes"
+         onclick="selectIncident('Littering')">
+      <p class="formTitle">
+        <i class="material-icons">delete_outline</i> &nbsp; Littering
+      </p>
+    </div>
+    <div class="formBoxes"
+         onclick="selectIncident('Loitering')">
+      <p class="formTitle">
+        <i class="material-icons">group</i>&nbsp; Loitering
+      </p>
+    </div>
+    <div class="formBoxes"
+         onclick="selectIncident('Graffiti')">
+      <p class="formTitle">
+        <i class="material-icons">photo</i>&nbsp; Graffiti
+      </p>
+    </div>
+    <div class="formBoxes"
+         onclick="selectIncident('Speeding')">
+      <p class="formTitle">
+        <i class="material-icons">directions_car</i>&nbsp; Speeding
+      </p>
+    </div>
+    <div class="formBoxes"
+         onclick="selectIncident('Parking')">
+      <p class="formTitle">
+        <i class="material-icons">local_parking</i>&nbsp; Parking
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- The extra details part -->
+<div id="overlayDetails" class="overlayBox">
+    <div style="height: 15%; vertical-align: middle">
+      <h2 style="text-align: left; width: 85%; height: 100%; line-height: 100%; display: inline-block; margin: 0; padding:0">&nbsp; Extra Details</h2>
+      <button class="btn btn-success" id="deetsOK"
+              style="float: right; display: inline-block; height: 100%; width: 15%;"
+              onclick="closeOverlay()">
+        OK</button>
+    </div>
+    <div style="height: 85%">
+      <textarea class="detailsTxtBox"
+                id="detailsUser"
+                placeholder="Enter any extra details you think may be useful in here"
+                onchange="getExtraDetails()"></textarea>
+   </div>
+</div>
+
+
+<script>
+  var dateDiv = document.getElementById("datePicker");
+  var d = new Date();
+  dateDiv.flatpickr({
+    enableTime: false,
+    dateFormat: "Y-m-d",
+    maxDate: d,
+  });
+
+  var timDiv = document.getElementById("timePicker");
+  const h = d.getHours();
+  const m = d.getMinutes();
+  timDiv.flatpickr({
+		enableTime: true,
+		time_24hr: true,
+		noCalendar: true,
+		time_24hr: true,
+		dateFormat: "H:i",
+		enableSeconds: false,
+		minuteIncrement: 15,
+		defaultHour: h,
+		defaultMinute: m,
+   });
+  </script>
+{% endblock %}
