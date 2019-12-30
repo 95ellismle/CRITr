@@ -1,0 +1,20 @@
+version: "3"
+services:
+  db:
+    image: mysql:5.7
+    ports:
+      - '5432:3306'
+    environment:
+       MYSQL_DATABASE: 'CRITr'
+       MYSQL_USER: 'admin_'
+       MYSQL_PASSWORD: 'yG32fa*2Pe%Cr'
+       MYSQL_ROOT_PASSWORD: 'mle51**#'
+  web:
+    build: .
+    command: sh run.sh
+    volumes:
+      - .:/CRITr
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
