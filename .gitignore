@@ -2,6 +2,8 @@
 *.png
 *.gif
 media/
+CRITr/media/
+CRITr/media/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
