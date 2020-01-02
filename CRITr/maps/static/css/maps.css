@@ -37,6 +37,14 @@ html {
 	border: 0;
 }
 
+.errMsg {
+	color: red;
+	background-color:	lightyellow;
+	border-radius: 30px;
+	text-align: center;
+	width: 100%;
+}
+
 /* Card Styling */
 #cardRow ::-webkit-scrollbar {
 	display: none;
@@ -450,6 +458,7 @@ html {
 		padding: 10px;
 		display: inline-block;
 		box-sizing: border-box;
+		font-weight: 600;
 }
 .submitBtn {
 		background-color: #0066ff;
