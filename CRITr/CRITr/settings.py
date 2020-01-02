@@ -105,6 +105,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Where to go after logging in
 LOGIN_REDIRECT_URL = '/maps'
 LOGOUT_REDIRECT_URL = '/'
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
 
 # Email
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

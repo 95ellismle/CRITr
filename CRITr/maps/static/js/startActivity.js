@@ -48,6 +48,7 @@ function startPatrol(startTime) {
   document.getElementById("fullOverlay").style.display = "none";
   document.getElementById("startActivityOverlay").style.display = "none";
   document.getElementById("patrolOverlay").style.display = "block";
+  startTracking();
 
   window.patrolTimer = setInterval(function(){
     /// call your function here
@@ -61,5 +62,5 @@ function endPatrol() {
   resetMapsPage();
   clearInterval(window.patrolTimer);
   document.getElementById("patrolTimer").innerHTML = "00:00:00";
-  console.log("Clear Interval");
+  stopTracking();
 }

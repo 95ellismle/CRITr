@@ -11,11 +11,12 @@
   const reportIncidentPage="{% url 'reportIncident' %}";
   const urls = {
         'img_folder': '{% static "img/" %}',
+        'track_location': "{% url 'track_location' %}",
   };
 </script>
-{# <!-- 'tracking_view': "{% url 'track_view' %}", --> #}
 <script src="{% static 'js/maps.js' %}" type="text/javascript"></script>
 <link rel="stylesheet" href="{% static 'css/startActivityOverlay.css' %}">
+{% csrf_token %}
 
 {% endblock %}
 
@@ -133,7 +134,9 @@
           </div>
       </div>
   </div> -->
+  {% comment %} <div id="testOut" style="position: absolute; top: 25%; left: 25%; width: 200px; height: 200px;"> {% endcomment %}
 
+  </div>
 </body>
 
 {% block additionalScriptsFoot %}

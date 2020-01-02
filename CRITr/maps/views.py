@@ -1,15 +1,32 @@
 from django.shortcuts import render, redirect
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.core.validators import validate_email as email_is_valid
 from django.core.exceptions import ValidationError
+from django.contrib.auth import authenticate, login
 
 import re
 
 from .forms import IncidentForm, SignUpForm
+from .models import Track
+
+def user_login(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return render(request, "maps/map_index.html", {})
+        else:
+            return render(request, "registration/login.html",
+                          {'error_message': 'Incorrect username and / or password.'})
+    else:
+        return render(request, "registration/login.html", {})
 
 # Create your views here.
 @login_required
@@ -66,6 +83,7 @@ def validate_username(request):
     }
     return JsonResponse(data)
 
+
 def validate_email(request):
     email = request.GET.get('email', None)
     try:
@@ -79,3 +97,17 @@ def validate_email(request):
         'is_valid': is_valid,
     }
     return JsonResponse(data)
+
+
+def track_location(request):
+    if request.is_ajax():
+        Track.objects.create(user=request.user,
+                             x=request.POST['x'],
+                             y=request.POST['y'],
+                             latitude=request.POST['latitude'],
+                             longitude=request.POST['longitude'])
+        message = "Added data!"
+    else:
+        message = "Data not added check the serverside code."
+
+    return HttpResponse(message)

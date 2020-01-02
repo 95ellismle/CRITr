@@ -33,6 +33,16 @@ class Incident(models.Model):
         return self.incidentType
 
 
+class Track(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                   on_delete=models.CASCADE)
+    x = models.FloatField()
+    y = models.FloatField()
+    latitude = models.FloatField()
+    longitude = models.FloatField()
+    datetime = models.DateTimeField(default=timezone.now)
+
+
 # class Activity(models.Model):
 #     activityChoices = (("patrol", "Patrol"),
 #                        ("community_event", "Community Event"),

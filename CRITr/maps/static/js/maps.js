@@ -27,6 +27,8 @@ function getData(table, columns="*", func=false, extraQ="") {
 
 function cancelCreate(){};
 function submitReport(){};
+function startTracking(){};
+function stopTracking(){};
 var reportedPoints = [];
 
 
@@ -84,18 +86,18 @@ require([
 		view: view,
 		goToLocationEnabled: true // disable this since we want to control what happens after our location is acquired
 	});
-	view.ui.add(track, "top-left");
+	// view.ui.add(track, "top-left");
 
 
 	const activityColors = {'Littering': '#a6cee3',
-							'Loitering': '#1f78b4',
-							'Graffiti': '#b2df8a',
-							'Parking': '#33a02c',
-							'Speeding': '#fb9a99',
-							'': '#e31a1c',	'': '#fdbf6f',
-							'': '#ff7f00', '': '#cab2d6',
-							'': '#6a3d9a', '': '#ffff99',
-							'': '#b15928'};
+													'Loitering': '#1f78b4',
+													'Graffiti': '#b2df8a',
+													'Parking': '#33a02c',
+													'Speeding': '#fb9a99',
+													'': '#e31a1c',	'': '#fdbf6f',
+													'': '#ff7f00', '': '#cab2d6',
+													'': '#6a3d9a', '': '#ffff99',
+													'': '#b15928'};
 	// Create popup template
 	var popupTemplate = {
 		title: "<h2>{name}</h2>",
@@ -207,12 +209,12 @@ require([
 					  "lon": pt.longitude.toFixed(5),
 					  "x": pt.x.toFixed(5),
 					  "y": pt.y.toFixed(5)};
-
+			console.log(coords);
 			var ymax = view.extent.ymax;
 			var ymin = view.extent.ymin;
 			var xmax = view.extent.xmax;
 			var xmin = view.extent.xmin;
-			extraBit = "WHERE (`x` > "+xmin+" AND `x` < "+xmax+" AND `y` < "+ymax+" AND `y` > "+ymin+")";
+			// extraBit = "WHERE (`x` > "+xmin+" AND `x` < "+xmax+" AND `y` < "+ymax+" AND `y` > "+ymin+")";
 			//getData("reportData", "id, latitude, longitude, incidentType, timeSubmitted, photoPath", drawAllIncidents, extraBit);
 		}
 
@@ -236,17 +238,13 @@ require([
 			backToFullMap();
 		}
 
-		// Create the drop a pin button
 		var drawPointButton = document.getElementById("pointButton");
 		drawPointButton.onclick = function () {
-			reportedPoints.push(sketchViewModel.create("point"));
-			console.log(reportedPoints);
+			sketchViewModel.create("point");
 
-			// document.getElementById("overlayCards").style.display = 'none';
 			document.getElementById("overlayAdd").style.display = 'none';
 			document.getElementById("openActivities").style.display = 'none';
 			$('#fullOverlay').hide();
-			// document.getElementById("overlayBtn").style.display = 'inline-block';
 
 			var mapView = document.getElementById("viewDiv");
 			mapView.style.position = "absolute";
@@ -272,21 +270,25 @@ require([
 			var testDiv = document.getElementById("testOut");
 			var latDiff = Math.abs(location.latitude - prevLocation.latitude);
 			var lonDiff = Math.abs(location.longitude - prevLocation.longitude);
-			var doSave = Math.abs(location.latitude - prevLocation.latitude) > threshold || Math.abs(location.longitude - prevLocation.longitude) > threshold;
-			testDiv.innerHTML = "lat diff: "+latDiff+" | lon diff: "+lonDiff+" | doSave: "+doSave.toString();
+			var doSave = true; // Math.abs(location.latitude - prevLocation.latitude) > threshold || Math.abs(location.longitude - prevLocation.longitude) > threshold;
+			// testDiv.innerHTML = "lat diff: "+latDiff+" | lon diff: "+lonDiff+" | doSave: "+doSave.toString();
 			if (doSave)
 			{
+				var csrftoken = document.getElementsByName("csrfmiddlewaretoken")[0].getAttribute("value");
+
 				// Save Location every 5 seconds
 				var result = "";
 				$.ajax({
-					url: 'include/setLocation.php',
+					headers: {'X-CSRFToken': csrftoken},
+					url: urls['track_location'],
 					dataType: 'text',
-					type: 'get',
+					type: 'POST',
 					contentType: 'application/x-www-form-urlencoded',
 					data: {'latitude': location.latitude,
-						   'longitude': location.longitude,
-						   'x': location.x,
-						   'y': location.y},
+							   'longitude': location.longitude,
+							   'x': location.x,
+							   'y': location.y
+							  },
 					success: function(data){
 						result =  console.log(data);
 					},
@@ -299,7 +301,12 @@ require([
 			}
 		}, 5000);
 
-		// track.start();
+		startTracking = function() {
+			track.start();
+		}
+		stopTracking = function() {
+			track.stop();
+		}
 	}); // End view.when
 
 });

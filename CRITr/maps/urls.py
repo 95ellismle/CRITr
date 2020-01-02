@@ -6,7 +6,7 @@ from . import views
 
 
 urlpatterns = [
-    path('', auth_views.LoginView.as_view(), name='login'),
+    path('', views.user_login, name='login'),
     path("maps", views.mapIndex, name="maps"),
     path("activities", views.activities, name="activities"),
     path("reporting_an_incident", views.reportIncident, name="reportIncident"),
@@ -16,4 +16,5 @@ urlpatterns = [
         name='validate_username'),
     url(r'^ajax/validate_email/$', views.validate_email,
         name='validate_email'),
+    url('maps/track_location', views.track_location, name="track_location"),
 ]

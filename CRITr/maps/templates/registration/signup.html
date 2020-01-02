@@ -65,8 +65,8 @@
 					  		<i class="material-icons">arrow_backward</i>
 					  	</button>
 
-							<div class="loginFormRow" id="signupBtn">
-								<input type="submit" name="login" class="loginBtn" value="Signup" disabled=true>
+							<div class="loginFormRow" id="signupDiv">
+								<input id="signupBtn" type="submit" name="login" class="loginBtn" value="Signup" disabled=true>
 							</div>
 		        {% endif %}
 
@@ -246,10 +246,12 @@
 		});
 
 		// Validate the password
-
+		var pwdConfirmOn = false;
 		// When the user clicks on the password field, show the message box
 		$("#id_password1").on("focus", function() {
+			if (!pwdConfirmOn) {
 			 $("#message").show();
+		 	}
 		});
 		$("#id_password1").on("blur", function() {
 			 $("#message").hide();
@@ -257,8 +259,11 @@
 
 		$("#id_password2").hide();
 		$("#label_{{form_len}}").hide();
-		$("#signupBtn").hide();
+		$("#signupDiv").hide();
 		$("#id_password1").on("input", function() {
+			pwdConfirmOn = false;
+			$("#id_password2").hide();
+			$("#id_password2").html("");
 			var myInput = $(this).val();
 			var err = false;
 			var letter = document.getElementById("letter");
@@ -323,13 +328,17 @@
 		$("#id_password2").on("input", function() {
 			var pwd1 = $("#id_password1").val();
 			var pwd2 = $(this).val();
+			pwdConfirmOn = true;
 
 			if (pwd1 == pwd2) {
-				$('#signupBtn').prop("disabled", false);
-				$("#signupBtn").show();
+				document.getElementById('signupBtn').disabled = false;
+				$("#signupDiv").show();
+				$("#errorAJAX_6").hide();
 			} else {
-				$('#signupBtn').prop("disabled", true);
-				$("#signupBtn").hide();
+				document.getElementById('signupBtn').disabled = true;
+				$("#signupDiv").hide();
+				$("#errorAJAX_6").html("Passwords don't match!");
+				$("#errorAJAX_6").show();
 			}
 		});
 
