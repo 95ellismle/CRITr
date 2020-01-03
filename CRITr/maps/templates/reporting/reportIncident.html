@@ -23,6 +23,7 @@
   <script src="{% static 'js/forms.js' %}"></script>
   <script>
     var coords = JSON.parse(window.localStorage.getItem("coords"));
+    console.log(coords);
     document.getElementById("id_latitude").value = coords['lat'];
     document.getElementById("id_longitude").value = coords['lon'];
     document.getElementById("id_x").value = coords['x'];

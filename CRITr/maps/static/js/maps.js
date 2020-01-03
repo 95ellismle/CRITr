@@ -31,13 +31,10 @@ function startTracking(){};
 function stopTracking(){};
 var reportedPoints = [];
 
-
 require([
 	// The map
 	"esri/Map",
 	"esri/views/MapView",
-	// // Basemap toggle (satelite and nav view)
-	// "esri/widgets/BasemapToggle",
 	// Widget to find location of user
 	"esri/widgets/Locate",
 	// Widget for Graphics
@@ -45,10 +42,12 @@ require([
 	"esri/layers/GraphicsLayer",
 	"esri/widgets/Sketch/SketchViewModel",
 	"esri/widgets/Track",
+	"esri/geometry/Point",
 ],
 
 		function(Map, MapView, Locate, Graphic,
-				  GraphicsLayer, SketchViewModel, Track) {
+					   GraphicsLayer, SketchViewModel, Track,
+						 Search, Point) {
 
 	let editGraphic;
 
@@ -58,17 +57,21 @@ require([
 		id: "dropPins"
 	});
 
+
 	const map = new Map({
 		basemap: "streets-navigation-vector",
-		layers: [graphicsLayer]
+		layers: [graphicsLayer],
+		slider: false
 	});
+
 
 	// Set the map view and zoom to the Milnrow and Newhey
 	const view = new MapView({
 		container: "viewDiv",
 		map: map,
 		center: [-2.105367, 53.604835], // longitude, latitude
-		zoom: 15
+		zoom: 15,
+		slider: false
 	});
 
 	// Create the tools for dropping pins
@@ -86,7 +89,6 @@ require([
 		view: view,
 		goToLocationEnabled: true // disable this since we want to control what happens after our location is acquired
 	});
-	// view.ui.add(track, "top-left");
 
 
 	const activityColors = {'Littering': '#a6cee3',
@@ -184,6 +186,7 @@ require([
 
 	// When the view is ready, do this lot of things
 	view.when(function() {
+		var reporter = new reportLocation(view);
 		var prevLocation = {'latitude':-1000, 'longitude': -1000};
 
 		// Create the add incident button
@@ -195,28 +198,11 @@ require([
 
 		var coords = {};
 
-		view.on("pointer-down", updateCoords);
+		view.on("pointer-down", function(evt) {
+			reporter.click(evt);
+		});
 
 		sketchViewModel.on("create", handleEventCreation);
-
-		// Handles updating the coords dict to allow the sketchViewModel.on("create")
-		//  access the lat and long
-		function updateCoords(evt) {
-			hideCards();
-			pt = view.toMap({ x: evt.x, y: evt.y });
-
-			coords = {"lat": pt.latitude.toFixed(5),
-					  "lon": pt.longitude.toFixed(5),
-					  "x": pt.x.toFixed(5),
-					  "y": pt.y.toFixed(5)};
-			console.log(coords);
-			var ymax = view.extent.ymax;
-			var ymin = view.extent.ymin;
-			var xmax = view.extent.xmax;
-			var xmin = view.extent.xmin;
-			// extraBit = "WHERE (`x` > "+xmin+" AND `x` < "+xmax+" AND `y` < "+ymax+" AND `y` > "+ymin+")";
-			//getData("reportData", "id, latitude, longitude, incidentType, timeSubmitted, photoPath", drawAllIncidents, extraBit);
-		}
 
 		// logic for handling the creation of pins
 		function handleEventCreation(event) {
@@ -227,41 +213,20 @@ require([
 
 		// After the user presses the OK button
 		submitReport = function() {
+			coords = {'x':view.center.x, 'y':view.center.y,
+								'lat':view.center.latitude, 'lon':view.center.longitude};
 			window.localStorage.setItem("coords", JSON.stringify(coords));
 			window.location.href = reportIncidentPage;
 		}
 
-		cancelCreate = function () {
-			sketchViewModel.cancel("point");
-			$('#openActivities').show();
-			$('#overlayAdd').hide();
-			backToFullMap();
-		}
+		cancelCreate = function() {
+			reporter.exit()
+		};
 
-		var drawPointButton = document.getElementById("pointButton");
-		drawPointButton.onclick = function () {
-			sketchViewModel.create("point");
+		$("#reportIncidentBtn").on("click", function() {
+			reporter.showNavBar();
+		});
 
-			document.getElementById("overlayAdd").style.display = 'none';
-			document.getElementById("openActivities").style.display = 'none';
-			$('#fullOverlay').hide();
-
-			var mapView = document.getElementById("viewDiv");
-			mapView.style.position = "absolute";
-			mapView.style.bottom = 0;
-			mapView.style.height = "calc(100% - 70px)";
-
-			var topBar = document.getElementById("reportIncidentBar");
-			topBar.style.display = "block";
-			topBar.style.height = "70px";
-		}
-
-		var ymax = view.extent.ymax;
-		var ymin = view.extent.ymin;
-		var xmax = view.extent.xmax;
-		var xmin = view.extent.xmin;
-		extraBit = "WHERE (`x` > "+xmin+" AND `x` < "+xmax+" AND `y` < "+ymax+" AND `y` > "+ymin+")";
-		//getData("reportData", "id, latitude, longitude, incidentType, timeSubmitted, photoPath", drawAllIncidents, extraBit);
 
 		track.on("track", function() {
 			var location = track.graphic.geometry;
