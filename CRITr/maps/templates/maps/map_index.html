@@ -14,7 +14,6 @@
         'track_location': "{% url 'track_location' %}",
   };
 </script>
-<script src="{% static 'js/maps.js' %}" type="text/javascript"></script>
 <link rel="stylesheet" href="{% static 'css/startActivityOverlay.css' %}">
 {% csrf_token %}
 
@@ -33,7 +32,8 @@
           </button>
       </div>
       <div style="width: calc(100% - 120px); display: inline-block; height:100%; vertical-align: 'middle'">
-          <p  class="titleReportTxt" style="padding: 0; margin: 0;">
+          <p id="locationHelpTxt" class="titleReportTxt"
+             style="padding: 0; margin: 0;">
               Tap to select a location
           </p>
       </div>
@@ -55,27 +55,19 @@
       </div>
   </div>
 
-  <!-- ESRI Maps Stuff -->
+  <!-- ESRI MapView -->
   <div id="viewDiv">
       <!-- Button to show activities to start -->
       <div id="topbar" style="background-color: rgba(0,0,0,0);">
           <button class="action-button" id="openActivities"
                   type="button" style="align: center;">
-              <i class="material-icons" style="font-size: 50px;">add</i>
+              <i class="material-icons" style="font-size: 25px; vertical-align: middle;">add</i>
           </button>
       </div>
 
-      <!-- Button to show cards -->
-      <!-- <div id="overlayBtn"
-           style="position: absolute: bottom:0; left:5%; display: block; width: 90%;">
-          <button class="action-button" id="activitiesBtn"
-                  type="button" style="width: 30%; height: 50px; margin-left: 35%;"
-                  onclick="showCards()"><i class="material-icons" style="font-size: 50px;">keyboard_arrow_up</i></button>
-      </div> -->
-
       <div id="overlayAdd" style="display: none;">
         <div class="addDiv">
-          <button type="button" id="pointButton"
+          <button type="button" id="reportIncidentBtn"
           style="position: absolute; z-index: 2; width: 100%; height: 30px; opacity: 0;"></button>
           <span class="addPara"><i class="material-icons" style="font-size: 18px;">note_add</i> Report Incident</span>
         </div>
@@ -88,7 +80,7 @@
       </div>
   </div>
 
-  <!-- The start activity overlay -->
+  <!-- The start activity overlay (choose activity) -->
   <div id="startActivityOverlay">
       <div class="title">
         Select Activity Type
@@ -115,6 +107,7 @@
       <button class="startActivityBtn" onclick="startActivity()">Start Activity</button>
     </div>
 
+    {% comment %} Patrol Popup From Bottom {% endcomment %}
     <div id="patrolOverlay">
       <div class="addRow" style="margin: 0; padding: 0;">
         <p style="margin: 0; padding: 0; color: rgba(0,0,0,0.54)"><i class="material-icons" style="margin: 0; padding: 0; width: 25px;">directions_walking</i>Patrol</p>
@@ -127,36 +120,25 @@
       </p>
       <button class="startActivityBtn" onclick="endPatrol()" style="margin-top: 10px; padding: 0;">End Patrol</button>
     </div>
-  <!-- Start the card interface -->
-  <!-- <div id="overlayCards" style="display: none;">
-      <div class="hideScroll container-fluid card-block">
-          <div id="cardRow" class="row flex-nowrap card-block">
-          </div>
-      </div>
-  </div> -->
-  {% comment %} <div id="testOut" style="position: absolute; top: 25%; left: 25%; width: 200px; height: 200px;"> {% endcomment %}
 
-  </div>
+  <div id="vertCrosshair"></div>
+  <div id="horizCrosshair"></div>
+
 </body>
+{% endblock %}
+
+
+
+
+
+
 
 {% block additionalScriptsFoot %}
-
+<script src="{% static 'js/reportIncidentInMap.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/maps.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/cards.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/startActivity.js' %}" type="text/javascript"></script>
 <script>
-    // activities = getActivities();
-    // // Loop over all activities and add them to the screen
-    // var len = activities.length;
-    // if (len > 10) {
-    //     len = 10;
-    // }
-    // for (var i=0; i<activities.length; i++) {
-    //     currDict = activities[i];
-    //     var cardRow = document.getElementById("cardRow");
-    //
-    //     var cardDiv = createCardOverlay(currDict, i);
-    //     cardRow.appendChild(cardDiv);
-    // }
 
     $('#openActivities').click(function() {
       $('#openActivities').hide();
@@ -164,10 +146,4 @@
       $('#overlayAdd').show();
     });
 </script>
-<script type="text/javascript">
-
-</script>
-{% endblock %}
-
-
 {% endblock %}
