@@ -186,7 +186,7 @@ require([
 
 	// When the view is ready, do this lot of things
 	view.when(function() {
-		var reporter = new reportLocation(view);
+		var reporter = new reportLocation_crosshairs(view);
 		var prevLocation = {'latitude':-1000, 'longitude': -1000};
 
 		// Create the add incident button
@@ -224,7 +224,7 @@ require([
 		};
 
 		$("#reportIncidentBtn").on("click", function() {
-			reporter.showNavBar();
+			reporter.init();
 		});
 
 
