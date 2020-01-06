@@ -1,3 +1,5 @@
+var lat_lon = [];
+
 function getActivityType() {
   var divs = document.getElementsByClassName("actChoice");
   for (var i=0; i<divs.length; i++) {
@@ -48,19 +50,26 @@ function startPatrol(startTime) {
   document.getElementById("fullOverlay").style.display = "none";
   document.getElementById("startActivityOverlay").style.display = "none";
   document.getElementById("patrolOverlay").style.display = "block";
+  lat_lon = [];
   startTracking();
 
   window.patrolTimer = setInterval(function(){
-    /// call your function here
+    // Adjust the timer
     var endTime = new Date();
     var timeDiff = endTime - startTime;
     document.getElementById("patrolTimer").innerHTML = secToTimer(timeDiff);
-  }, 1000)
+  }, 1000);
+
+  window.patrolTimer2 = setInterval(function() {
+    drawTrackPoint(lat_lon);
+  }, 5000);
 }
 
 function endPatrol() {
   resetMapsPage();
+  lat_lon = [];
   clearInterval(window.patrolTimer);
+  clearInterval(window.patrolTimer2);
   document.getElementById("patrolTimer").innerHTML = "00:00:00";
   stopTracking();
 }

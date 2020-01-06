@@ -106,7 +106,7 @@ def track_location(request):
                              y=request.POST['y'],
                              latitude=request.POST['latitude'],
                              longitude=request.POST['longitude'])
-        message = "Added data!"
+        message = ""
     else:
         message = "Data not added check the serverside code."
 

@@ -1,4 +1,6 @@
 var ptsLoaded = {};
+var trackPtsDrawn = [];
+
 
 function getData(table, columns="*", func=false, extraQ="") {
 	var result = "";
@@ -29,6 +31,7 @@ function cancelCreate(){};
 function submitReport(){};
 function startTracking(){};
 function stopTracking(){};
+function drawTrackPoint(){};
 var reportedPoints = [];
 
 require([
@@ -167,6 +170,23 @@ require([
 		return points;
 	}
 
+	function drawPoint(lat, lon, extraAttr={}, symbol=pointSymbol) {
+		var pointAttr = {
+			type: "point",
+			latitude: lat,
+			longitude: lon,
+		};
+		pointAttr = Object.assign(pointAttr, extraAttr);
+
+		var pointGraphic = new Graphic({
+			geometry: pointAttr,
+			symbol: symbol,
+		});
+		graphicsLayer.add(pointGraphic);
+
+		return pointGraphic;
+	}
+
 	function drawAllPoints(allData) {
 		var symbol = pointSymbol;
 		for (var i=0; i<allData.length; i++) {
@@ -255,7 +275,6 @@ require([
 							   'y': location.y
 							  },
 					success: function(data){
-						result =  console.log(data);
 					},
 					error: function( jqXhr, textStatus, errorThrown ){
 						console.log( errorThrown );
@@ -271,6 +290,16 @@ require([
 		}
 		stopTracking = function() {
 			track.stop();
+			for (var i=0; i<trackPtsDrawn.length; i++) {
+				graphicsLayer.remove(trackPtsDrawn[i]);
+			}
+			trackPtsDrawn = [];
+		}
+		drawTrackPoint = function(lat_lon) {
+			var location = track.graphic.geometry;
+
+			var point = drawPoint(location.latitude, location.longitude);
+			trackPtsDrawn.push(point);
 		}
 	}); // End view.when
 
