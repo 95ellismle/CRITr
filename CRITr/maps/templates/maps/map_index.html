@@ -11,7 +11,7 @@
   const reportIncidentPage="{% url 'reportIncident' %}";
   const urls = {
         'img_folder': '{% static "img/" %}',
-        'track_location': "{% url 'track_location' %}",
+        'save_track_data': "{% url 'save_track_data' %}",
         'get_track_ID': "{% url 'get_track_ID' %}",
   };
 </script>
@@ -83,20 +83,20 @@
 
   <!-- The start activity overlay (choose activity) -->
   <div id="startActivityOverlay">
-      <div class="title">
-        Select Activity Type
-      </div>
-
+    <div class="titleRow">
+      Select Activity Type
+    </div>
+    <div style="padding: 10px;">
       <div id="activityChoices">
-        <div class="actChoice active selected" id="patrolAct" onclick="selectActivity(this)">
+        <div class="choiceAct active selected" id="patrolAct" onclick="selectActivity(this, 'choiceAct')">
           <img src="{% static 'img/walkingIcon.png' %}" class="imgIcon">
           <p class="imgTxt">Patrol</p>
         </div>
-        <div class="inactive actChoice" onclick="selectActivity(this)">
+        <div class="inactive choiceAct" onclick="selectActivity(this, 'choiceAct')">
           <img src="{% static 'img/speedometerIcon.png' %}" id="speedWatchAct" class="imgIcon">
           <p class="imgTxt">Speedwatch</p>
         </div>
-        <div class="inactive actChoice" style="margin-right: 0;" onclick="selectActivity(this)">
+        <div class="inactive choiceAct" style="margin-right: 0;" onclick="selectActivity(this, 'choiceAct')">
           <img src="{% static 'img/starredCalendarIcon.png' %}" id="commEventAct" class="imgIcon">
           <p class="imgTxt">Event</p>
         </div>
@@ -105,12 +105,13 @@
         <p class="rowHead">Add Other Members</p>
         <p class="rowSubHead">Tap to add other members (if applicable)</p>
       </div> -->
-      <button class="startActivityBtn" onclick="startActivity()">Start Activity</button>
+      <button class="activitySubmitBtn" onclick="startActivity()">Start Activity</button>
     </div>
+  </div>
 
     {% comment %} Patrol Popup From Bottom {% endcomment %}
     <div id="patrolOverlay">
-      <div class="addRow" style="margin: 0; padding: 0;">
+      <div class="addRow" style="margin: 0;">
         <p style="margin: 0; padding: 0; color: rgba(0,0,0,0.54)"><i class="material-icons" style="margin: 0; padding: 0; width: 25px;">directions_walking</i>Patrol</p>
       </div>
       <p style="height: 40px;	width: 208px;	color: rgba(0,0,0,0.54);
@@ -119,8 +120,55 @@
                text-align: center;" id="patrolTimer">
                00:00:00
       </p>
-      <button class="startActivityBtn" onclick="endPatrol()" style="margin-top: 10px; padding: 0;">End Patrol</button>
+      <button class="activitySubmitBtn" onclick="endPatrol()" style="margin-top: 10px; padding: 0;">End Patrol</button>
     </div>
+
+    {% comment %} Do you want to save question {% endcomment %}
+    <div id="endTrack">
+      <div class="titleRow">
+        Data Save Finish
+      </div>
+
+      <div style="padding: 10px;">
+        {% comment %} Ask about saving data {% endcomment %}
+        <div id="saveChoiceRow" class="choiceRow" style="height: auto;">
+          <h5>Would you like to save the tracking data?</h5>
+          <div class="choiceSaveTrack active selected" id="saveTrack_yes"
+               onclick="selectActivity(this, 'choiceSaveTrack')">
+              <div class="tableDisplay">
+                <p class="tableText">Yes</p>
+              </div>
+          </div>
+          <div class="choiceSaveTrack active" id="saveTrack_no"
+               onclick="selectActivity(this, 'choiceSaveTrack')">
+             <div class="tableDisplay">
+               <p class="tableText">No</p>
+             </div>
+          </div>
+        </div>
+
+        {% comment %} Ask about anonymising data{% endcomment %}
+        <div id="anonChoiceRow" class="choiceRow" style="margin-top: 10px;">
+          <h5>Would you like this data to be anonymised?</h5>
+          <div class="choiceAnon active" id="makeAnon_yes"
+               onclick="selectActivity(this, 'choiceAnon')">
+              <div class="tableDisplay">
+                <p class="tableText">Yes</p>
+              </div>
+          </div>
+          <div class="choiceAnon active selected" id="makeAnon_no"
+               onclick="selectActivity(this, 'choiceAnon')">
+             <div class="tableDisplay">
+               <p class="tableText">No</p>
+             </div>
+          </div>
+        </div>
+
+        <button class="activitySubmitBtn" onclick="endActivity()">End Activity</button>
+      </div> <!-- End the overlay content div -->
+
+    </div> <!-- End overlay div -->
+
 
   <div id="vertCrosshair"></div>
   <div id="horizCrosshair"></div>
@@ -140,7 +188,6 @@
 <script src="{% static 'js/cards.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/startActivity.js' %}" type="text/javascript"></script>
 <script>
-
     $('#openActivities').click(function() {
       $('#openActivities').hide();
       $('#fullOverlay').show();

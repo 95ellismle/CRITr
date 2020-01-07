@@ -35,6 +35,7 @@ function submitReport(){};
 function startTracking(){};
 function stopTracking(){};
 function drawTrackPoint(){};
+function saveTrackData(){};
 var reportedPoints = [];
 
 require([
@@ -275,7 +276,7 @@ require([
 			track.start();
 		}
 
-		stopTracking = function() {
+		stopTracking = function(save) {
 			// First turn off tracking
 			track.stop();
 
@@ -284,27 +285,21 @@ require([
 				graphicsLayer.remove(trackPtsDrawn[i]);
 			}
 
-			// Save data if required
-			saveTrackData();
-
-			// Reset variables
-			locations_to_save = {'x': [], 'y': [], 'lat': [], 'lon': []};
-			trackPtsDrawn = [];
-			prevLocation = {'latitude':-1000, 'longitude': -1000};
 		}
 
-		function saveTrackData() {
+		saveTrackData = function(anon=false) {
 			var csrftoken = document.getElementsByName("csrfmiddlewaretoken")[0].getAttribute("value");
 			locData = JSON.stringify(locations_to_save);
 			$.ajax({
 				headers: {'X-CSRFToken': csrftoken},
-				url: urls['track_location'],
+				url: urls['save_track_data'],
 				dataType: 'text',
 				type: 'POST',
 				contentType: 'application/x-www-form-urlencoded',
 				data: {
 					 		  'locations_to_save': locData,
-			 					'trackID': trackID
+			 					'trackID': trackID,
+								'anon': anon,
 							},
 				success: function(data){
 				// console.log(data);
@@ -313,6 +308,11 @@ require([
 					console.log( errorThrown );
 				}
 			});
+
+			// Reset variables
+			locations_to_save = {'x': [], 'y': [], 'lat': [], 'lon': []};
+			trackPtsDrawn = [];
+			prevLocation = {'latitude':-1000, 'longitude': -1000};
 		}
 
 		drawTrackPoint = function() {
