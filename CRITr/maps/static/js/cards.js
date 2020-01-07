@@ -17,11 +17,11 @@ function hideActButton() {
     // document.getElementById("overlayCards").style.display = "none";
 }
 
-function setStartActDim() {
+function setStartActDim(className, overlayDiv, choiceRowDiv, changeHeight=true) {
   // Set the button heights
-  var choices = document.getElementsByClassName("actChoice");
+  var choices = document.getElementsByClassName(className);
   var btnWidth = choices[0].clientWidth;
-  var btnRow = document.getElementById("activityChoices");
+  var btnRow = document.getElementById(choiceRowDiv);
   var rowWidth = btnRow.clientWidth;
   var numSquares = choices.length;
   var margin = Math.floor(
@@ -32,19 +32,23 @@ function setStartActDim() {
                           ) / 2
                          )
                - 5;
-  btnRow.style.height = btnWidth.toString() + "px";
+  if (changeHeight) {
+    btnRow.style.height = btnWidth.toString() + "px";
+  }
   choices[0].style.marginLeft = margin.toString() + "px";
 
   // Set the top margin
-  var activityDiv = document.getElementById("startActivityOverlay");
-  var windowHeight = window.innerHeight;
-  var vertMargin = Math.floor((windowHeight - activityDiv.clientHeight)/2) - 10;
-  activityDiv.style.top = vertMargin.toString() + "px";
+  if (overlayDiv) {
+    var activityDiv = document.getElementById(overlayDiv);
+    var windowHeight = window.innerHeight;
+    var vertMargin = Math.floor((windowHeight - activityDiv.clientHeight)/2) - 10;
+    activityDiv.style.top = vertMargin.toString() + "px";
 
-  // Set the left margin
-  var windowWidth = window.innerWidth;
-  var horizMargin =  Math.floor((windowWidth - activityDiv.clientWidth)/2);
-  activityDiv.style.left = horizMargin.toString() + "px";
+    // Set the left margin
+    var windowWidth = window.innerWidth;
+    var horizMargin =  Math.floor((windowWidth - activityDiv.clientWidth)/2);
+    activityDiv.style.left = horizMargin.toString() + "px";
+  }
 }
 
 function openStartActivity() {
@@ -52,8 +56,18 @@ function openStartActivity() {
   $('#openActivities').show();
   document.getElementById("fullOverlay").style.display = "block";
   document.getElementById("startActivityOverlay").style.display = "block";
-  $('#openActivities').hide();
-  setStartActDim();
+  setStartActDim("choiceAct", "startActivityOverlay", "activityChoices");
+}
+
+function openEndActivity() {
+  document.getElementById("fullOverlay").removeAttribute("onclick");
+
+  $('#overlayAdd').hide();
+  $('#openActivities').show();
+  document.getElementById("fullOverlay").style.display = "block";
+  document.getElementById("endTrack").style.display = "block";
+  setStartActDim("choiceSaveTrack", "endTrack", "saveChoiceRow", false);
+  setStartActDim("choiceAnon", "", "anonChoiceRow", false);
 }
 
 function resetMapsPage() {
@@ -61,6 +75,7 @@ function resetMapsPage() {
   $('#fullOverlay').hide();
   $('#overlayAdd').hide();
   $('#patrolOverlay').hide();
+  $('#endTrack').hide();
   $('#openActivities').show();
 }
 

@@ -1,5 +1,5 @@
-function getActivityType() {
-  var divs = document.getElementsByClassName("actChoice");
+function getChoice(choiceDivs) {
+  var divs = document.getElementsByClassName(choiceDivs);
   for (var i=0; i<divs.length; i++) {
     if (divs[i].classList.contains("selected")) {
       return divs[i].id;
@@ -7,12 +7,12 @@ function getActivityType() {
   }
 }
 
-function selectActivity(currDiv) {
+function selectActivity(currDiv, choiceClass) {
   if (currDiv.classList.contains("inactive")) {
     return;
   }
 
-  var divs = document.getElementsByClassName("actChoice");
+  var divs = document.getElementsByClassName(choiceClass);
   for (var i=0; i<divs.length; i++) {
     divs[i].classList.remove("selected");
   }
@@ -20,7 +20,7 @@ function selectActivity(currDiv) {
 }
 
 function startActivity() {
-  var currActivity = getActivityType();
+  var currActivity = getChoice("choiceAct");
 
   switch (currActivity) {
     case "patrolAct":
@@ -29,6 +29,32 @@ function startActivity() {
     default:
 
   }
+}
+
+function endActivity() {
+  document.getElementById("fullOverlay").setAttribute('onclick','resetMapsPage();');
+
+  var anonChoice = getChoice("choiceAnon");
+  if (anonChoice == "makeAnon_yes") {
+    var anon = true;
+  } else if (anonChoice == "makeAnon_no") {
+    var anon = false;
+  } else {
+    var msg = "Something went wrong! Please let Matt know at 95ellismle@gmail.com";
+    msg += " To get the problem solved ASAP please explain exactly what you were ";
+    msg += " doing and quote the following: 'The choice for anonymising tracking data";
+    msg += " neither makeAnon_yes or makeAnon_no'. Thanks!";
+    alert(msg);
+    throw msg;
+  };
+
+  var saveChoice = getChoice("choiceSaveTrack");
+  if (saveChoice == "saveTrack_yes") {
+      saveTrackData(anon);
+  };
+
+  // Go back to normal home page
+  resetMapsPage();
 }
 
 function startPatrol(startTime) {
@@ -50,12 +76,18 @@ function startPatrol(startTime) {
 }
 
 function endPatrol() {
+  // Go back to normal screen
   resetMapsPage();
 
   clearInterval(window.patrolTimer_incrementClock);
   clearInterval(window.patrolTimer_drawPoint);
   document.getElementById("patrolTimer").innerHTML = "00:00:00";
+
+  // Stop the tracking and remove graphics
   stopTracking();
+
+  // Open the final end patrol window
+  openEndActivity();
 }
 
 

@@ -100,9 +100,17 @@ def validate_email(request):
     return JsonResponse(data)
 
 
-def track_location(request):
+def save_track_data(request):
     if request.is_ajax():
-        user = request.user
+        anonymise = True if request.POST['anon'] == 'true' else False
+        if anonymise:
+            user = User.objects.get(username="anon");
+        else:
+            user = request.user
+        lastTrackID = get_last_track_ID(user)
+        if request.POST['trackID'] == lastTrackID:
+            return HttpResponse("Naughty Person Using Website.")
+
         locData = json.loads(request.POST['locations_to_save'])
         for x, y, lat, lon in zip(locData['x'], locData['y'],
                                   locData['lat'], locData['lon']):
@@ -118,6 +126,18 @@ def track_location(request):
 
     return HttpResponse(message)
 
+def get_last_track_ID(user):
+    """
+    Will get the latest trackID for a particular user.
+    """
+    reversedEntries = Track.objects.filter(user=user).order_by("-datetime")
+
+    lastTrackID = -1
+    if len(reversedEntries):
+        lastEntry = reversedEntries[0]
+        lastTrackID = lastEntry.trackID
+
+    return lastTrackID
 
 def get_track_ID(request):
     """
@@ -125,15 +145,9 @@ def get_track_ID(request):
     """
     if request.is_ajax():
         user = request.user
-        reversedEntries = Track.objects.filter(user=user).order_by("-datetime")
-
-        lastTrackID = 0
-        if len(reversedEntries):
-            lastEntry = reversedEntries[0]
-            lastTrackID = lastEntry.trackID + 1
-
-        data = {'trackID': lastTrackID}
+        lastTrackID = get_last_track_ID(user)
+        data = {'trackID': lastTrackID + 1}
     else:
-        data = {'trackID': -1}
+        data = {'trackID': False}
 
     return JsonResponse(data)

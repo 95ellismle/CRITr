@@ -1,29 +1,29 @@
-#startActivityOverlay {
+#startActivityOverlay, #endTrack {
 	position: fixed;
   display: none;
-  width: 80%;
+	width: 80%;
   max-height: 600px;
   max-width: 600px;
   box-shadow: 0 0 24px 0 rgba(0,0,0,0.22);
   background-color: #fff;
-	left: 0;
 	top: 0;
   z-index: 3;
-  padding: 10px;
+  padding: 0;
 }
 .title {
   margin: 20px 0 20px 10px;
   width: 100%;
   text-align: left;
   vertical-align: middle;
-  font-size: 17px;
+  font-size: 20px;
 }
-#activityChoices {
+#activityChoices, .choiceRow {
   height: 25%;
   width: 100%;
   display: block;
+	margin-bottom: 10px;
 }
-.actChoice {
+.choiceAct, .choiceAnon, .choiceSaveTrack {
   display: inline-block;
   border-radius: 10px;
   width: 30%;
@@ -31,17 +31,28 @@
   height: 100%;
   background-color: #eee;
 }
-.actChoice:hover {
+.choiceAct, .choiceAnon, .choiceSaveTrack:hover {
   /* background-color: #ddd; */
   cursor: pointer;
 }
-.actChoice:active {
+.choiceAct, .choiceAnon, .choiceSaveTrack:active {
   background-color: #ddd;
   cursor: pointer;
 }
 .addRow {
   margin: 10px;
   width: calc(100% - 20px);
+}
+.titleRow {
+	margin: 0;
+	margin-bottom: 10px;
+	color: white;
+	font-size: 18px;
+	padding: 10px;
+	background-color: #ff5722;
+	/* padding: 0; */
+  /* margin: 10px; */
+  width: 100%;
 }
 .addRow:hover {
   background-color: #f2f2f2;
@@ -58,7 +69,7 @@
 .selected {
   	box-shadow: 0 0 7px 0 #FF5722;
 }
-.startActivityBtn {
+.activitySubmitBtn {
   width: 50%;
   margin-left: 25%;
   height: 40px;
@@ -69,8 +80,8 @@
   color: white;
   font-weight: 600;
 }
-.startActivityBtn:hover {
-    background-color: #ef6211;
+.activitySubmitBtn:hover {
+    background-color: #ff5722;
     cursor: pointer;
 }
 .imgIcon {
