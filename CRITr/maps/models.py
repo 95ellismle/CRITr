@@ -41,6 +41,7 @@ class Track(models.Model):
     latitude = models.FloatField()
     longitude = models.FloatField()
     datetime = models.DateTimeField(default=timezone.now)
+    trackID = models.IntegerField(null=False)
 
 
 # class Activity(models.Model):

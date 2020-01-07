@@ -1,5 +1,8 @@
 var ptsLoaded = {};
 var trackPtsDrawn = [];
+var locations_to_save = {'x': [], 'y': [], 'lat': [], 'lon': []};
+var prevLocation = {'latitude':-1000, 'longitude': -1000};
+var trackID;
 
 
 function getData(table, columns="*", func=false, extraQ="") {
@@ -136,7 +139,7 @@ require([
 			const id = data['id'];
 			if (!(id in ptsLoaded)) {
 				// Create attributes
-				var attributes = {
+					var attributes = {
 					name: data['incidentType'],  // The name of the
 					reportedTime: data['timeSubmitted'],
 					details: createDetails(data['details']),
@@ -187,27 +190,10 @@ require([
 		return pointGraphic;
 	}
 
-	function drawAllPoints(allData) {
-		var symbol = pointSymbol;
-		for (var i=0; i<allData.length; i++) {
-			var data = allData[i];
-				var point = {
-					type: "point",
-					longitude: data['longitude'],
-					latitude: data['latitude']
-				};
-				var pointGraphic = new Graphic({
-					geometry: point,
-					symbol: symbol,
-				});
-			graphicsLayer.add(pointGraphic);
-		}
-	}
-
 	// When the view is ready, do this lot of things
 	view.when(function() {
 		var reporter = new reportLocation_crosshairs(view);
-		var prevLocation = {'latitude':-1000, 'longitude': -1000};
+
 
 		// Create the add incident button
 		const sketchViewModel = new SketchViewModel ({
@@ -252,50 +238,84 @@ require([
 			var location = track.graphic.geometry;
 
 			const threshold = 0.0001;
-			var testDiv = document.getElementById("testOut");
-			var latDiff = Math.abs(location.latitude - prevLocation.latitude);
-			var lonDiff = Math.abs(location.longitude - prevLocation.longitude);
-			var doSave = true; // Math.abs(location.latitude - prevLocation.latitude) > threshold || Math.abs(location.longitude - prevLocation.longitude) > threshold;
-			// testDiv.innerHTML = "lat diff: "+latDiff+" | lon diff: "+lonDiff+" | doSave: "+doSave.toString();
+			var latDiff = Math.pow(location.latitude - prevLocation.latitude, 2);
+			var lonDiff = Math.pow(location.longitude - prevLocation.longitude, 2);
+			var doSave = Math.sqrt(latDiff + lonDiff) > threshold
+
 			if (doSave)
 			{
-				var csrftoken = document.getElementsByName("csrfmiddlewaretoken")[0].getAttribute("value");
+				locations_to_save['x'].push(location.x);
+				locations_to_save['y'].push(location.y);
+				locations_to_save['lat'].push(location.latitude);
+				locations_to_save['lon'].push(location.longitude);
 
-				// Save Location every 5 seconds
-				var result = "";
-				$.ajax({
-					headers: {'X-CSRFToken': csrftoken},
-					url: urls['track_location'],
-					dataType: 'text',
-					type: 'POST',
-					contentType: 'application/x-www-form-urlencoded',
-					data: {'latitude': location.latitude,
-							   'longitude': location.longitude,
-							   'x': location.x,
-							   'y': location.y
-							  },
-					success: function(data){
-					},
-					error: function( jqXhr, textStatus, errorThrown ){
-						console.log( errorThrown );
-					}
-				});
 				prevLocation.latitude = location.latitude;
 				prevLocation.longitude = location.longitude;
 			}
 		}, 5000);
 
 		startTracking = function() {
+			// Get the trackID
+			var csrftoken = document.getElementsByName("csrfmiddlewaretoken")[0].getAttribute("value");
+			$.ajax({
+				headers: {'X-CSRFToken': csrftoken},
+				url: urls['get_track_ID'],
+				dataType: 'json',
+				type: 'POST',
+				contentType: 'application/x-www-form-urlencoded',
+				success: function(data){
+					trackID = data['trackID'];
+				},
+				error: function( jqXhr, textStatus, errorThrown ){
+					console.log( errorThrown );
+				}
+			});
+
+			// Start the tracking
 			track.start();
 		}
+
 		stopTracking = function() {
+			// First turn off tracking
 			track.stop();
+
+			// Remove any graphics drawn
 			for (var i=0; i<trackPtsDrawn.length; i++) {
 				graphicsLayer.remove(trackPtsDrawn[i]);
 			}
+
+			// Save data if required
+			saveTrackData();
+
+			// Reset variables
+			locations_to_save = {'x': [], 'y': [], 'lat': [], 'lon': []};
 			trackPtsDrawn = [];
+			prevLocation = {'latitude':-1000, 'longitude': -1000};
 		}
-		drawTrackPoint = function(lat_lon) {
+
+		function saveTrackData() {
+			var csrftoken = document.getElementsByName("csrfmiddlewaretoken")[0].getAttribute("value");
+			locData = JSON.stringify(locations_to_save);
+			$.ajax({
+				headers: {'X-CSRFToken': csrftoken},
+				url: urls['track_location'],
+				dataType: 'text',
+				type: 'POST',
+				contentType: 'application/x-www-form-urlencoded',
+				data: {
+					 		  'locations_to_save': locData,
+			 					'trackID': trackID
+							},
+				success: function(data){
+				// console.log(data);
+				},
+				error: function( jqXhr, textStatus, errorThrown ){
+					console.log( errorThrown );
+				}
+			});
+		}
+
+		drawTrackPoint = function() {
 			var location = track.graphic.geometry;
 
 			var point = drawPoint(location.latitude, location.longitude);

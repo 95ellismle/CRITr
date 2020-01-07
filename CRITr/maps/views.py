@@ -9,6 +9,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth import authenticate, login
 
 import re
+import json
 
 from .forms import IncidentForm, SignUpForm
 from .models import Track
@@ -101,13 +102,38 @@ def validate_email(request):
 
 def track_location(request):
     if request.is_ajax():
-        Track.objects.create(user=request.user,
-                             x=request.POST['x'],
-                             y=request.POST['y'],
-                             latitude=request.POST['latitude'],
-                             longitude=request.POST['longitude'])
-        message = ""
+        user = request.user
+        locData = json.loads(request.POST['locations_to_save'])
+        for x, y, lat, lon in zip(locData['x'], locData['y'],
+                                  locData['lat'], locData['lon']):
+            Track.objects.create(user=user,
+                                 x=x,
+                                 y=y,
+                                 latitude=lat,
+                                 longitude=lon,
+                                 trackID=request.POST['trackID'])
+        message = "Saved Data"
     else:
         message = "Data not added check the serverside code."
 
     return HttpResponse(message)
+
+
+def get_track_ID(request):
+    """
+    Will get the last trackID saved in the database.
+    """
+    if request.is_ajax():
+        user = request.user
+        reversedEntries = Track.objects.filter(user=user).order_by("-datetime")
+
+        lastTrackID = 0
+        if len(reversedEntries):
+            lastEntry = reversedEntries[0]
+            lastTrackID = lastEntry.trackID + 1
+
+        data = {'trackID': lastTrackID}
+    else:
+        data = {'trackID': -1}
+
+    return JsonResponse(data)
