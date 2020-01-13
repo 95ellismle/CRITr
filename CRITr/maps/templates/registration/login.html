@@ -43,12 +43,14 @@
 				</div>
 	  </form>
 	  <div class="loginFormRow">
-	    <script type="text/javascript">
+	    <!--<script type="text/javascript">
 	        const signUpPage = "{% url 'signup' %}";
-	    </script>
-	     <button type="link" class="submitBtn" style="background-color: white; color: #ff5722; font-weight: 600;">
-	       Sign Up
-	     </button>
+	    </script>-->
+				<a href="{% url 'signup' %}">
+		     <button type="link" class="submitBtn" style="background-color: white; color: #ff5722; font-weight: 600;">
+		       Sign Up
+		     </button>
+				</a>
 	  </div>
 	</div>
 {% endif %}
