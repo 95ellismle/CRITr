@@ -4,7 +4,7 @@ services:
     image: nginx:latest
     container_name: ng01
     ports:
-      - "8000:8000"
+      - "80:80"
     volumes:
       - ./src:/src
       - ./config/nginx:/etc/nginx/conf.d
@@ -18,13 +18,12 @@ services:
        MYSQL_DATABASE: 'CRITr'
        MYSQL_USER: 'admin_'
        MYSQL_PASSWORD: 'yG32fa*2Pe%Cr'
-       MYSQL_ROOT_PASSWORD: 'mle51**#'
   web:
     build: .
     command: sh run.sh
     volumes:
       - .:/CRITr
     expose:
-      - "8000"
+      - "80"
     depends_on:
       - db

@@ -19,12 +19,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ["SECRET_KEY"]
-#SECRET_KEY = 'n9ko7u+kacm+q$^zya3*%sre25ly8-j6-zwnhqnmkz1=nvf5v5'
+# SECURITY WARNING: keep the secret key used in production secret
+SECRET_KEY = 'n9ko7u+kacm+q$^zya3*%sre25ly8-j6-zwnhqnmkz1=nvf5v5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
+DEBUG = True
 
 ALLOWED_HOSTS = ['web', "maps.critr.org.uk"]
 
