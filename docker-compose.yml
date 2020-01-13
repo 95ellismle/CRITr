@@ -1,5 +1,15 @@
 version: "3"
 services:
+  nginx:
+    image: nginx:latest
+    container_name: ng01
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src:/src
+      - ./config/nginx:/etc/nginx/conf.d
+    depends_on:
+      - web
   db:
     image: mysql:5.7
     ports:
@@ -14,7 +24,7 @@ services:
     command: sh run.sh
     volumes:
       - .:/CRITr
-    ports:
-      - "8000:8000"
+    expose:
+      - "8000"
     depends_on:
       - db

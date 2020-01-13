@@ -1,0 +1,572 @@
+/*
+Theme Name: CRITr
+Author: Matt Ellis
+Description: The maps functionality for the CRITr webapp
+Version: 0.0.1
+Tags: CRITr, ESRI, Street Watch
+*/
+
+.mapiframe {
+	border:none;
+}
+
+html,
+body,
+#viewDiv {
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	height: 100s%;
+	width: 100%;
+	font-family: verdana;
+}
+html {
+	overflow-x: hidden;
+	overflow-y: hidden;
+	max-width: 100%;
+	max-height: 100%;
+}
+.breaker{
+	clear:both;
+}
+.buttonLink, .buttonLink:hover, .buttonLink:active, .buttonLink:visited, .buttonLink:focus {
+	text-decoration: none;
+	outline: 0;
+	color: inherit;
+	border: 0;
+}
+.errMsg {
+	color: red;
+	background-color:	lightyellow;
+	border-radius: 30px;
+	text-align: center;
+	width: 100%;
+}
+
+/* Card Styling */
+#cardRow ::-webkit-scrollbar {
+	display: none;
+}
+#cardRow {
+	scrollbar-width: none;
+	overflow: auto;
+}
+.hideScroll {
+	overflow: hidden;
+}
+.cardDivLink {
+	color: inherit;
+	text-decoration: inherit;
+}
+.cardDiv {
+	flex: 1;
+}
+.card-block {
+	height: 100%;
+}
+#overlayCards {
+	position: fixed;
+	display: flex;
+	flex-direction: row;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	width: 100%;
+	height: 27%;
+	top: 72%;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0);
+	z-index: 2;
+}
+#overlayAdd {
+	position: absolute;
+	background-color: #fff;
+	width: 220px;
+	height: 120px;
+	float: left;
+	top: 10px;
+	right: 10px;
+	border-radius: 16px;
+	z-index: 3;
+	padding: 10px;
+}
+.addPara {
+	width: 100%;
+	font-size: 16px;
+	text-align: right;
+	line-height: 30px;
+}
+.addDiv {
+	height: 35px;
+	/* border: 1px solid black; */
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+.addDiv:hover {
+	background-color: #eee;
+	cursor: pointer;
+}
+#overlayBtn {
+	position: fixed;
+	top: 90%;
+	left: 50%;
+	z-index: 2;
+	cursor: pointer;
+	display: none;
+}
+.cardTop {
+	height: 32%;
+	width: 100%;
+    text-align: center;
+}
+.cardBottom {
+	vertical-align: baseline;
+	align-items: baseline;
+	align-self: baseline;
+	bottom: 0;
+	overflow: hidden;
+	height: 65%
+}
+.border {
+	border: 5px solid red;
+}
+.inline-block {
+	display: inline-block;
+}
+.cardInner {
+	display: inline-block;
+}
+.colLeft {
+	float: left;
+	max-height: 100%;
+	overflow: hidden;
+	/* border: 1px solid black; */
+}
+.colRight {
+	float: right;
+	height: 100%;
+	overflow: hidden;
+	/* border: 1px solid black; */
+}
+.evtImg {
+	height: auto;
+	max-width: 100%;
+	overflow: hidden;
+	vertical-align: middle;
+	align-self: center;
+	align-content: center;
+}
+.myRow {
+	display: inline-block;
+	float: left;
+}
+.cardTitle {
+	font-size: 20px;
+	text-align:left;
+	float: left;
+	color: #6f6f6f;
+}
+.cardPeople {
+	float: right;
+}
+.cardWhere {
+	font-size: 13px;
+	float: left;
+	width: 100%;
+	margin: 0;
+	display: block;
+	color: #4f4f4f;
+}
+
+.cardPts {
+	color: green;
+	text-align: center;
+	font-size: 15px;
+	border-radius: 5px;
+	font-weight: 700;
+	text-align: center;
+}
+
+/* The NavBar Stuff */
+.navBarElm {
+    height: 100%;
+    display: inline-block
+}
+.navBtn {
+	height: 100%;
+	width: 60px;
+	border: 0;
+	color: inherit;
+	background-color: inherit;
+	font-size: 24px;
+	font-weight: 1000;
+}
+.titleReportTxt {
+	font-size: 150%;
+}
+
+
+/* Form styles */
+.form {
+	display: inline-block;
+	float: left;
+	/* min-height: 100%; */
+	width: 100%;
+	overflow-y: auto;
+	overflow-x:hidden;
+	/* border: 1px dashed black; */
+	/*margin-left: 15%;*/
+
+}
+.formRow {
+	width:85%;
+	/* border: 2px dashed black; */
+	display: block;
+	contain: content;
+}
+.formRow:hover {
+	background-color: #dfdfdf;
+	cursor: pointer;
+}
+.formTitle {
+	text-align: left;
+	display: block;
+	font-size: 18px;
+	width: 100%;
+	margin-bottom: 5px;
+}
+.formSubTitle {
+	text-align: left;
+	display: block;
+	width: 100%;
+	padding: 0;
+	color: #6f6f6f;
+	font-size: 18px;
+}
+.buttonRow {
+	float: right;
+	text-align: right;
+	margin-top: 15px;
+	/* border: 1px solid black; */
+}
+.center {
+	text-align: center;
+	vertical-align: middle;
+	align-items: center;
+}
+.overlayBox {
+	position: absolute;
+	bottom: 20%;
+	top: 20%;
+	height: 50%;
+	left: 5%;
+	width: 90%;
+	background-color: white;
+	z-index: 4;
+	display: none;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.overlayBoxSmall {
+	position: absolute;
+	bottom: 40%;
+	/* top: 20%; */
+	height: 20%;
+	left: 5%;
+	width: 90%;
+	background-color: white;
+	z-index: 4;
+	display: none;
+	overflow:hidden;
+}
+.grayOverlay, #grayOverlay {
+	position: absolute;
+	bottom: 0;
+	top: 0;
+	height: 100%;
+	left: 0;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.3);
+	z-index: 3;
+	display: none;
+}
+#fullOverlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	opacity: 0.4;
+	z-index: 2;
+	display: none;
+}
+.selectFont {
+	font-size: 3vh;
+}
+.formBoxes {
+	width:100%;
+	max-height: 15%;
+	min-height: 40px;
+	height: 15%;
+	text-align: left;
+	display: block;
+	padding: 0;
+	/* border: 1px solid #efefef; */
+	margin: 0;
+	overflow: hidden;
+	cursor: pointer;
+}
+.fillSpace {
+	width: 100%;
+	height: 100%;
+}
+.halfWidth {
+	height: 100%;
+	width: 50%;
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+}
+.halfHeight {
+	height: 50%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+}
+.formBoxes:hover {
+	background: #dfdfdf;
+}
+.detailsTxtBox {
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+#id_photoPath, .hiddenInput {
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	z-index: 2;
+	cursor: pointer;
+	/* color: white; */
+}
+.takePhoto:hover {
+	background-color: white;
+	cursor:pointer;
+}
+.takePhoto {
+	background-color: white;
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0.0);
+	border: 0;
+	border-bottom: 1px solid black;
+}
+.formErr {
+	color: red;
+	float: left;
+	font-size: 17px;
+}
+
+/* ESRI Styling */
+#topbar {
+	background: #fff;
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	padding: 10px;
+}
+#reportIncidentBar {
+	display: block;
+	background-color: #ff5722;
+	font-weight: 500;
+	color: white;
+	width: 100%;
+	height: 70px;
+}
+.action-button {
+	background-color: #fff;
+	border: 0;
+	box-shadow: 0 0 6px 0 rgba(0,0,0,0.12), 0 6px 6px 0 rgba(0,0,0,0.24);
+	color: #4f4f4f;
+	text-align: center;
+	/* vertical-align: middle; */
+	border-radius: 20px;
+	width: 40px;
+	height: 40px;
+}
+.action-button:hover,
+.action-button:focus {
+	background: #0079c1;
+	color: #e4e4e4;
+	border: 0;
+}
+.active {
+	background: #0079c1;
+	color: #e4e4e4;
+}
+.btnIcon {
+	font-size: 50px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+
+/*  Login Stuff */
+.boxOverlay {
+	background-color: #fff;
+	width: 300px;
+	height: 500px;
+	max-width: 300px;
+	max-height: 500px;
+	min-width: 300px;
+	min-height: 500px;
+	position:absolute;
+	top:50%;
+	margin-top: -250px;
+	left: 50%;
+	margin-left: -150px;
+    border-radius: 10px;
+}
+.loginFormInput {
+		width: 100%;
+		padding: 12px 20px;
+		display: inline-block;
+		border: 1px solid #ccc;
+		box-sizing: border-box;
+}
+.loginFormRow {
+		padding-bottom: 10px;
+		display: block;
+		width: 90%;
+		text-align: left;
+		vertical-align: middle;
+		height: 10%;
+		margin-left: 5%;
+		border: 0px solid black;
+}
+.loginBtn, .submitBtn {
+		background-color: #ff5722;
+		border: 0;
+		color: white;
+		width: 50%;
+		height: 40px;
+		margin-left: 25%;
+		border-radius: 10px;
+		padding: 10px;
+		display: inline-block;
+		box-sizing: border-box;
+		font-weight: 600;
+}
+.submitBtn {
+		background-color: #0066ff;
+}
+
+.signinFormField {
+	width: 90%;
+	margin-left: 5%;
+}
+.nextBtn, .prevBtn {
+	float: right;
+	width: 50%;
+	text-align: right;
+	 /* background-color: #FF5609;
+	 border: 0;
+	 height: 35px;
+	 width: 47px;
+	 color: #fff;
+	 font-weight: 700; */
+}
+.prevBtn {
+	float: left;
+	text-align: left;
+}
+
+/* The password validation */
+.goodFormField {
+	border:2px solid green;
+ -webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+.badFormField {
+	background-color: rgba(1,0,0,0.1);
+}
+.neutralFormField {
+	background-color: #fff;
+}
+/* The message box is shown when the user clicks on the password field */
+#message {
+	display:none;
+	/* background: #f1f1f1; */
+	color: #000;
+	position: relative;
+	padding: 5px;
+	margin-top: 5px;
+}
+#message p {
+	padding: 10px 35px;
+	font-size: 18px;
+}
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+	color: green;
+}
+.valid:before {
+	position: relative;
+	left: -35px;
+	content: "✔";
+}
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+	color: red;
+}
+.invalid:before {
+	position: relative;
+	left: -35px;
+	content: "✖";
+}
+.tableDisplay {
+	display: table;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+}
+.tableText {
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 26px;
+	color: #555;
+}
+/* #crosshair {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 0;
+	opacity: 1;
+	width: 100%;
+	height: 100%;
+} */
+#vertCrosshair {
+	position: absolute;
+	top: 70px;
+	left: 50%;
+	border-left: 1px solid black;
+	z-index: 3;
+	width: 0%;
+	height: calc(100% - 70px);
+	display: none;
+}
+#horizCrosshair {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	z-index: 3;
+	border-top: 1px solid black;
+	width: 100%;
+	height: 0%;
+	display: none;
+}

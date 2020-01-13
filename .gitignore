@@ -5,6 +5,8 @@ media/
 CRITr/media/
 CRITr/media/*
 bash_flags/*
+secret_key*
+*/*secret*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
