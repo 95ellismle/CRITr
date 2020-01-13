@@ -17,19 +17,25 @@ fi
 
 # Do the initialisation (do migrations, collec static files)
 if [ $INIT_DONE = "false" ]; then
-    cd CRITr;
-    python3 collectstatic;
-    python3 manage.py makemigrations;
-    python3 manage.py migrate;
+    cd CRITr
+    python3 manage.py collectstatic
+    python3 manage.py makemigrations
+    python3 manage.py migrate
+    cd ../
 
-    cd -;
     echo "true" > $INIT_DONE_FILE;
 fi
-
+export SECRET_KEY=`cat secret_key.txt`
+export DJANGO_DEBUG="True"
 
 
 ################################################
 ###                RUNNING                   ###
 ################################################
+
+
 # Now run the server
-python3 manage.py runserver 0.0.0.0:8000
+cd CRITr
+
+gunicorn --bind 0.0.0.0:8000 CRITr.wsgi
+#python3 manage.py runserver 0.0.0.0:8000
