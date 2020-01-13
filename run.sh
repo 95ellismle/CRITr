@@ -25,8 +25,20 @@ if [ $INIT_DONE = "false" ]; then
 
     echo "true" > $INIT_DONE_FILE;
 fi
+if ! [ -f "secret_key.txt" ]; then
+    echo " vvvvvvvvvvvvvvvvvvvvvv "
+    echo " "
+    echo " "
+    echo "NO SECRET KEY FILE FOUND!"
+    echo " "
+    echo " "
+    echo " ^^^^^^^^^^^^^^^^^^^^^^ "
+    exit 1
+fi
 export SECRET_KEY=`cat secret_key.txt`
 export DJANGO_DEBUG="True"
+
+
 
 
 ################################################
