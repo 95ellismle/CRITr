@@ -79,6 +79,7 @@ DATABASES = {
         'NAME': 'CRITr',
         'USER': 'admin_',
         'PASSWORD': 'yG32fa*2Pe%Cr',
+        #'ROOT_PASSWORD': 'mle51**#',
         'HOST': 'db',
         'PORT': 3306,
     }
