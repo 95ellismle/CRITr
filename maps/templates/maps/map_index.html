@@ -1,195 +1,180 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block addtionalScriptsHead %}
+{% extends 'base.html' %} {% load static %} {% block addtionalScriptsHead %}
 <!-- ESRI (arcGIS maps) API and stylesheet -->
 <link rel="stylesheet" href="https://js.arcgis.com/4.12/esri/themes/light/main.css">
 <script src="https://js.arcgis.com/4.12/"></script>
 
 <!-- My Scripts -->
 <script>
-  const reportIncidentPage="{% url 'reportIncident' %}";
-  const urls = {
+    const reportIncidentPage = "{% url 'reportIncident' %}";
+    const urls = {
         'img_folder': '{% static "img/" %}',
         'save_track_data': "{% url 'save_track_data' %}",
         'get_track_ID': "{% url 'get_track_ID' %}",
-  };
-  window.patrolOn = false;
+    };
+    window.patrolOn = false;
 </script>
-<link rel="stylesheet" href="{% static 'css/startActivityOverlay.css' %}">
-{% csrf_token %}
 
-{% endblock %}
-
-{% block content %}
+<link rel="stylesheet" href="{% static 'css/startActivityOverlay.css' %}"> {% csrf_token %} {% endblock %} {% block content %}
 <!-- The gray overlay that comes up when thigns are pressed -->
 <div id="fullOverlay" onclick="resetMapsPage()"></div>
 
- <!-- Reporting incident navbar -->
-  <div id="reportIncidentBar" style="display: none";>
-      <div style="float: left; width: 60px; display: inline-block; height:100%">
-          <button class="navBtn"
-                  onclick="cancelCreate()">
-              <i class="material-icons" class="btnIcon">arrow_back</i>
-          </button>
-      </div>
-      <div style="width: calc(100% - 120px); display: inline-block; height:100%; vertical-align: 'middle'">
-          <p id="locationHelpTxt" class="titleReportTxt"
-             style="padding: 0; margin: 0;">
-              Tap to select a location
-          </p>
-      </div>
-      <div id='submitReportBtn' style="float: right; width: 60px; display: none; height: 100%">
+<!-- Reporting incident navbar -->
+<div id="reportIncidentBar" style="display: none" ;>
+    <div style="float: left; width: 60px; display: inline-block; height:100%">
+        <button class="navBtn" onclick="cancelCreate()">
+            <i class="material-icons" class="btnIcon">arrow_back</i>
+        </button>
+    </div>
+    <div style="width: calc(100% - 120px); display: inline-block; height:100%; vertical-align: 'middle'">
+        <p id="locationHelpTxt" class="titleReportTxt" style="padding: 0; margin: 0;">
+            Tap to select a location
+        </p>
+    </div>
+    <div id='submitReportBtn' style="float: right; width: 60px; display: none; height: 100%">
         {% if user.is_authenticated %}
-          <button class="navBtn"
-                  onclick="submitReport()">
-              OK
-          </button>
+        <button class="navBtn" onclick="submitReport()">
+            OK
+        </button>
         {% else %}
         <script>
-          const loginPage = "{% url 'login' %}";
+            const loginPage = "{% url 'login' %}";
         </script>
-        <button class="navBtn"
-                onclick="window.location.href = loginPage;">
+        <button class="navBtn" onclick="window.location.href = loginPage;">
             OK
         </button>
         {% endif %}
-      </div>
-  </div>
+    </div>
+</div>
 
-  <!-- ESRI MapView -->
-  <div id="viewDiv">
-      <!-- Buttons to show activities to start -->
-      <div id="topbar" style="background-color: rgba(0,0,0,0);">
-          <div class="fullWidth">
-            <button class="action-button" id="openAccountOverlay"
-                    type="button" style="align: center;">
+<!-- ESRI MapView -->
+<div id="viewDiv">
+    <!-- Buttons to show activities to start -->
+    <div id="topbar" style="background-color: rgba(0,0,0,0);">
+        <div class="fullWidth">
+            <button class="action-button" id="openAccountOverlay" type="button" style="align: center;" onclick="openAccountOverlay()">
                 <i class="material-icons" style="font-size: 25px; vertical-align: middle;">person</i>
             </button>
-          </div>
-          <div class="fullWidth">
-            <button class="action-button" id="openActivitiesOverlay"
-                    type="button" style="align: center;">
+        </div>
+        <div class="fullWidth">
+            <button class="action-button" id="openActivitiesOverlay" type="button" style="align: center;" onclick="openActivitiesOverlay()">
                 <i class="material-icons" style="font-size: 25px; vertical-align: middle;">add</i>
             </button>
-          </div>
-      </div>
+        </div>
+    </div>
 
-      {% comment %} The activity thing overlay {% endcomment %}
-      <div id="overlayAdd" class="overlayTopRight">
+    {% comment %} The activity thing overlay {% endcomment %}
+    <div id="overlayAdd" class="overlayTopRight">
         <div class="addDiv">
-          <button type="button" id="reportIncidentBtn"
-          style="position: absolute; z-index: 2; width: 100%; height: 30px; opacity: 0;"></button>
-          <span class="addPara"><i class="material-icons" style="font-size: 18px;">note_add</i> Report Incident</span>
+            <button type="button" id="reportIncidentBtn" style="position: absolute; z-index: 2; width: 100%; height: 30px; opacity: 0;"></button>
+            <span class="addPara"><i class="material-icons" style="font-size: 18px;">note_add</i> Report Incident</span>
         </div>
         <div class="addDiv inactive">
-          <span class="addPara"><i class="material-icons" style="font-size: 18px;">local_parking</i> Plan Activity</span>
+            <span class="addPara"><i class="material-icons" style="font-size: 18px;">local_parking</i> Plan Activity</span>
         </div>
         <div class="addDiv" id="startAct" onclick="openStartActivity()">
-          <span class="addPara"><i class="material-icons" style="font-size: 18px;">play_arrow</i> Start Activity</span>
+            <span class="addPara"><i class="material-icons" style="font-size: 18px;">play_arrow</i> Start Activity</span>
         </div>
-      </div>
+    </div>
 
-      {% comment %} The accounts overlay {% endcomment %}
-      <div id="overlayAccount" class="overlayTopRight">
-          <div class="addDiv">
+    {% comment %} The accounts overlay {% endcomment %}
+    <div id="overlayAccount" class="overlayTopRight">
+        <div class="addDivSterile">
+            Hi, {{user.first_name}}!
+        </div>
+        <hr>
+        <div class="addDiv">
             <a href="{% url 'logout' %}" class="buttonLink">
-              <div class="addDiv" id="logout">
-                <span class="addPara"><i class="material-icons" style="font-size: 18px;">logout</i> Logout</span>
-              </div>
+                <div class="addDiv" id="logout">
+                    <span class="addPara"><i class="material-icons" style="font-size: 18px;">logout</i> Logout</span>
+                </div>
             </a>
-          </div>
-      </div>
+        </div>
+    </div>
 
-  </div>
+</div>
 
-  <!-- The start activity overlay (choose activity) -->
-  <div id="startActivityOverlay">
+<!-- The start activity overlay (choose activity) -->
+<div id="startActivityOverlay">
     <div class="titleRow">
-      Select Activity Type
+        Select Activity Type
     </div>
     <div style="padding: 10px;">
-      <div id="activityChoices">
-        <div class="choiceAct active selected" id="patrolAct" onclick="selectActivity(this, 'choiceAct')">
-          <img src="{% static 'img/walkingIcon.png' %}" class="imgIcon">
-          <p class="imgTxt">Patrol</p>
+        <div id="activityChoices">
+            <div class="choiceAct active selected" id="patrolAct" onclick="selectActivity(this, 'choiceAct')">
+                <img src="{% static 'img/walkingIcon.png' %}" class="imgIcon">
+                <p class="imgTxt">Patrol</p>
+            </div>
+            <div class="inactive choiceAct" onclick="selectActivity(this, 'choiceAct')">
+                <img src="{% static 'img/speedometerIcon.png' %}" id="speedWatchAct" class="imgIcon">
+                <p class="imgTxt">Speedwatch</p>
+            </div>
+            <div class="inactive choiceAct" style="margin-right: 0;" onclick="selectActivity(this, 'choiceAct')">
+                <img src="{% static 'img/starredCalendarIcon.png' %}" id="commEventAct" class="imgIcon">
+                <p class="imgTxt">Event</p>
+            </div>
         </div>
-        <div class="inactive choiceAct" onclick="selectActivity(this, 'choiceAct')">
-          <img src="{% static 'img/speedometerIcon.png' %}" id="speedWatchAct" class="imgIcon">
-          <p class="imgTxt">Speedwatch</p>
-        </div>
-        <div class="inactive choiceAct" style="margin-right: 0;" onclick="selectActivity(this, 'choiceAct')">
-          <img src="{% static 'img/starredCalendarIcon.png' %}" id="commEventAct" class="imgIcon">
-          <p class="imgTxt">Event</p>
-        </div>
-      </div>
-      <!-- <div class="addRow">
+        <!-- <div class="addRow">
         <p class="rowHead">Add Other Members</p>
         <p class="rowSubHead">Tap to add other members (if applicable)</p>
       </div> -->
-      <button class="activitySubmitBtn" onclick="startActivity()">Start Activity</button>
+        <button class="activitySubmitBtn" onclick="startActivity()">Start Activity</button>
     </div>
-  </div>
+</div>
 
-    {% comment %} Patrol Popup From Bottom {% endcomment %}
-    <div id="patrolOverlay">
-      <div class="addRow" style="margin: 0;">
-        <p style="margin: 0; padding: 0; color: rgba(0,0,0,0.54)"><i class="material-icons" style="margin: 0; padding: 0; width: 25px;">directions_walking</i>Patrol</p>
-      </div>
-      <p style="height: 40px;	width: 208px;	color: rgba(0,0,0,0.54);
-      	       font-size: 31px;	letter-spacing: 1.11px;	line-height: 40px;
-               font-family: 'Courier New' width: 100%; margin: auto;
-               text-align: center;" id="patrolTimer">
-               00:00:00
-      </p>
-      <button class="activitySubmitBtn" onclick="endPatrol()" style="margin-top: 10px; padding: 0;">End Patrol</button>
+{% comment %} Patrol Popup From Bottom {% endcomment %}
+<div id="patrolOverlay">
+    <div class="addRow" style="margin: 0;">
+        <p style="margin: 0; padding: 0; color: rgba(0,0,0,0.54); font-size: 18px;"><i class="material-icons" style="margin: 0; padding: 0; width: 25px;">directions_walking</i>Patrol</p>
     </div>
+    <p style="height: 40px;	width: 208px;	color: rgba(0,0,0,0.54);
+    	       font-size: 31px;	letter-spacing: 1.11px;	line-height: 40px;
+             font-family: 'Courier New' width: 100%; margin: auto;
+             text-align: center;" id="patrolTimer">
+        00:00:00
+    </p>
+    <button class="activitySubmitBtn" onclick="endPatrol()" style="margin-top: 10px; padding: 0;">End Patrol</button>
+</div>
 
-    {% comment %} Do you want to save question {% endcomment %}
-    <div id="endTrack">
-      <div class="titleRow">
+{% comment %} Do you want to save question {% endcomment %}
+<div id="endTrack">
+    <div class="titleRow">
         Data Save Finish
-      </div>
+    </div>
 
-      <div style="padding: 10px;">
+    <div style="padding: 10px;">
         {% comment %} Ask about saving data {% endcomment %}
         <div id="saveChoiceRow" class="choiceRow" style="height: auto;">
-          <h5>Thanks for patrolling!</h5>
+            <h5>Thanks {{user.first_name}} for patrolling!</h5>
         </div>
 
-        <button class="activitySubmitBtn" onclick="endPatrol()">End Activity</button>
-      </div> <!-- End the overlay content div -->
+        <button class="activitySubmitBtn" onclick="endActivity('patrol')">End Activity</button>
+    </div>
+    <!-- End the overlay content div -->
+</div>
+<!-- End overlay div -->
 
-    </div> <!-- End overlay div -->
+<div id="incidentChoice">
+  <div class="titleRow">
+    <strong>Report Incident:</strong> incident type
+  </div>
+
+  <div class="addRow"> <i class="material-icons">delete_outline</i> Littering </div>
+  <div class="addRow"> <i class="material-icons">group</i> Loittering  </div>
+  <div class="addRow"> <i class="material-icons">photo</i> Graffiti  </div>
+  <div class="addRow"> <i class="material-icons">directions_car</i> Speeding  </div>
+</div>
 
 
-  <div id="vertCrosshair"></div>
-  <div id="horizCrosshair"></div>
+<div id="vertCrosshair"></div>
+<div id="horizCrosshair"></div>
 
 </body>
-{% endblock %}
-
-
-
-
-
-
-
-{% block additionalScriptsFoot %}
+{% endblock %} {% block additionalScriptsFoot %}
 <script src="{% static 'js/reportIncidentInMap.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/maps.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/cards.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/startActivity.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/overlays.js' %}" type="text/javascript"></script>
 <script>
-    $('#openActivitiesOverlay').click(function() {
-      $('#openActivitiesOverlay').hide();
-      $('#fullOverlay').show();
-      $('#overlayAdd').show();
-    });
-    $('#openAccountOverlay').click(function() {
-      $('#openAccountOverlay').hide();
-      $('#fullOverlay').show();
-      $('#overlayAccount').show();
-    });
 </script>
 {% endblock %}

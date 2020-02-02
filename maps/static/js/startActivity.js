@@ -31,23 +31,45 @@ function startActivity() {
   }
 }
 
-function endPatrol() {
+/*
+Will handle the ending of an activity and close relevant overlays etc...
+
+  * @param[string] activity     The name of the activity to end. Choose from: 'patrol'.
+*/
+function endActivity(activity) {
   document.getElementById("fullOverlay").setAttribute('onclick','resetMapsPage();');
 
-  saveTrackData();
-  window.patrolOn = false;
-  // Go back to normal home page
-  resetMapsPage();
+  if (activity == "patrol") {
+    saveTrackData();
+    window.patrolOn = false;
+    // Go back to normal home page
+    resetMapsPage();
+  }
+
+  document.getElementById("openActivitiesOverlay").setAttribute("onclick",
+                                                    "openActivitiesOverlay();");
 }
 
-function startPatrol(startTime) {
-  patrolOn = true;
+/*
+Will handle the starting of a patrol e.g. open relevant overlays and start timer
 
+  * @param[Date] startTime    The time the patrol started (for the clock).
+*/
+function startPatrol(startTime) {
+  window.patrolOn = true;
+
+  // Open the relevant overlays
   document.getElementById("fullOverlay").style.display = "none";
   document.getElementById("startActivityOverlay").style.display = "none";
   document.getElementById("patrolOverlay").style.display = "block";
   startTracking();
 
+  // Make the plus symbol now report an incident
+  // document.getElementById("openActivitiesOverlay").removeAttribute("onclick")
+  document.getElementById("openActivitiesOverlay").setAttribute("onclick",
+                                                    "openPatrolReport();");
+
+  // Update the clock every second
   window.patrolTimer_incrementClock = setInterval(function(){
     // Adjust the timer
     var endTime = new Date();
@@ -55,6 +77,7 @@ function startPatrol(startTime) {
     document.getElementById("patrolTimer").innerHTML = secToTimer(timeDiff);
   }, 1000);
 
+  // Draw a point every 5 seconds
   window.patrolTimer_drawPoint = setInterval(function() {
     drawTrackPoint();
   }, 5000);
@@ -72,7 +95,7 @@ function endPatrol() {
   stopTracking();
 
   // Open the final end patrol window
-  openEndActivity();
+  openEndPatrol();
 }
 
 

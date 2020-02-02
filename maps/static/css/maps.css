@@ -101,7 +101,7 @@ html {
 	text-align: right;
 	line-height: 30px;
 }
-.addDiv {
+.addDiv, .addDivSterile {
 	height: 35px;
 	/* border: 1px solid black; */
 	width: 100%;
