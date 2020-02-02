@@ -1,0 +1,4 @@
+# Make sure the secret key isn't revealed. This isn't too important in terms of security as it changes every time we run the app.
+secret.key
+*.key
+secret*

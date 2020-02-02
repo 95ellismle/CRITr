@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}CRITr -login{% endblock %}
+
+{% block addtionalScriptsHead %}
+{% comment %} Adding urls that will be required {% endcomment %}
+<script>
+	const urls = {
+		'map_index': "{% url 'maps' %}",
+	};
+</script>
+
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+	<script>
+		window.location.href = urls['map_index'];
+	</script>
+
+{% else %}
+	<div id="loginOverlay" class="boxOverlay">
+		<div style="height: 50%;">
+			<img id="logo" src="{% static 'img/critrLogo.png' %}" width="96%" style="margin: 2%; align: center;">
+		</div>
+
+	  <form class="loginForm" method="post">
+				{% csrf_token %}
+	      <div class="loginFormRow">
+					<input id="id_login" type="text" placeholder="Username" name="username" class="loginFormInput">
+				</div>
+				<div class="loginFormRow">
+					<input type="password" placeholder="Password" name="password" class="loginFormInput">
+				</div>
+
+				{% if error_message %}
+						<p class="errMsg">{{ error_message }}</p>
+				{% endif %}
+
+				<div class="loginFormRow">
+					 <input type="submit" name="login" class="loginBtn" value="Login">
+				</div>
+	  </form>
+	  <div class="loginFormRow">
+	    <!--<script type="text/javascript">
+	        const signUpPage = "{% url 'signup' %}";
+	    </script>-->
+				<a href="{% url 'signup' %}">
+		     <button type="link" class="submitBtn" style="background-color: white; color: #ff5722; font-weight: 600;">
+		       Sign Up
+		     </button>
+				</a>
+	  </div>
+	</div>
+{% endif %}
+
+{% endblock %}

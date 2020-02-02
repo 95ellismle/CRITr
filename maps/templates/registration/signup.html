@@ -1,0 +1,346 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}CRITr -signup{% endblock %}
+
+{% block additionalScripts %}
+{% endblock %}
+
+{% block content %}
+<div id="loginOverlay" class="boxOverlay">
+	<div style="height: 50%;">
+		<img id="logo" src="{% static 'img/critrLogo.png' %}" width="96%" style="margin: 2%; align: center;">
+	</div>
+
+  <form id="signupForm" class="loginForm" style="width: 100%" method="post">
+		{% csrf_token %}
+    {% for field in form %}
+		    {% if forloop.counter == 1 %}
+		      <div id="form_{{ forloop.counter }}" style="height: 100px; display: block; width: 100%">
+		    {% elif forloop.counter < form_len %}
+		      <div id="form_{{ forloop.counter }}" style="height: 100px; display: none; width: 100%">
+		    {% endif %}
+						<p style="margin-left: 5%; margin-bottom: 0;" id="label_{{forloop.counter}}">
+            	{{ field.label}}
+						</p>
+            {{ field }}
+						<p  style="color: red; margin-left: 5%; width:90%;" id="errorAJAX_{{forloop.counter}}"></p>
+						{% if field.errors %}
+							{% for error in field.errors %}
+								<p style="color: red;">{{ error }}</p>
+							{% endfor %}
+						{% endif %}
+						<!-- </div> -->
+
+
+					  <!-- Add the buttons -->
+		        <!-- Just the next button -->
+ 		        {% if forloop.counter == 1 %}
+		          <button class="nextBtn btn" id="nxtBtn_{{ forloop.counter }}"
+					  	 				onclick="showNext()" style="display: none;">
+		            <i class="material-icons">arrow_forward</i>
+		          </button>
+
+					  	<!-- The next and previous buttons -->
+					  {%  elif forloop.counter < form_len_sub1 %}
+					  	<button class="prevBtn btn"
+					  				  onclick="showPrev()" >
+					  		<i class="material-icons">arrow_backward</i>
+					  	</button>
+					  	<button class="nextBtn btn" id="nxtBtn_{{ forloop.counter }}"
+					  					onclick="showNext()" style="display: none;">
+					  		<i class="material-icons">arrow_forward</i>
+					  	</button>
+
+					  <!-- The signup and previous button -->
+					  {% elif forloop.counter == form_len %}
+							<div id="message">
+							  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+							  <p id="number" class="invalid">A <b>number</b></p>
+							  <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+							  <p id="special" class="invalid">A <b>special</b> character</p>
+						 </div>
+					  	<button class="prevBtn btn"
+					  		onclick="showPrev()" >
+					  		<i class="material-icons">arrow_backward</i>
+					  	</button>
+
+							<div class="loginFormRow" id="signupDiv">
+								<input id="signupBtn" type="submit" name="login" class="loginBtn" value="Signup" disabled=true>
+							</div>
+		        {% endif %}
+
+					{% if forloop.counter != form_len_sub1 %}
+       			</div>
+					{% endif %}
+    {% endfor %}
+    <!-- {{ form.as_ul }} -->
+      <!-- <div class="loginFormRow">
+				<input type="email" placeholder="Username" name="username" class="loginFormInput">
+			</div>
+			<div class="loginFormRow">
+				<input type="password" placeholder="Password" name="password" class="loginFormInput">
+			</div> -->
+  </form>
+</div>
+{% endblock %}
+
+{% block additionalScriptsFoot %}
+<script type="text/javascript">
+	const urls = {
+		'validate_username': '{% url "validate_username" %}',
+		'validate_email': '{% url "validate_email" %}',
+	};
+	var CSRF_token = "{{csrf_token}}";
+	currentPage = 1;
+</script>
+
+<script type="text/javascript">
+	  var fieldsOK = [false, false, false, false, false];
+		var ids = ['#id_first_name', '#id_second_name', '#id_username', '#id_email', '#id_password'];
+
+    function showNext() {
+			if (!fieldsOK[currentPage-1] || $(ids[currentPage-1]).val() == "") {
+				console.log(currentPage-1, fieldsOK[currentPage-1], $(ids[currentPage-1]).val());
+				return;
+			}
+			var nextPage = currentPage + 1;
+			if (nextPage > {{ form_len }}) {
+				nextPage = {{ form_len }};
+		 	}
+			$("#form_"+currentPage.toString()).hide();
+			$("#form_"+nextPage.toString()).show();
+			currentPage = nextPage;
+    }
+
+		function showPrev() {
+			var prevPage = currentPage - 1;
+			if (prevPage < 0) {
+				 prevPage = 0;
+			}
+
+			$("#form_"+currentPage.toString()).hide();
+			$("#form_"+prevPage.toString()).show();
+			currentPage = prevPage;
+    }
+
+
+		// Validate a username
+		function styleField(id, color) {
+			var userInp = document.getElementById(id);
+			if (userInp.value) {
+				userInp.style.border = "1px solid " + color;
+			} else {
+				userInp.style.border = "0";
+			}
+		}
+
+		function checkName(name) {
+			var name = name.toString();
+			if (name) {
+				var numbers = /[0-9]/g;
+				var specials = /[ !@#$%^&*()_+=\[\]{};:"\\|,.<>\/?]/;
+
+				if(name.match(numbers)) {
+					return "Numbers not allowed.";
+				} else if (name.match(specials)) {
+					return "Special characters not allowed (apart from - and ').";
+				}
+				return true;
+			} else {
+				return "No name found";
+			}
+		}
+
+		function nameLogic(name, num) {
+			const goodName = checkName(name);
+			if (goodName == true) {
+				$('#errorAJAX_'+num.toString()).html("");
+				fieldsOK[num-1] = true;
+				$('#nxtBtn_'+num.toString()).show();
+			} else {
+				$('#errorAJAX_'+num.toString()).html(goodName);
+				fieldsOK[num-1] = false;
+				$('#nxtBtn_'+num.toString()).hide();
+			}
+		}
+
+		// Validate first name
+		$('#id_first_name').on("input", function() {
+			var name = $(this).val();
+			nameLogic(name, 1);
+		});
+
+		// Validate second name
+		$('#id_last_name').on("input", function() {
+			var name = $(this).val();
+			nameLogic(name, 2);
+		});
+
+		$("#id_username").on("input", function() {
+			  var username = $(this).val();
+				$.ajax({
+					url: urls['validate_username'],
+					dataType: 'json',
+					type: 'get',
+					contentType: 'application/x-www-form-urlencoded',
+					data: {'username': username},
+					success: function(data){
+							if (data.is_taken) {
+								styleField("id_username", '#e60000');
+								$("#nxtBtn_3").hide();
+								fieldsOK[2] = false;
+							} else {
+								styleField("id_username", '#00802b');
+								fieldsOK[2] = true;
+								$("#nxtBtn_3").show();
+							}
+					},
+					error: function( jqXhr, textStatus, errorThrown ){
+						console.log( errorThrown );
+					}
+				});
+		});
+
+		// Validate the email
+		function validate_emailFnc(data) {
+				var errMsg = "";
+				if (data.is_taken) {
+					errMsg += "Email is taken"
+				} if (!data.is_valid) {
+					if (!errMsg) {
+						errMsg = "Invalid Email";
+					} else {
+						errMsg += " and email is invalid";
+					}
+				}
+				$("#errorAJAX_1").html(errMsg);
+				if (errMsg) {
+					// Red Style
+					fieldsOK[3] = false;
+					styleField("id_email", '#e60000');
+					$("#nxtBtn_4").hide();
+				} else {
+					// Green Style
+					fieldsOK[3] = true;
+					styleField("id_email", "#00802b");
+					$("#nxtBtn_4").show();
+				}
+		}
+
+		$("#id_email").on("input", function() {
+			  var email = $(this).val();
+				$.ajax({
+					url: urls['validate_email'],
+					dataType: 'json',
+					type: 'get',
+					contentType: 'application/x-www-form-urlencoded',
+					data: {'email': email},
+					success: function(data) {
+						validate_emailFnc(data);
+					},
+					error: function( jqXhr, textStatus, errorThrown ){
+						console.log( errorThrown );
+					}
+				});
+		});
+
+		// Validate the password
+		var pwdConfirmOn = false;
+		// When the user clicks on the password field, show the message box
+		$("#id_password1").on("focus", function() {
+			if (!pwdConfirmOn) {
+			 $("#message").show();
+		 	}
+		});
+		$("#id_password1").on("blur", function() {
+			 $("#message").hide();
+		});
+
+		$("#id_password2").hide();
+		$("#label_{{form_len}}").hide();
+		$("#signupDiv").hide();
+		$("#id_password1").on("input", function() {
+			pwdConfirmOn = false;
+			$("#id_password2").hide();
+			$("#id_password2").html("");
+			var myInput = $(this).val();
+			var err = false;
+			var letter = document.getElementById("letter");
+			var number = document.getElementById("number");
+			var length = document.getElementById("length");
+			var special = document.getElementById("special");
+
+			// Validate lowercase letters
+		  var lowerCaseLetters = /[a-z]/g;
+		  if(myInput.match(lowerCaseLetters)) {
+		    letter.classList.remove("invalid");
+		    letter.classList.add("valid");
+		  } else {
+				err = true;
+		    letter.classList.remove("valid");
+		    letter.classList.add("invalid");
+		  }
+
+		  // Validate numbers
+		  var numbers = /[0-9]/g;
+		  if(myInput.match(numbers)) {
+		    number.classList.remove("invalid");
+		    number.classList.add("valid");
+		  } else {
+				err = true;
+		    number.classList.remove("valid");
+		    number.classList.add("invalid");
+		  }
+
+			// Validate Special Characters
+			var specials = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+		  if(myInput.match(specials)) {
+		    special.classList.remove("invalid");
+		    special.classList.add("valid");
+		  } else {
+				err = true;
+		    special.classList.remove("valid");
+		    special.classList.add("invalid");
+		  }
+
+		  // Validate length
+		  if(myInput.length >= 8) {
+		    length.classList.remove("invalid");
+		    length.classList.add("valid");
+		  } else {
+				err = true;
+		    length.classList.remove("valid");
+		    length.classList.add("invalid");
+		  }
+
+			if (!err) {
+				$("#id_password2").show();
+				$("#label_{{form_len}}").show();
+				$("#message").hide();
+			} else {
+				$("#id_password2").hide();
+				$("#label_{{form_len}}").hide();
+				$("#message").show();
+			}
+		});
+
+		$("#id_password2").on("input", function() {
+			var pwd1 = $("#id_password1").val();
+			var pwd2 = $(this).val();
+			pwdConfirmOn = true;
+
+			if (pwd1 == pwd2) {
+				document.getElementById('signupBtn').disabled = false;
+				$("#signupDiv").show();
+				$("#errorAJAX_6").hide();
+			} else {
+				document.getElementById('signupBtn').disabled = true;
+				$("#signupDiv").hide();
+				$("#errorAJAX_6").html("Passwords don't match!");
+				$("#errorAJAX_6").show();
+			}
+		});
+
+</script>
+{% endblock %}
