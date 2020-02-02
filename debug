@@ -1,0 +1,2882 @@
+2020-02-02 16:54:32,486 WARN Failed to clean up '/tmp/gunicorn-stdout---supervisor-IWRo5V.log'
+2020-02-02 16:54:32,487 WARN Failed to clean up '/tmp/gunicorn-stderr---supervisor-j0UNaX.log'
+2020-02-02 16:54:32,489 INFO RPC interface 'supervisor' initialized
+2020-02-02 16:54:32,489 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2020-02-02 16:54:32,489 INFO supervisord started with pid 5027
+2020-02-02 16:54:33,493 INFO spawned: 'gunicorn' with pid 5030
+2020-02-02 16:54:33,712 INFO exited: gunicorn (exit status 1; not expected)
+2020-02-02 16:54:34,716 INFO spawned: 'gunicorn' with pid 5034
+2020-02-02 16:54:34,935 INFO exited: gunicorn (exit status 1; not expected)
+2020-02-02 16:54:36,940 INFO spawned: 'gunicorn' with pid 5038
+2020-02-02 16:54:36,941 WARN received SIGINT indicating exit request
+2020-02-02 16:54:36,942 INFO waiting for gunicorn to die
+2020-02-02 16:54:37,157 INFO stopped: gunicorn (exit status 1)
+2020-02-02 16:54:52,537 WARN Failed to clean up '/tmp/gunicorn-stdout---supervisor-IWRo5V.log'
+2020-02-02 16:54:52,537 WARN Failed to clean up '/tmp/gunicorn-stderr---supervisor-j0UNaX.log'
+2020-02-02 16:54:52,540 INFO RPC interface 'supervisor' initialized
+2020-02-02 16:54:52,540 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2020-02-02 16:54:52,540 INFO supervisord started with pid 5055
+2020-02-02 16:54:53,544 INFO spawned: 'gunicorn' with pid 5059
+2020-02-02 16:54:53,707 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:54:53 +0000] [5060] [INFO] Starting gunicorn 20.0.4
+
+2020-02-02 16:54:53,737 DEBG 'gunicorn' stderr output:
+Traceback (most recent call last):
+  File "/home/critr/.local/bin/gunicorn", line 8, in <module>
+    sys.exit(run())
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 58, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 228, in run
+    super().run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 72, in run
+    Arbiter(self).run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 198, in run
+    self.start()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 137, in start
+    self.pidfile.create(self.pid)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/pidfile.py", line 39, in create
+    os.rename(fname, self.fname)
+PermissionError: [Errno 1] Operation not permitted: '/tmp/tmpj9v_rfc1' -> '/tmp/gunicorn.pid'
+
+2020-02-02 16:54:53,762 DEBG fd 7 closed, stopped monitoring <POutputDispatcher at 140151330304520 for <Subprocess at 140151330335992 with name gunicorn in state STARTING> (stdout)>
+2020-02-02 16:54:53,762 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 140151330054944 for <Subprocess at 140151330335992 with name gunicorn in state STARTING> (stderr)>
+2020-02-02 16:54:53,762 INFO exited: gunicorn (exit status 1; not expected)
+2020-02-02 16:54:53,762 DEBG received SIGCHLD indicating a child quit
+2020-02-02 16:54:54,766 INFO spawned: 'gunicorn' with pid 5063
+2020-02-02 16:54:54,929 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:54:54 +0000] [5064] [INFO] Starting gunicorn 20.0.4
+
+2020-02-02 16:54:54,959 DEBG 'gunicorn' stderr output:
+Traceback (most recent call last):
+  File "/home/critr/.local/bin/gunicorn", line 8, in <module>
+    sys.exit(run())
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 58, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 228, in run
+    super().run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 72, in run
+    Arbiter(self).run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 198, in run
+    self.start()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 137, in start
+    self.pidfile.create(self.pid)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/pidfile.py", line 39, in create
+    os.rename(fname, self.fname)
+PermissionError: [Errno 1] Operation not permitted: '/tmp/tmp9cb67chh' -> '/tmp/gunicorn.pid'
+
+2020-02-02 16:54:54,984 DEBG fd 7 closed, stopped monitoring <POutputDispatcher at 140151366309368 for <Subprocess at 140151330335992 with name gunicorn in state STARTING> (stdout)>
+2020-02-02 16:54:54,984 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 140151330055224 for <Subprocess at 140151330335992 with name gunicorn in state STARTING> (stderr)>
+2020-02-02 16:54:54,984 INFO exited: gunicorn (exit status 1; not expected)
+2020-02-02 16:54:54,984 DEBG received SIGCHLD indicating a child quit
+2020-02-02 16:54:55,985 WARN received SIGINT indicating exit request
+2020-02-02 16:56:26,712 WARN Failed to clean up '/tmp/gunicorn-stdout---supervisor-IWRo5V.log'
+2020-02-02 16:56:26,713 WARN Failed to clean up '/tmp/gunicorn-stderr---supervisor-j0UNaX.log'
+2020-02-02 16:56:26,715 INFO RPC interface 'supervisor' initialized
+2020-02-02 16:56:26,715 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2020-02-02 16:56:26,715 INFO supervisord started with pid 5152
+2020-02-02 16:56:27,719 INFO spawned: 'gunicorn' with pid 5157
+2020-02-02 16:56:27,886 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:56:27 +0000] [5158] [INFO] Starting gunicorn 20.0.4
+
+2020-02-02 16:56:27,887 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:56:27 +0000] [5158] [INFO] Listening at: http://0.0.0.0:8000 (5158)
+
+2020-02-02 16:56:27,887 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:56:27 +0000] [5158] [INFO] Using worker: sync
+
+2020-02-02 16:56:27,889 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:56:27 +0000] [5161] [INFO] Booting worker with pid: 5161
+
+2020-02-02 16:56:27,969 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:56:27 +0000] [5163] [INFO] Booting worker with pid: 5163
+
+2020-02-02 16:56:28,004 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:56:28 +0000] [5164] [INFO] Booting worker with pid: 5164
+
+2020-02-02 16:56:28,051 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:56:28 +0000] [5161] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/Documents/CRITr/CRITr4/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/registry.py", line 114, in populate
+    app_config.import_models()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/models.py", line 2, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/base_user.py", line 47, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 121, in __new__
+    new_class.add_to_class('_meta', Options(meta, app_label))
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 325, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/options.py", line 208, in contribute_to_class
+    self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/__init__.py", line 28, in __getattr__
+    return getattr(connections[DEFAULT_DB_ALIAS], item)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 207, in __getitem__
+    backend = load_backend(db['ENGINE'])
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 111, in load_backend
+    return import_module('%s.base' % backend_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 module: %s" % e)
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+
+2020-02-02 16:56:28,052 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:56:28 +0000] [5161] [INFO] Worker exiting (pid: 5161)
+
+2020-02-02 16:56:28,134 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:56:28 +0000] [5163] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/Documents/CRITr/CRITr4/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/registry.py", line 114, in populate
+    app_config.import_models()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/models.py", line 2, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/base_user.py", line 47, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 121, in __new__
+    new_class.add_to_class('_meta', Options(meta, app_label))
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 325, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/options.py", line 208, in contribute_to_class
+    self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/__init__.py", line 28, in __getattr__
+    return getattr(connections[DEFAULT_DB_ALIAS], item)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 207, in __getitem__
+    backend = load_backend(db['ENGINE'])
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 111, in load_backend
+    return import_module('%s.base' % backend_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 module: %s" % e)
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+
+2020-02-02 16:56:28,135 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:56:28 +0000] [5163] [INFO] Worker exiting (pid: 5163)
+
+2020-02-02 16:56:28,211 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:56:28 +0000] [5164] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/Documents/CRITr/CRITr4/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/registry.py", line 114, in populate
+    app_config.import_models()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/models.py", line 2, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/base_user.py", line 47, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 121, in __new__
+    new_class.add_to_class('_meta', Options(meta, app_label))
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 325, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/options.py", line 208, in contribute_to_class
+    self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/__init__.py", line 28, in __getattr__
+    return getattr(connections[DEFAULT_DB_ALIAS], item)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 207, in __getitem__
+    backend = load_backend(db['ENGINE'])
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 111, in load_backend
+    return import_module('%s.base' % backend_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 module: %s" % e)
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+
+2020-02-02 16:56:28,211 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:56:28 +0000] [5164] [INFO] Worker exiting (pid: 5164)
+
+2020-02-02 16:56:28,303 DEBG 'gunicorn' stderr output:
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 209, in run
+    self.sleep()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 357, in sleep
+    ready = select.select([self.PIPE[0]], [], [], 1.0)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 242, in handle_chld
+    self.reap_workers()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 525, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/bin/gunicorn", line 8, in <module>
+    sys.exit(run())
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 58, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 228, in run
+    super().run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 72, in run
+    Arbiter(self).run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 229, in run
+    self.halt(reason=inst.reason, exit_status=inst.exit_status)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 342, in halt
+    self.stop()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 393, in stop
+    time.sleep(0.1)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 242, in handle_chld
+    self.reap_workers()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 525, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+
+2020-02-02 16:56:28,328 DEBG fd 7 closed, stopped monitoring <POutputDispatcher at 139705840841448 for <Subprocess at 139705841122552 with name gunicorn in state STARTING> (stdout)>
+2020-02-02 16:56:28,328 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 139705840841728 for <Subprocess at 139705841122552 with name gunicorn in state STARTING> (stderr)>
+2020-02-02 16:56:28,328 INFO exited: gunicorn (exit status 1; not expected)
+2020-02-02 16:56:28,328 DEBG received SIGCHLD indicating a child quit
+2020-02-02 16:56:29,331 INFO spawned: 'gunicorn' with pid 5168
+2020-02-02 16:56:29,497 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:56:29 +0000] [5169] [INFO] Starting gunicorn 20.0.4
+
+2020-02-02 16:56:29,498 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:56:29 +0000] [5169] [INFO] Listening at: http://0.0.0.0:8000 (5169)
+
+2020-02-02 16:56:29,498 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:56:29 +0000] [5169] [INFO] Using worker: sync
+
+2020-02-02 16:56:29,500 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:56:29 +0000] [5172] [INFO] Booting worker with pid: 5172
+
+2020-02-02 16:56:29,564 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:56:29 +0000] [5174] [INFO] Booting worker with pid: 5174
+
+2020-02-02 16:56:29,638 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:56:29 +0000] [5176] [INFO] Booting worker with pid: 5176
+
+2020-02-02 16:56:29,645 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:56:29 +0000] [5172] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/Documents/CRITr/CRITr4/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/registry.py", line 114, in populate
+    app_config.import_models()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/models.py", line 2, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/base_user.py", line 47, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 121, in __new__
+    new_class.add_to_class('_meta', Options(meta, app_label))
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 325, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/options.py", line 208, in contribute_to_class
+    self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/__init__.py", line 28, in __getattr__
+    return getattr(connections[DEFAULT_DB_ALIAS], item)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 207, in __getitem__
+    backend = load_backend(db['ENGINE'])
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 111, in load_backend
+    return import_module('%s.base' % backend_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 module: %s" % e)
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+
+2020-02-02 16:56:29,647 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:56:29 +0000] [5172] [INFO] Worker exiting (pid: 5172)
+
+2020-02-02 16:56:29,756 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:56:29 +0000] [5174] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/Documents/CRITr/CRITr4/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/registry.py", line 114, in populate
+    app_config.import_models()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/models.py", line 2, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/base_user.py", line 47, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 121, in __new__
+    new_class.add_to_class('_meta', Options(meta, app_label))
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 325, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/options.py", line 208, in contribute_to_class
+    self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/__init__.py", line 28, in __getattr__
+    return getattr(connections[DEFAULT_DB_ALIAS], item)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 207, in __getitem__
+    backend = load_backend(db['ENGINE'])
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 111, in load_backend
+    return import_module('%s.base' % backend_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 module: %s" % e)
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+
+2020-02-02 16:56:29,756 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:56:29 +0000] [5174] [INFO] Worker exiting (pid: 5174)
+
+2020-02-02 16:56:29,855 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:56:29 +0000] [5176] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/Documents/CRITr/CRITr4/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/registry.py", line 114, in populate
+    app_config.import_models()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/models.py", line 2, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/base_user.py", line 47, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 121, in __new__
+    new_class.add_to_class('_meta', Options(meta, app_label))
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 325, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/options.py", line 208, in contribute_to_class
+    self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/__init__.py", line 28, in __getattr__
+    return getattr(connections[DEFAULT_DB_ALIAS], item)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 207, in __getitem__
+    backend = load_backend(db['ENGINE'])
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 111, in load_backend
+    return import_module('%s.base' % backend_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 module: %s" % e)
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+
+2020-02-02 16:56:29,855 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:56:29 +0000] [5176] [INFO] Worker exiting (pid: 5176)
+
+2020-02-02 16:56:29,882 DEBG 'gunicorn' stderr output:
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 202, in run
+    self.manage_workers()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 545, in manage_workers
+    self.spawn_workers()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 617, in spawn_workers
+    time.sleep(0.1 * random.random())
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 242, in handle_chld
+    self.reap_workers()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 525, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/bin/gunicorn", line 8, in <module>
+    sys.exit(run())
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 58, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 228, in run
+    super().run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 72, in run
+    Arbiter(self).run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 229, in run
+    self.halt(reason=inst.reason, exit_status=inst.exit_status)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 342, in halt
+    self.stop()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 393, in stop
+    time.sleep(0.1)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 242, in handle_chld
+    self.reap_workers()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 525, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+
+2020-02-02 16:56:29,941 DEBG fd 7 closed, stopped monitoring <POutputDispatcher at 139705840841728 for <Subprocess at 139705841122552 with name gunicorn in state STARTING> (stdout)>
+2020-02-02 16:56:29,941 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 139705840843072 for <Subprocess at 139705841122552 with name gunicorn in state STARTING> (stderr)>
+2020-02-02 16:56:29,941 INFO exited: gunicorn (exit status 1; not expected)
+2020-02-02 16:56:29,941 DEBG received SIGCHLD indicating a child quit
+2020-02-02 16:56:30,942 WARN received SIGINT indicating exit request
+2020-02-02 16:58:34,979 WARN Failed to clean up '/tmp/gunicorn-stdout---supervisor-IWRo5V.log'
+2020-02-02 16:58:34,979 WARN Failed to clean up '/tmp/gunicorn-stderr---supervisor-j0UNaX.log'
+2020-02-02 16:58:34,982 INFO RPC interface 'supervisor' initialized
+2020-02-02 16:58:34,982 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2020-02-02 16:58:34,982 INFO supervisord started with pid 5320
+2020-02-02 16:58:35,984 INFO spawned: 'gunicorn' with pid 5323
+2020-02-02 16:58:36,145 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:58:36 +0000] [5324] [INFO] Starting gunicorn 20.0.4
+
+2020-02-02 16:58:36,146 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:58:36 +0000] [5324] [INFO] Listening at: http://0.0.0.0:8000 (5324)
+
+2020-02-02 16:58:36,146 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:58:36 +0000] [5324] [INFO] Using worker: sync
+
+2020-02-02 16:58:36,148 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:58:36 +0000] [5327] [INFO] Booting worker with pid: 5327
+
+2020-02-02 16:58:36,152 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:58:36 +0000] [5328] [INFO] Booting worker with pid: 5328
+
+2020-02-02 16:58:36,182 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:58:36 +0000] [5329] [INFO] Booting worker with pid: 5329
+
+2020-02-02 16:58:36,305 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:58:36 +0000] [5327] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/Documents/CRITr/CRITr4/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/registry.py", line 114, in populate
+    app_config.import_models()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/models.py", line 2, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/base_user.py", line 47, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 121, in __new__
+    new_class.add_to_class('_meta', Options(meta, app_label))
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 325, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/options.py", line 208, in contribute_to_class
+    self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/__init__.py", line 28, in __getattr__
+    return getattr(connections[DEFAULT_DB_ALIAS], item)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 207, in __getitem__
+    backend = load_backend(db['ENGINE'])
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 111, in load_backend
+    return import_module('%s.base' % backend_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 module: %s" % e)
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+
+2020-02-02 16:58:36,307 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:58:36 +0000] [5327] [INFO] Worker exiting (pid: 5327)
+
+2020-02-02 16:58:36,365 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:58:36 +0000] [5328] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/Documents/CRITr/CRITr4/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/registry.py", line 114, in populate
+    app_config.import_models()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/models.py", line 2, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/base_user.py", line 47, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 121, in __new__
+    new_class.add_to_class('_meta', Options(meta, app_label))
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 325, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/options.py", line 208, in contribute_to_class
+    self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/__init__.py", line 28, in __getattr__
+    return getattr(connections[DEFAULT_DB_ALIAS], item)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 207, in __getitem__
+    backend = load_backend(db['ENGINE'])
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 111, in load_backend
+    return import_module('%s.base' % backend_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 module: %s" % e)
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+
+2020-02-02 16:58:36,367 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:58:36 +0000] [5328] [INFO] Worker exiting (pid: 5328)
+
+2020-02-02 16:58:36,413 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:58:36 +0000] [5329] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/Documents/CRITr/CRITr4/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/registry.py", line 114, in populate
+    app_config.import_models()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/models.py", line 2, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/base_user.py", line 47, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 121, in __new__
+    new_class.add_to_class('_meta', Options(meta, app_label))
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 325, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/options.py", line 208, in contribute_to_class
+    self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/__init__.py", line 28, in __getattr__
+    return getattr(connections[DEFAULT_DB_ALIAS], item)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 207, in __getitem__
+    backend = load_backend(db['ENGINE'])
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 111, in load_backend
+    return import_module('%s.base' % backend_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 module: %s" % e)
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+
+2020-02-02 16:58:36,413 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:58:36 +0000] [5329] [INFO] Worker exiting (pid: 5329)
+
+2020-02-02 16:58:36,506 DEBG 'gunicorn' stderr output:
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 209, in run
+    self.sleep()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 357, in sleep
+    ready = select.select([self.PIPE[0]], [], [], 1.0)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 242, in handle_chld
+    self.reap_workers()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 525, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/bin/gunicorn", line 8, in <module>
+    sys.exit(run())
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 58, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 228, in run
+    super().run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 72, in run
+    Arbiter(self).run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 229, in run
+    self.halt(reason=inst.reason, exit_status=inst.exit_status)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 342, in halt
+    self.stop()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 393, in stop
+    time.sleep(0.1)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 242, in handle_chld
+    self.reap_workers()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 525, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+
+2020-02-02 16:58:36,531 DEBG fd 7 closed, stopped monitoring <POutputDispatcher at 140418475021144 for <Subprocess at 140418475302248 with name gunicorn in state STARTING> (stdout)>
+2020-02-02 16:58:36,531 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 140418475021424 for <Subprocess at 140418475302248 with name gunicorn in state STARTING> (stderr)>
+2020-02-02 16:58:36,532 INFO exited: gunicorn (exit status 1; not expected)
+2020-02-02 16:58:36,532 DEBG received SIGCHLD indicating a child quit
+2020-02-02 16:58:37,536 INFO spawned: 'gunicorn' with pid 5333
+2020-02-02 16:58:37,701 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:58:37 +0000] [5334] [INFO] Starting gunicorn 20.0.4
+
+2020-02-02 16:58:37,701 WARN received SIGINT indicating exit request
+2020-02-02 16:58:37,701 DEBG killing gunicorn (pid 5333) with signal SIGTERM
+2020-02-02 16:58:37,701 INFO waiting for gunicorn to die
+2020-02-02 16:58:37,701 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:58:37 +0000] [5334] [INFO] Listening at: http://0.0.0.0:8000 (5334)
+
+2020-02-02 16:58:37,701 DEBG fd 7 closed, stopped monitoring <POutputDispatcher at 140418511537656 for <Subprocess at 140418475302248 with name gunicorn in state STOPPING> (stdout)>
+2020-02-02 16:58:37,701 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:58:37 +0000] [5334] [INFO] Using worker: sync
+
+2020-02-02 16:58:37,702 INFO stopped: gunicorn (terminated by SIGTERM)
+2020-02-02 16:58:37,702 DEBG received SIGCHLD indicating a child quit
+2020-02-02 16:58:59,059 WARN Failed to clean up '/tmp/gunicorn-stdout---supervisor-IWRo5V.log'
+2020-02-02 16:58:59,059 WARN Failed to clean up '/tmp/gunicorn-stderr---supervisor-j0UNaX.log'
+2020-02-02 16:58:59,064 INFO RPC interface 'supervisor' initialized
+2020-02-02 16:58:59,064 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2020-02-02 16:58:59,064 INFO supervisord started with pid 5768
+2020-02-02 16:59:00,067 INFO spawned: 'gunicorn' with pid 5797
+2020-02-02 16:59:00,531 DEBG 'gunicorn' stderr output:
+Shell for /home/critr/.local/share/virtualenvs/CRITr-e0inU9_f already activated.
+No action taken to avoid nested environments.
+
+2020-02-02 16:59:00,878 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:59:00 +0000] [5810] [INFO] Starting gunicorn 20.0.4
+
+Error: Already running on PID 5334 (or pid file '/tmp/gunicorn.pid' is stale)
+
+
+2020-02-02 16:59:00,910 DEBG fd 7 closed, stopped monitoring <POutputDispatcher at 139968755208992 for <Subprocess at 139968755458568 with name gunicorn in state STARTING> (stdout)>
+2020-02-02 16:59:00,910 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 139968755209272 for <Subprocess at 139968755458568 with name gunicorn in state STARTING> (stderr)>
+2020-02-02 16:59:00,910 INFO exited: gunicorn (exit status 1; not expected)
+2020-02-02 16:59:00,911 DEBG received SIGCHLD indicating a child quit
+2020-02-02 16:59:01,913 INFO spawned: 'gunicorn' with pid 5838
+2020-02-02 16:59:02,390 DEBG 'gunicorn' stderr output:
+Shell for /home/critr/.local/share/virtualenvs/CRITr-e0inU9_f already activated.
+No action taken to avoid nested environments.
+
+2020-02-02 16:59:02,750 DEBG 'gunicorn' stderr output:
+[2020-02-02 16:59:02 +0000] [5852] [INFO] Starting gunicorn 20.0.4
+
+Error: Already running on PID 5334 (or pid file '/tmp/gunicorn.pid' is stale)
+
+
+2020-02-02 16:59:02,778 DEBG fd 7 closed, stopped monitoring <POutputDispatcher at 139968755458680 for <Subprocess at 139968755458568 with name gunicorn in state STARTING> (stdout)>
+2020-02-02 16:59:02,778 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 139968755210560 for <Subprocess at 139968755458568 with name gunicorn in state STARTING> (stderr)>
+2020-02-02 16:59:02,778 INFO exited: gunicorn (exit status 1; not expected)
+2020-02-02 16:59:02,779 DEBG received SIGCHLD indicating a child quit
+2020-02-02 16:59:03,780 WARN received SIGINT indicating exit request
+2020-02-02 16:59:32,712 WARN Failed to clean up '/tmp/gunicorn-stdout---supervisor-IWRo5V.log'
+2020-02-02 16:59:32,713 WARN Failed to clean up '/tmp/gunicorn-stderr---supervisor-j0UNaX.log'
+2020-02-02 16:59:32,718 INFO RPC interface 'supervisor' initialized
+2020-02-02 16:59:32,719 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2020-02-02 16:59:32,719 INFO supervisord started with pid 6448
+2020-02-02 16:59:33,721 INFO spawned: 'gunicorn' with pid 6477
+2020-02-02 16:59:34,182 DEBG 'gunicorn' stderr output:
+Shell for /home/critr/.local/share/virtualenvs/CRITr-e0inU9_f already activated.
+No action taken to avoid nested environments.
+
+2020-02-02 16:59:34,182 WARN received SIGINT indicating exit request
+2020-02-02 16:59:34,182 DEBG killing gunicorn (pid 6477) with signal SIGTERM
+2020-02-02 16:59:34,182 INFO waiting for gunicorn to die
+2020-02-02 16:59:34,242 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 140437270369168 for <Subprocess at 140437270650104 with name gunicorn in state STOPPING> (stderr)>
+2020-02-02 16:59:34,242 DEBG fd 7 closed, stopped monitoring <POutputDispatcher at 140437270618632 for <Subprocess at 140437270650104 with name gunicorn in state STOPPING> (stdout)>
+2020-02-02 16:59:34,242 INFO stopped: gunicorn (terminated by SIGTERM)
+2020-02-02 16:59:34,242 DEBG received SIGCHLD indicating a child quit
+2020-02-02 17:00:08,200 WARN Failed to clean up '/tmp/gunicorn-stdout---supervisor-IWRo5V.log'
+2020-02-02 17:00:08,201 WARN Failed to clean up '/tmp/gunicorn-stderr---supervisor-j0UNaX.log'
+2020-02-02 17:00:08,206 INFO RPC interface 'supervisor' initialized
+2020-02-02 17:00:08,206 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2020-02-02 17:00:08,207 INFO supervisord started with pid 7170
+2020-02-02 17:00:09,209 INFO spawned: 'gunicorn' with pid 7198
+2020-02-02 17:00:09,665 DEBG 'gunicorn' stderr output:
+Shell for /home/critr/.local/share/virtualenvs/CRITr-e0inU9_f already activated.
+No action taken to avoid nested environments.
+
+2020-02-02 17:00:10,014 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:00:10 +0000] [7211] [INFO] Starting gunicorn 20.0.4
+
+Error: Already running on PID 5334 (or pid file '/tmp/gunicorn.pid' is stale)
+
+
+2020-02-02 17:00:10,047 DEBG fd 7 closed, stopped monitoring <POutputDispatcher at 140633113903512 for <Subprocess at 140633113934984 with name gunicorn in state STARTING> (stdout)>
+2020-02-02 17:00:10,047 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 140633113653880 for <Subprocess at 140633113934984 with name gunicorn in state STARTING> (stderr)>
+2020-02-02 17:00:10,048 INFO exited: gunicorn (exit status 1; not expected)
+2020-02-02 17:00:10,048 DEBG received SIGCHLD indicating a child quit
+2020-02-02 17:00:11,050 INFO spawned: 'gunicorn' with pid 7239
+2020-02-02 17:00:11,512 DEBG 'gunicorn' stderr output:
+Shell for /home/critr/.local/share/virtualenvs/CRITr-e0inU9_f already activated.
+No action taken to avoid nested environments.
+
+2020-02-02 17:00:11,870 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:00:11 +0000] [7251] [INFO] Starting gunicorn 20.0.4
+
+Error: Already running on PID 5334 (or pid file '/tmp/gunicorn.pid' is stale)
+
+
+2020-02-02 17:00:11,901 DEBG fd 7 closed, stopped monitoring <POutputDispatcher at 140633149908360 for <Subprocess at 140633113934984 with name gunicorn in state STARTING> (stdout)>
+2020-02-02 17:00:11,902 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 140633113654160 for <Subprocess at 140633113934984 with name gunicorn in state STARTING> (stderr)>
+2020-02-02 17:00:11,902 INFO exited: gunicorn (exit status 1; not expected)
+2020-02-02 17:00:11,902 DEBG received SIGCHLD indicating a child quit
+2020-02-02 17:00:13,906 INFO spawned: 'gunicorn' with pid 7300
+2020-02-02 17:00:14,389 DEBG 'gunicorn' stderr output:
+Shell for /home/critr/.local/share/virtualenvs/CRITr-e0inU9_f already activated.
+No action taken to avoid nested environments.
+
+2020-02-02 17:00:14,735 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:00:14 +0000] [7312] [INFO] Starting gunicorn 20.0.4
+
+2020-02-02 17:00:14,738 DEBG 'gunicorn' stderr output:
+
+Error: Already running on PID 5334 (or pid file '/tmp/gunicorn.pid' is stale)
+
+
+2020-02-02 17:00:14,776 DEBG fd 7 closed, stopped monitoring <POutputDispatcher at 140633113903512 for <Subprocess at 140633113934984 with name gunicorn in state STARTING> (stdout)>
+2020-02-02 17:00:14,776 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 140633113653824 for <Subprocess at 140633113934984 with name gunicorn in state STARTING> (stderr)>
+2020-02-02 17:00:14,776 INFO exited: gunicorn (exit status 1; not expected)
+2020-02-02 17:00:14,777 DEBG received SIGCHLD indicating a child quit
+2020-02-02 17:00:17,781 INFO spawned: 'gunicorn' with pid 7381
+2020-02-02 17:00:18,267 DEBG 'gunicorn' stderr output:
+Shell for /home/critr/.local/share/virtualenvs/CRITr-e0inU9_f already activated.
+No action taken to avoid nested environments.
+
+2020-02-02 17:00:18,630 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:00:18 +0000] [7394] [INFO] Starting gunicorn 20.0.4
+
+Error: Already running on PID 5334 (or pid file '/tmp/gunicorn.pid' is stale)
+
+
+2020-02-02 17:00:18,658 DEBG fd 7 closed, stopped monitoring <POutputDispatcher at 140633149908360 for <Subprocess at 140633113934984 with name gunicorn in state STARTING> (stdout)>
+2020-02-02 17:00:18,659 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 140633113653936 for <Subprocess at 140633113934984 with name gunicorn in state STARTING> (stderr)>
+2020-02-02 17:00:18,659 INFO exited: gunicorn (exit status 1; not expected)
+2020-02-02 17:00:18,660 DEBG received SIGCHLD indicating a child quit
+2020-02-02 17:00:19,662 INFO gave up: gunicorn entered FATAL state, too many start retries too quickly
+2020-02-02 17:00:19,662 WARN received SIGINT indicating exit request
+2020-02-02 17:04:05,007 INFO RPC interface 'supervisor' initialized
+2020-02-02 17:04:05,035 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2020-02-02 17:04:05,036 INFO supervisord started with pid 3263
+2020-02-02 17:04:06,039 INFO spawned: 'gunicorn' with pid 3272
+2020-02-02 17:04:06,796 DEBG 'gunicorn' stderr output:
+Launching subshell in virtual environment…
+
+2020-02-02 17:04:06,877 DEBG 'gunicorn' stderr output:
+Traceback (most recent call last):
+  File "/home/critr/.local/bin/pipenv", line 11, in <module>
+
+2020-02-02 17:04:06,877 DEBG 'gunicorn' stderr output:
+    sys.exit(cli())
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/vendor/click/core.py", line 764, in __call__
+
+2020-02-02 17:04:06,877 DEBG 'gunicorn' stderr output:
+    return self.main(*args, **kwargs)
+2020-02-02 17:04:06,878 DEBG 'gunicorn' stderr output:
+
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/vendor/click/core.py", line 717, in main
+
+2020-02-02 17:04:06,878 DEBG 'gunicorn' stderr output:
+    rv = self.invoke(ctx)
+
+2020-02-02 17:04:06,878 DEBG 'gunicorn' stderr output:
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/vendor/click/core.py", line 1137, in invoke
+
+2020-02-02 17:04:06,878 DEBG 'gunicorn' stderr output:
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+2020-02-02 17:04:06,878 DEBG 'gunicorn' stderr output:
+
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/vendor/click/core.py", line 956, in invoke
+
+2020-02-02 17:04:06,878 DEBG 'gunicorn' stderr output:
+    return ctx.invoke(self.callback, **ctx.params)
+2020-02-02 17:04:06,878 DEBG 'gunicorn' stderr output:
+
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/vendor/click/core.py", line 555, in invoke
+
+2020-02-02 17:04:06,879 DEBG 'gunicorn' stderr output:
+    return callback(*args, **kwargs)
+2020-02-02 17:04:06,879 DEBG 'gunicorn' stderr output:
+
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/vendor/click/decorators.py", line 64, in new_func
+    
+2020-02-02 17:04:06,879 DEBG 'gunicorn' stderr output:
+return ctx.invoke(f, obj, *args, **kwargs)
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/vendor/click/core.py", line 555, in invoke
+
+2020-02-02 17:04:06,879 DEBG 'gunicorn' stderr output:
+    return callback(*args, **kwargs)
+2020-02-02 17:04:06,879 DEBG 'gunicorn' stderr output:
+
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/cli/command.py", line 390, in shell
+
+2020-02-02 17:04:06,879 DEBG 'gunicorn' stderr output:
+    pypi_mirror=state.pypi_mirror,
+2020-02-02 17:04:06,879 DEBG 'gunicorn' stderr output:
+
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/core.py", line 2184, in do_shell
+
+2020-02-02 17:04:06,880 DEBG 'gunicorn' stderr output:
+    shell.fork_compat(*fork_args)
+2020-02-02 17:04:06,880 DEBG 'gunicorn' stderr output:
+
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/shells.py", line 121, in fork_compat
+    
+2020-02-02 17:04:06,880 DEBG 'gunicorn' stderr output:
+c.interact(escape_character=None)
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/vendor/pexpect/pty_spawn.py", line 761, in interact
+
+2020-02-02 17:04:06,880 DEBG 'gunicorn' stderr output:
+    mode = tty.tcgetattr(self.STDIN_FILENO)
+2020-02-02 17:04:06,880 DEBG 'gunicorn' stderr output:
+
+termios.error: (25, 'Inappropriate ioctl for device')
+
+2020-02-02 17:04:07,309 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:07 +0000] [3286] [INFO] Starting gunicorn 20.0.4
+
+2020-02-02 17:04:07,309 INFO success: gunicorn entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-02-02 17:04:07,310 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:07 +0000] [3286] [INFO] Listening at: http://0.0.0.0:8000 (3286)
+
+2020-02-02 17:04:07,310 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:07 +0000] [3286] [INFO] Using worker: sync
+
+2020-02-02 17:04:07,312 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:07 +0000] [3289] [INFO] Booting worker with pid: 3289
+
+2020-02-02 17:04:07,320 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:07 +0000] [3290] [INFO] Booting worker with pid: 3290
+
+2020-02-02 17:04:07,397 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:07 +0000] [3293] [INFO] Booting worker with pid: 3293
+
+2020-02-02 17:04:07,499 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:07 +0000] [3290] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/Documents/CRITr/CRITr4/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/registry.py", line 114, in populate
+    app_config.import_models()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/models.py", line 2, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/base_user.py", line 47, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 121, in __new__
+    new_class.add_to_class('_meta', Options(meta, app_label))
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 325, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/options.py", line 208, in contribute_to_class
+    self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/__init__.py", line 28, in __getattr__
+    return getattr(connections[DEFAULT_DB_ALIAS], item)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 207, in __getitem__
+    backend = load_backend(db['ENGINE'])
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 111, in load_backend
+    return import_module('%s.base' % backend_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 module: %s" % e)
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+
+2020-02-02 17:04:07,501 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:07 +0000] [3290] [INFO] Worker exiting (pid: 3290)
+
+2020-02-02 17:04:07,506 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:07 +0000] [3289] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/Documents/CRITr/CRITr4/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/registry.py", line 114, in populate
+    app_config.import_models()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/models.py", line 2, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/base_user.py", line 47, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 121, in __new__
+    new_class.add_to_class('_meta', Options(meta, app_label))
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 325, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/options.py", line 208, in contribute_to_class
+    self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/__init__.py", line 28, in __getattr__
+    return getattr(connections[DEFAULT_DB_ALIAS], item)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 207, in __getitem__
+    backend = load_backend(db['ENGINE'])
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 111, in load_backend
+    return import_module('%s.base' % backend_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 module: %s" % e)
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+
+2020-02-02 17:04:07,508 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:07 +0000] [3289] [INFO] Worker exiting (pid: 3289)
+
+2020-02-02 17:04:07,614 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:07 +0000] [3293] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/Documents/CRITr/CRITr4/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/registry.py", line 114, in populate
+    app_config.import_models()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/models.py", line 2, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/base_user.py", line 47, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 121, in __new__
+    new_class.add_to_class('_meta', Options(meta, app_label))
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 325, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/options.py", line 208, in contribute_to_class
+    self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/__init__.py", line 28, in __getattr__
+    return getattr(connections[DEFAULT_DB_ALIAS], item)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 207, in __getitem__
+    backend = load_backend(db['ENGINE'])
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 111, in load_backend
+    return import_module('%s.base' % backend_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 module: %s" % e)
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+
+2020-02-02 17:04:07,614 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:07 +0000] [3293] [INFO] Worker exiting (pid: 3293)
+
+2020-02-02 17:04:07,716 DEBG 'gunicorn' stderr output:
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 209, in run
+    self.sleep()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 357, in sleep
+    ready = select.select([self.PIPE[0]], [], [], 1.0)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 242, in handle_chld
+    self.reap_workers()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 525, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/bin/gunicorn", line 8, in <module>
+    sys.exit(run())
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 58, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 228, in run
+    super().run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 72, in run
+    Arbiter(self).run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 229, in run
+    self.halt(reason=inst.reason, exit_status=inst.exit_status)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 342, in halt
+    self.stop()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 393, in stop
+    time.sleep(0.1)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 242, in handle_chld
+    self.reap_workers()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 525, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+
+2020-02-02 17:04:07,744 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 139853838141952 for <Subprocess at 139853838252224 with name gunicorn in state RUNNING> (stderr)>
+2020-02-02 17:04:07,744 DEBG fd 7 closed, stopped monitoring <POutputDispatcher at 139853838018432 for <Subprocess at 139853838252224 with name gunicorn in state RUNNING> (stdout)>
+2020-02-02 17:04:07,744 INFO exited: gunicorn (exit status 1; not expected)
+2020-02-02 17:04:07,744 DEBG received SIGCLD indicating a child quit
+2020-02-02 17:04:08,746 INFO spawned: 'gunicorn' with pid 3295
+2020-02-02 17:04:09,078 DEBG 'gunicorn' stderr output:
+Launching subshell in virtual environment…
+
+2020-02-02 17:04:09,160 DEBG 'gunicorn' stderr output:
+Traceback (most recent call last):
+  File "/home/critr/.local/bin/pipenv", line 11, in <module>
+
+2020-02-02 17:04:09,160 DEBG 'gunicorn' stderr output:
+    sys.exit(cli())
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/vendor/click/core.py", line 764, in __call__
+
+2020-02-02 17:04:09,161 DEBG 'gunicorn' stderr output:
+    return self.main(*args, **kwargs)
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/vendor/click/core.py", line 717, in main
+
+2020-02-02 17:04:09,161 DEBG 'gunicorn' stderr output:
+    rv = self.invoke(ctx)
+2020-02-02 17:04:09,161 DEBG 'gunicorn' stderr output:
+
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/vendor/click/core.py", line 1137, in invoke
+
+2020-02-02 17:04:09,161 DEBG 'gunicorn' stderr output:
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/vendor/click/core.py", line 956, in invoke
+
+2020-02-02 17:04:09,161 DEBG 'gunicorn' stderr output:
+    return ctx.invoke(self.callback, **ctx.params)
+2020-02-02 17:04:09,161 DEBG 'gunicorn' stderr output:
+
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/vendor/click/core.py", line 555, in invoke
+
+2020-02-02 17:04:09,161 DEBG 'gunicorn' stderr output:
+    return callback(*args, **kwargs)
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/vendor/click/decorators.py", line 64, in new_func
+
+2020-02-02 17:04:09,161 DEBG 'gunicorn' stderr output:
+    return ctx.invoke(f, obj, *args, **kwargs)
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/vendor/click/core.py", line 555, in invoke
+
+2020-02-02 17:04:09,161 DEBG 'gunicorn' stderr output:
+    return callback(*args, **kwargs)
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/cli/command.py", line 390, in shell
+
+2020-02-02 17:04:09,161 DEBG 'gunicorn' stderr output:
+    pypi_mirror=state.pypi_mirror,
+
+2020-02-02 17:04:09,162 DEBG 'gunicorn' stderr output:
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/core.py", line 2184, in do_shell
+
+2020-02-02 17:04:09,162 DEBG 'gunicorn' stderr output:
+    shell.fork_compat(*fork_args)
+
+2020-02-02 17:04:09,162 DEBG 'gunicorn' stderr output:
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/shells.py", line 121, in fork_compat
+    c.interact(escape_character=None)
+2020-02-02 17:04:09,162 DEBG 'gunicorn' stderr output:
+
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/vendor/pexpect/pty_spawn.py", line 761, in interact
+
+2020-02-02 17:04:09,162 DEBG 'gunicorn' stderr output:
+    mode = tty.tcgetattr(self.STDIN_FILENO)
+
+2020-02-02 17:04:09,162 DEBG 'gunicorn' stderr output:
+termios.error: (25, 'Inappropriate ioctl for device')
+
+2020-02-02 17:04:09,471 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:09 +0000] [3317] [INFO] Starting gunicorn 20.0.4
+
+2020-02-02 17:04:09,471 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:09 +0000] [3317] [INFO] Listening at: http://0.0.0.0:8000 (3317)
+
+2020-02-02 17:04:09,472 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:09 +0000] [3317] [INFO] Using worker: sync
+
+2020-02-02 17:04:09,473 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:09 +0000] [3320] [INFO] Booting worker with pid: 3320
+
+2020-02-02 17:04:09,487 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:09 +0000] [3321] [INFO] Booting worker with pid: 3321
+
+2020-02-02 17:04:09,587 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:09 +0000] [3324] [INFO] Booting worker with pid: 3324
+
+2020-02-02 17:04:09,639 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:09 +0000] [3321] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/Documents/CRITr/CRITr4/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/registry.py", line 114, in populate
+    app_config.import_models()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/models.py", line 2, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/base_user.py", line 47, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 121, in __new__
+    new_class.add_to_class('_meta', Options(meta, app_label))
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 325, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/options.py", line 208, in contribute_to_class
+    self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/__init__.py", line 28, in __getattr__
+    return getattr(connections[DEFAULT_DB_ALIAS], item)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 207, in __getitem__
+    backend = load_backend(db['ENGINE'])
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 111, in load_backend
+    return import_module('%s.base' % backend_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 module: %s" % e)
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+
+2020-02-02 17:04:09,641 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:09 +0000] [3321] [INFO] Worker exiting (pid: 3321)
+
+2020-02-02 17:04:09,647 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:09 +0000] [3320] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/Documents/CRITr/CRITr4/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/registry.py", line 114, in populate
+    app_config.import_models()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/models.py", line 2, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/base_user.py", line 47, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 121, in __new__
+    new_class.add_to_class('_meta', Options(meta, app_label))
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 325, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/options.py", line 208, in contribute_to_class
+    self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/__init__.py", line 28, in __getattr__
+    return getattr(connections[DEFAULT_DB_ALIAS], item)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 207, in __getitem__
+    backend = load_backend(db['ENGINE'])
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 111, in load_backend
+    return import_module('%s.base' % backend_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 module: %s" % e)
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+
+2020-02-02 17:04:09,648 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:09 +0000] [3320] [INFO] Worker exiting (pid: 3320)
+
+2020-02-02 17:04:09,798 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:09 +0000] [3324] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/Documents/CRITr/CRITr4/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/registry.py", line 114, in populate
+    app_config.import_models()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/models.py", line 2, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/base_user.py", line 47, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 121, in __new__
+    new_class.add_to_class('_meta', Options(meta, app_label))
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 325, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/options.py", line 208, in contribute_to_class
+    self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/__init__.py", line 28, in __getattr__
+    return getattr(connections[DEFAULT_DB_ALIAS], item)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 207, in __getitem__
+    backend = load_backend(db['ENGINE'])
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 111, in load_backend
+    return import_module('%s.base' % backend_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 module: %s" % e)
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+
+2020-02-02 17:04:09,798 INFO success: gunicorn entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-02-02 17:04:09,798 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:09 +0000] [3324] [INFO] Worker exiting (pid: 3324)
+
+2020-02-02 17:04:09,897 DEBG 'gunicorn' stderr output:
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 209, in run
+    self.sleep()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 357, in sleep
+    ready = select.select([self.PIPE[0]], [], [], 1.0)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 242, in handle_chld
+    self.reap_workers()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 525, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/bin/gunicorn", line 8, in <module>
+    sys.exit(run())
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 58, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 228, in run
+    super().run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 72, in run
+    Arbiter(self).run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 229, in run
+    self.halt(reason=inst.reason, exit_status=inst.exit_status)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 342, in halt
+    self.stop()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 393, in stop
+    time.sleep(0.1)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 242, in handle_chld
+    self.reap_workers()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 525, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+
+2020-02-02 17:04:09,923 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 139853838142752 for <Subprocess at 139853838252224 with name gunicorn in state RUNNING> (stderr)>
+2020-02-02 17:04:09,923 DEBG fd 7 closed, stopped monitoring <POutputDispatcher at 139853838018432 for <Subprocess at 139853838252224 with name gunicorn in state RUNNING> (stdout)>
+2020-02-02 17:04:09,923 INFO exited: gunicorn (exit status 1; not expected)
+2020-02-02 17:04:09,923 DEBG received SIGCLD indicating a child quit
+2020-02-02 17:04:10,440 INFO spawned: 'gunicorn' with pid 3330
+2020-02-02 17:04:10,441 WARN received SIGINT indicating exit request
+2020-02-02 17:04:10,441 DEBG killing gunicorn (pid 3330) with signal SIGTERM
+2020-02-02 17:04:10,441 INFO waiting for gunicorn to die
+2020-02-02 17:04:10,775 DEBG 'gunicorn' stderr output:
+Launching subshell in virtual environment…
+
+2020-02-02 17:04:10,858 DEBG 'gunicorn' stderr output:
+Traceback (most recent call last):
+  File "/home/critr/.local/bin/pipenv", line 11, in <module>
+
+2020-02-02 17:04:10,859 DEBG 'gunicorn' stderr output:
+    sys.exit(cli())
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/vendor/click/core.py", line 764, in __call__
+
+2020-02-02 17:04:10,859 DEBG 'gunicorn' stderr output:
+    return self.main(*args, **kwargs)
+
+2020-02-02 17:04:10,859 DEBG 'gunicorn' stderr output:
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/vendor/click/core.py", line 717, in main
+
+2020-02-02 17:04:10,859 DEBG 'gunicorn' stderr output:
+    rv = self.invoke(ctx)
+2020-02-02 17:04:10,859 DEBG 'gunicorn' stderr output:
+
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/vendor/click/core.py", line 1137, in invoke
+
+2020-02-02 17:04:10,859 DEBG 'gunicorn' stderr output:
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+2020-02-02 17:04:10,859 DEBG 'gunicorn' stderr output:
+
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/vendor/click/core.py", line 956, in invoke
+
+2020-02-02 17:04:10,860 DEBG 'gunicorn' stderr output:
+    return ctx.invoke(self.callback, **ctx.params)
+2020-02-02 17:04:10,860 DEBG 'gunicorn' stderr output:
+
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/vendor/click/core.py", line 555, in invoke
+
+2020-02-02 17:04:10,860 DEBG 'gunicorn' stderr output:
+    return callback(*args, **kwargs)
+
+2020-02-02 17:04:10,860 DEBG 'gunicorn' stderr output:
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/vendor/click/decorators.py", line 64, in new_func
+    return ctx.invoke(f, obj, *args, **kwargs)
+
+2020-02-02 17:04:10,860 DEBG 'gunicorn' stderr output:
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/vendor/click/core.py", line 555, in invoke
+
+2020-02-02 17:04:10,860 DEBG 'gunicorn' stderr output:
+    return callback(*args, **kwargs)
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/cli/command.py", line 390, in shell
+
+2020-02-02 17:04:10,860 DEBG 'gunicorn' stderr output:
+    pypi_mirror=state.pypi_mirror,
+2020-02-02 17:04:10,861 DEBG 'gunicorn' stderr output:
+
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/core.py", line 2184, in do_shell
+
+2020-02-02 17:04:10,861 DEBG 'gunicorn' stderr output:
+    shell.fork_compat(*fork_args)
+2020-02-02 17:04:10,861 DEBG 'gunicorn' stderr output:
+
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/shells.py", line 121, in fork_compat
+
+2020-02-02 17:04:10,861 DEBG 'gunicorn' stderr output:
+    c.interact(escape_character=None)
+  File "/home/critr/.local/lib/python3.6/site-packages/pipenv/vendor/pexpect/pty_spawn.py", line 761, in interact
+
+2020-02-02 17:04:10,861 DEBG 'gunicorn' stderr output:
+    mode = tty.tcgetattr(self.STDIN_FILENO)
+2020-02-02 17:04:10,862 DEBG 'gunicorn' stderr output:
+
+termios.error: (25, 'Inappropriate ioctl for device')
+
+2020-02-02 17:04:11,178 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:11 +0000] [3344] [INFO] Starting gunicorn 20.0.4
+
+2020-02-02 17:04:11,179 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:11 +0000] [3344] [INFO] Listening at: http://0.0.0.0:8000 (3344)
+
+2020-02-02 17:04:11,179 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:11 +0000] [3344] [INFO] Using worker: sync
+
+2020-02-02 17:04:11,181 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:11 +0000] [3347] [INFO] Booting worker with pid: 3347
+
+2020-02-02 17:04:11,233 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:11 +0000] [3351] [INFO] Booting worker with pid: 3351
+
+2020-02-02 17:04:11,260 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:11 +0000] [3352] [INFO] Booting worker with pid: 3352
+
+2020-02-02 17:04:11,368 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:11 +0000] [3347] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/Documents/CRITr/CRITr4/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/registry.py", line 114, in populate
+    app_config.import_models()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/models.py", line 2, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/base_user.py", line 47, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 121, in __new__
+    new_class.add_to_class('_meta', Options(meta, app_label))
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 325, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/options.py", line 208, in contribute_to_class
+    self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/__init__.py", line 28, in __getattr__
+    return getattr(connections[DEFAULT_DB_ALIAS], item)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 207, in __getitem__
+    backend = load_backend(db['ENGINE'])
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 111, in load_backend
+    return import_module('%s.base' % backend_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 module: %s" % e)
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+
+2020-02-02 17:04:11,369 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:11 +0000] [3347] [INFO] Worker exiting (pid: 3347)
+
+2020-02-02 17:04:11,387 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:11 +0000] [3351] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/Documents/CRITr/CRITr4/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/registry.py", line 114, in populate
+    app_config.import_models()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/models.py", line 2, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/base_user.py", line 47, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 121, in __new__
+    new_class.add_to_class('_meta', Options(meta, app_label))
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 325, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/options.py", line 208, in contribute_to_class
+    self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/__init__.py", line 28, in __getattr__
+    return getattr(connections[DEFAULT_DB_ALIAS], item)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 207, in __getitem__
+    backend = load_backend(db['ENGINE'])
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 111, in load_backend
+    return import_module('%s.base' % backend_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 module: %s" % e)
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+
+2020-02-02 17:04:11,388 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:11 +0000] [3351] [INFO] Worker exiting (pid: 3351)
+
+2020-02-02 17:04:11,493 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:11 +0000] [3352] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/Documents/CRITr/CRITr4/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/registry.py", line 114, in populate
+    app_config.import_models()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/models.py", line 2, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/base_user.py", line 47, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 121, in __new__
+    new_class.add_to_class('_meta', Options(meta, app_label))
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 325, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/options.py", line 208, in contribute_to_class
+    self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/__init__.py", line 28, in __getattr__
+    return getattr(connections[DEFAULT_DB_ALIAS], item)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 207, in __getitem__
+    backend = load_backend(db['ENGINE'])
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 111, in load_backend
+    return import_module('%s.base' % backend_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 module: %s" % e)
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+
+2020-02-02 17:04:11,493 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:04:11 +0000] [3352] [INFO] Worker exiting (pid: 3352)
+
+2020-02-02 17:04:11,588 DEBG 'gunicorn' stderr output:
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 209, in run
+    self.sleep()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 357, in sleep
+    ready = select.select([self.PIPE[0]], [], [], 1.0)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 242, in handle_chld
+    self.reap_workers()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 525, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/bin/gunicorn", line 8, in <module>
+    sys.exit(run())
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 58, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 228, in run
+    super().run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 72, in run
+    Arbiter(self).run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 229, in run
+    self.halt(reason=inst.reason, exit_status=inst.exit_status)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 342, in halt
+    self.stop()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 393, in stop
+    time.sleep(0.1)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 242, in handle_chld
+    self.reap_workers()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 525, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+
+2020-02-02 17:04:11,614 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 139853838162112 for <Subprocess at 139853838252224 with name gunicorn in state STOPPING> (stderr)>
+2020-02-02 17:04:11,614 DEBG fd 7 closed, stopped monitoring <POutputDispatcher at 139853838018432 for <Subprocess at 139853838252224 with name gunicorn in state STOPPING> (stdout)>
+2020-02-02 17:04:11,614 INFO stopped: gunicorn (exit status 1)
+2020-02-02 17:04:11,614 DEBG received SIGCLD indicating a child quit
+2020-02-02 17:05:16,646 INFO RPC interface 'supervisor' initialized
+2020-02-02 17:05:16,646 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2020-02-02 17:05:16,646 INFO supervisord started with pid 3444
+2020-02-02 17:05:17,648 INFO spawned: 'gunicorn' with pid 3447
+2020-02-02 17:05:17,915 DEBG 'gunicorn' stderr output:
+Shell for /home/critr/.local/share/virtualenvs/CRITr-e0inU9_f already activated.
+No action taken to avoid nested environments.
+
+2020-02-02 17:05:18,103 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:05:18 +0000] [3451] [INFO] Starting gunicorn 20.0.4
+
+2020-02-02 17:05:18,104 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:05:18 +0000] [3451] [INFO] Listening at: http://0.0.0.0:8000 (3451)
+
+2020-02-02 17:05:18,104 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:05:18 +0000] [3451] [INFO] Using worker: sync
+
+2020-02-02 17:05:18,106 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:05:18 +0000] [3454] [INFO] Booting worker with pid: 3454
+
+2020-02-02 17:05:18,130 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:05:18 +0000] [3455] [INFO] Booting worker with pid: 3455
+
+2020-02-02 17:05:18,142 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:05:18 +0000] [3456] [INFO] Booting worker with pid: 3456
+
+2020-02-02 17:05:18,286 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:05:18 +0000] [3455] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/Documents/CRITr/CRITr4/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/registry.py", line 114, in populate
+    app_config.import_models()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/models.py", line 2, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/base_user.py", line 47, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 121, in __new__
+    new_class.add_to_class('_meta', Options(meta, app_label))
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 325, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/options.py", line 208, in contribute_to_class
+    self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/__init__.py", line 28, in __getattr__
+    return getattr(connections[DEFAULT_DB_ALIAS], item)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 207, in __getitem__
+    backend = load_backend(db['ENGINE'])
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 111, in load_backend
+    return import_module('%s.base' % backend_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 module: %s" % e)
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+
+2020-02-02 17:05:18,288 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:05:18 +0000] [3455] [INFO] Worker exiting (pid: 3455)
+
+2020-02-02 17:05:18,324 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:05:18 +0000] [3454] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/Documents/CRITr/CRITr4/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/registry.py", line 114, in populate
+    app_config.import_models()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/models.py", line 2, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/base_user.py", line 47, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 121, in __new__
+    new_class.add_to_class('_meta', Options(meta, app_label))
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 325, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/options.py", line 208, in contribute_to_class
+    self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/__init__.py", line 28, in __getattr__
+    return getattr(connections[DEFAULT_DB_ALIAS], item)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 207, in __getitem__
+    backend = load_backend(db['ENGINE'])
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 111, in load_backend
+    return import_module('%s.base' % backend_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 module: %s" % e)
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+
+2020-02-02 17:05:18,326 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:05:18 +0000] [3454] [INFO] Worker exiting (pid: 3454)
+
+2020-02-02 17:05:18,374 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:05:18 +0000] [3456] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/Documents/CRITr/CRITr4/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/registry.py", line 114, in populate
+    app_config.import_models()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/models.py", line 2, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/base_user.py", line 47, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 121, in __new__
+    new_class.add_to_class('_meta', Options(meta, app_label))
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 325, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/options.py", line 208, in contribute_to_class
+    self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/__init__.py", line 28, in __getattr__
+    return getattr(connections[DEFAULT_DB_ALIAS], item)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 207, in __getitem__
+    backend = load_backend(db['ENGINE'])
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 111, in load_backend
+    return import_module('%s.base' % backend_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 module: %s" % e)
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+
+2020-02-02 17:05:18,375 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:05:18 +0000] [3456] [INFO] Worker exiting (pid: 3456)
+
+2020-02-02 17:05:18,468 DEBG 'gunicorn' stderr output:
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 209, in run
+    self.sleep()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 357, in sleep
+    ready = select.select([self.PIPE[0]], [], [], 1.0)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 242, in handle_chld
+    self.reap_workers()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 525, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/bin/gunicorn", line 8, in <module>
+    sys.exit(run())
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 58, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 228, in run
+    super().run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 72, in run
+    Arbiter(self).run()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 229, in run
+    self.halt(reason=inst.reason, exit_status=inst.exit_status)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 342, in halt
+    self.stop()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 393, in stop
+    time.sleep(0.1)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 242, in handle_chld
+    self.reap_workers()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 525, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+
+2020-02-02 17:05:18,494 DEBG fd 7 closed, stopped monitoring <POutputDispatcher at 140563633807768 for <Subprocess at 140563633807824 with name gunicorn in state STARTING> (stdout)>
+2020-02-02 17:05:18,494 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 140563633748568 for <Subprocess at 140563633807824 with name gunicorn in state STARTING> (stderr)>
+2020-02-02 17:05:18,494 INFO exited: gunicorn (exit status 1; not expected)
+2020-02-02 17:05:18,494 DEBG received SIGCHLD indicating a child quit
+2020-02-02 17:05:19,498 INFO spawned: 'gunicorn' with pid 3460
+2020-02-02 17:05:19,758 DEBG 'gunicorn' stderr output:
+Shell for /home/critr/.local/share/virtualenvs/CRITr-e0inU9_f already activated.
+No action taken to avoid nested environments.
+
+2020-02-02 17:05:19,946 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:05:19 +0000] [3464] [INFO] Starting gunicorn 20.0.4
+
+2020-02-02 17:05:19,947 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:05:19 +0000] [3464] [INFO] Listening at: http://0.0.0.0:8000 (3464)
+
+2020-02-02 17:05:19,947 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:05:19 +0000] [3464] [INFO] Using worker: sync
+
+2020-02-02 17:05:19,949 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:05:19 +0000] [3467] [INFO] Booting worker with pid: 3467
+
+2020-02-02 17:05:19,982 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:05:19 +0000] [3468] [INFO] Booting worker with pid: 3468
+
+2020-02-02 17:05:20,081 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:05:20 +0000] [3471] [INFO] Booting worker with pid: 3471
+
+2020-02-02 17:05:20,100 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:05:20 +0000] [3467] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/Documents/CRITr/CRITr4/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/registry.py", line 114, in populate
+    app_config.import_models()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/models.py", line 2, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/base_user.py", line 47, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 121, in __new__
+    new_class.add_to_class('_meta', Options(meta, app_label))
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 325, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/options.py", line 208, in contribute_to_class
+    self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/__init__.py", line 28, in __getattr__
+    return getattr(connections[DEFAULT_DB_ALIAS], item)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 207, in __getitem__
+    backend = load_backend(db['ENGINE'])
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 111, in load_backend
+    return import_module('%s.base' % backend_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 module: %s" % e)
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+
+2020-02-02 17:05:20,102 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:05:20 +0000] [3467] [INFO] Worker exiting (pid: 3467)
+
+2020-02-02 17:05:20,165 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:05:20 +0000] [3468] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/Documents/CRITr/CRITr4/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/registry.py", line 114, in populate
+    app_config.import_models()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/models.py", line 2, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/base_user.py", line 47, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 121, in __new__
+    new_class.add_to_class('_meta', Options(meta, app_label))
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 325, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/options.py", line 208, in contribute_to_class
+    self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/__init__.py", line 28, in __getattr__
+    return getattr(connections[DEFAULT_DB_ALIAS], item)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 207, in __getitem__
+    backend = load_backend(db['ENGINE'])
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 111, in load_backend
+    return import_module('%s.base' % backend_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 module: %s" % e)
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+
+2020-02-02 17:05:20,166 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:05:20 +0000] [3468] [INFO] Worker exiting (pid: 3468)
+
+2020-02-02 17:05:20,265 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:05:20 +0000] [3471] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 119, in init_process
+    self.load_wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 144, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 49, in load
+    return self.load_wsgiapp()
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 39, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/critr/.local/lib/python3.6/site-packages/gunicorn/util.py", line 358, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/Documents/CRITr/CRITr4/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+    django.setup(set_prefix=False)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/registry.py", line 114, in populate
+    app_config.import_models()
+  File "/home/critr/.local/lib/python3.6/site-packages/django/apps/config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/models.py", line 2, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/home/critr/.local/lib/python3.6/site-packages/django/contrib/auth/base_user.py", line 47, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 121, in __new__
+    new_class.add_to_class('_meta', Options(meta, app_label))
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/base.py", line 325, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/models/options.py", line 208, in contribute_to_class
+    self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/__init__.py", line 28, in __getattr__
+    return getattr(connections[DEFAULT_DB_ALIAS], item)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 207, in __getitem__
+    backend = load_backend(db['ENGINE'])
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/utils.py", line 111, in load_backend
+    return import_module('%s.base' % backend_name)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/critr/.local/lib/python3.6/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 module: %s" % e)
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 module: No module named 'psycopg2'
+
+2020-02-02 17:05:20,266 WARN received SIGINT indicating exit request
+2020-02-02 17:05:20,266 DEBG killing gunicorn (pid 3460) with signal SIGTERM
+2020-02-02 17:05:20,266 INFO waiting for gunicorn to die
+2020-02-02 17:05:20,266 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:05:20 +0000] [3471] [INFO] Worker exiting (pid: 3471)
+
+2020-02-02 17:05:20,266 DEBG fd 7 closed, stopped monitoring <POutputDispatcher at 140563669812616 for <Subprocess at 140563633807824 with name gunicorn in state STOPPING> (stdout)>
+2020-02-02 17:05:20,266 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 140563633554040 for <Subprocess at 140563633807824 with name gunicorn in state STOPPING> (stderr)>
+2020-02-02 17:05:20,266 INFO stopped: gunicorn (terminated by SIGTERM)
+2020-02-02 17:05:20,266 DEBG received SIGCHLD indicating a child quit
+2020-02-02 17:10:18,859 INFO RPC interface 'supervisor' initialized
+2020-02-02 17:10:18,859 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2020-02-02 17:10:18,860 INFO supervisord started with pid 4067
+2020-02-02 17:10:19,863 INFO spawned: 'gunicorn' with pid 4070
+2020-02-02 17:10:20,131 DEBG 'gunicorn' stderr output:
+Shell for /home/critr/.local/share/virtualenvs/CRITr-e0inU9_f already activated.
+No action taken to avoid nested environments.
+
+2020-02-02 17:10:20,342 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:10:20 +0000] [4074] [INFO] Starting gunicorn 20.0.4
+
+2020-02-02 17:10:20,343 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:10:20 +0000] [4074] [INFO] Listening at: http://0.0.0.0:8000 (4074)
+
+2020-02-02 17:10:20,343 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:10:20 +0000] [4074] [INFO] Using worker: sync
+
+2020-02-02 17:10:20,344 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:10:20 +0000] [4077] [INFO] Booting worker with pid: 4077
+
+2020-02-02 17:10:20,369 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:10:20 +0000] [4078] [INFO] Booting worker with pid: 4078
+
+2020-02-02 17:10:20,452 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:10:20 +0000] [4081] [INFO] Booting worker with pid: 4081
+
+2020-02-02 17:10:21,454 INFO success: gunicorn entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-02-02 17:10:27,698 DEBG 'gunicorn' stdout output:
+127.0.0.1 - - [02/Feb/2020:17:10:27 +0000] "GET / HTTP/1.0" 200 2656 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0"
+
+2020-02-02 17:10:33,706 WARN received SIGINT indicating exit request
+2020-02-02 17:10:33,706 DEBG killing gunicorn (pid 4070) with signal SIGTERM
+2020-02-02 17:10:33,707 INFO waiting for gunicorn to die
+2020-02-02 17:10:34,709 DEBG fd 7 closed, stopped monitoring <POutputDispatcher at 139698227997888 for <Subprocess at 139698228263904 with name gunicorn in state STOPPING> (stdout)>
+2020-02-02 17:10:34,709 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 139698228262000 for <Subprocess at 139698228263904 with name gunicorn in state STOPPING> (stderr)>
+2020-02-02 17:10:34,710 INFO stopped: gunicorn (terminated by SIGTERM)
+2020-02-02 17:10:34,710 DEBG received SIGCHLD indicating a child quit
+2020-02-02 17:11:44,704 INFO RPC interface 'supervisor' initialized
+2020-02-02 17:11:44,704 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2020-02-02 17:11:44,704 INFO supervisord started with pid 4153
+2020-02-02 17:11:45,708 INFO spawned: 'gunicorn' with pid 4156
+2020-02-02 17:11:45,978 DEBG 'gunicorn' stderr output:
+Shell for /home/critr/.local/share/virtualenvs/CRITr-e0inU9_f already activated.
+No action taken to avoid nested environments.
+
+2020-02-02 17:11:46,189 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:11:46 +0000] [4162] [INFO] Starting gunicorn 20.0.4
+
+2020-02-02 17:11:46,189 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:11:46 +0000] [4162] [ERROR] Connection in use: ('0.0.0.0', 8000)
+
+2020-02-02 17:11:46,189 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:11:46 +0000] [4162] [ERROR] Retrying in 1 second.
+
+2020-02-02 17:11:47,190 INFO success: gunicorn entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-02-02 17:11:47,191 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:11:47 +0000] [4162] [ERROR] Connection in use: ('0.0.0.0', 8000)
+
+2020-02-02 17:11:47,191 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:11:47 +0000] [4162] [ERROR] Retrying in 1 second.
+
+2020-02-02 17:11:48,192 WARN received SIGINT indicating exit request
+2020-02-02 17:11:48,193 DEBG killing gunicorn (pid 4156) with signal SIGTERM
+2020-02-02 17:11:48,193 INFO waiting for gunicorn to die
+2020-02-02 17:11:48,194 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:11:48 +0000] [4162] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2020-02-02 17:11:48 +0000] [4162] [ERROR] Retrying in 1 second.
+
+2020-02-02 17:11:48,194 DEBG fd 7 closed, stopped monitoring <POutputDispatcher at 140233097690304 for <Subprocess at 140233098016528 with name gunicorn in state STOPPING> (stdout)>
+2020-02-02 17:11:48,194 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 140233097690584 for <Subprocess at 140233098016528 with name gunicorn in state STOPPING> (stderr)>
+2020-02-02 17:11:48,195 INFO stopped: gunicorn (terminated by SIGTERM)
+2020-02-02 17:11:48,195 DEBG received SIGCHLD indicating a child quit
+2020-02-02 17:12:04,374 INFO RPC interface 'supervisor' initialized
+2020-02-02 17:12:04,374 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2020-02-02 17:12:04,374 INFO supervisord started with pid 4175
+2020-02-02 17:12:05,378 INFO spawned: 'gunicorn' with pid 4178
+2020-02-02 17:12:05,650 DEBG 'gunicorn' stderr output:
+Shell for /home/critr/.local/share/virtualenvs/CRITr-e0inU9_f already activated.
+No action taken to avoid nested environments.
+
+2020-02-02 17:12:05,859 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:12:05 +0000] [4182] [INFO] Starting gunicorn 20.0.4
+
+2020-02-02 17:12:05,859 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:12:05 +0000] [4182] [INFO] Listening at: http://0.0.0.0:8000 (4182)
+
+2020-02-02 17:12:05,859 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:12:05 +0000] [4182] [INFO] Using worker: sync
+
+2020-02-02 17:12:05,861 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:12:05 +0000] [4185] [INFO] Booting worker with pid: 4185
+
+2020-02-02 17:12:05,908 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:12:05 +0000] [4187] [INFO] Booting worker with pid: 4187
+
+2020-02-02 17:12:05,978 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:12:05 +0000] [4189] [INFO] Booting worker with pid: 4189
+
+2020-02-02 17:12:06,979 INFO success: gunicorn entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-02-02 17:12:10,345 DEBG 'gunicorn' stdout output:
+127.0.0.1 - - [02/Feb/2020:17:12:10 +0000] "GET / HTTP/1.0" 200 2656 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0"
+
+2020-02-02 17:12:13,350 WARN received SIGINT indicating exit request
+2020-02-02 17:12:13,350 DEBG killing gunicorn (pid 4178) with signal SIGTERM
+2020-02-02 17:12:13,351 INFO waiting for gunicorn to die
+2020-02-02 17:12:14,353 DEBG fd 7 closed, stopped monitoring <POutputDispatcher at 140184277773280 for <Subprocess at 140184277833544 with name gunicorn in state STOPPING> (stdout)>
+2020-02-02 17:12:14,353 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 140184277507488 for <Subprocess at 140184277833544 with name gunicorn in state STOPPING> (stderr)>
+2020-02-02 17:12:14,354 INFO stopped: gunicorn (terminated by SIGTERM)
+2020-02-02 17:12:14,354 DEBG received SIGCHLD indicating a child quit
+2020-02-02 17:13:31,028 INFO RPC interface 'supervisor' initialized
+2020-02-02 17:13:31,028 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2020-02-02 17:13:31,029 INFO daemonizing the supervisord process
+2020-02-02 17:13:31,030 INFO supervisord started with pid 4233
+2020-02-02 17:13:32,034 INFO spawned: 'gunicorn' with pid 4234
+2020-02-02 17:13:32,312 DEBG 'gunicorn' stderr output:
+Shell for /home/critr/.local/share/virtualenvs/CRITr-e0inU9_f already activated.
+No action taken to avoid nested environments.
+
+2020-02-02 17:13:32,521 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:13:32 +0000] [4238] [INFO] Starting gunicorn 20.0.4
+
+2020-02-02 17:13:32,521 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:13:32 +0000] [4238] [INFO] Listening at: http://0.0.0.0:8000 (4238)
+
+2020-02-02 17:13:32,521 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:13:32 +0000] [4238] [INFO] Using worker: sync
+
+2020-02-02 17:13:32,523 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:13:32 +0000] [4241] [INFO] Booting worker with pid: 4241
+
+2020-02-02 17:13:32,580 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:13:32 +0000] [4243] [INFO] Booting worker with pid: 4243
+
+2020-02-02 17:13:32,585 DEBG 'gunicorn' stderr output:
+[2020-02-02 17:13:32 +0000] [4244] [INFO] Booting worker with pid: 4244
+
+2020-02-02 17:13:33,586 INFO success: gunicorn entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-02-02 17:13:33,637 DEBG 'gunicorn' stdout output:
+127.0.0.1 - - [02/Feb/2020:17:13:33 +0000] "GET / HTTP/1.0" 200 2656 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0"
+
+2020-02-02 17:13:34,890 DEBG 'gunicorn' stdout output:
+127.0.0.1 - - [02/Feb/2020:17:13:34 +0000] "GET / HTTP/1.0" 200 2656 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0"
+
+2020-02-02 17:13:46,096 DEBG 'gunicorn' stdout output:
+127.0.0.1 - - [02/Feb/2020:17:13:46 +0000] "GET / HTTP/1.0" 200 2656 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0"
+
+2020-02-02 17:13:51,559 DEBG 'gunicorn' stdout output:
+127.0.0.1 - - [02/Feb/2020:17:13:51 +0000] "POST / HTTP/1.0" 200 9320 "https://www.critr.app/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0"
+
+2020-02-02 17:13:54,142 DEBG 'gunicorn' stdout output:
+127.0.0.1 - - [02/Feb/2020:17:13:54 +0000] "GET / HTTP/1.0" 200 1635 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0"
+
+2020-02-02 17:13:54,402 DEBG 'gunicorn' stdout output:
+127.0.0.1 - - [02/Feb/2020:17:13:54 +0000] "GET /maps HTTP/1.0" 200 9320 "https://www.critr.app/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0"
+
+2020-02-02 17:14:00,781 DEBG 'gunicorn' stdout output:
+127.0.0.1 - - [02/Feb/2020:17:14:00 +0000] "GET /logout/ HTTP/1.0" 302 0 "https://www.critr.app/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0"
+
+2020-02-02 17:14:00,856 DEBG 'gunicorn' stdout output:
+127.0.0.1 - - [02/Feb/2020:17:14:00 +0000] "GET / HTTP/1.0" 200 2656 "https://www.critr.app/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0"
+
+2020-02-02 17:15:31,635 DEBG 'gunicorn' stdout output:
+127.0.0.1 - - [02/Feb/2020:17:15:31 +0000] "GET /maps HTTP/1.0" 302 0 "https://www.critr.app/" "Mozilla/5.0 (Linux; Android 9; SM-G950F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36"
+
+2020-02-02 17:15:31,675 DEBG 'gunicorn' stdout output:
+127.0.0.1 - - [02/Feb/2020:17:15:31 +0000] "GET /accounts/login/?next=/maps HTTP/1.0" 404 179 "https://www.critr.app/" "Mozilla/5.0 (Linux; Android 9; SM-G950F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36"
+
+2020-02-02 17:15:32,155 DEBG 'gunicorn' stdout output:
+127.0.0.1 - - [02/Feb/2020:17:15:32 +0000] "GET /favicon.ico HTTP/1.0" 404 179 "https://www.critr.app/accounts/login/?next=/maps" "Mozilla/5.0 (Linux; Android 9; SM-G950F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36"
+
+2020-02-02 17:15:36,422 DEBG 'gunicorn' stdout output:
+127.0.0.1 - - [02/Feb/2020:17:15:36 +0000] "GET / HTTP/1.0" 200 2656 "-" "Mozilla/5.0 (Linux; Android 9; SM-G950F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36"
+
+2020-02-02 17:26:05,867 DEBG 'gunicorn' stdout output:
+127.0.0.1 - - [02/Feb/2020:17:26:05 +0000] "GET /.env HTTP/1.0" 404 179 "-" "curl/7.58.0"
+
+2020-02-02 17:28:19,555 DEBG 'gunicorn' stdout output:
+127.0.0.1 - - [02/Feb/2020:17:28:19 +0000] "GET / HTTP/1.0" 200 2656 "-" "Mozilla/5.0 (Linux; Android 9; SM-G950F Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.128 Mobile Safari/537.36 (Ecosia android@69.0.3497.128)"
+
+2020-02-02 17:28:19,889 DEBG 'gunicorn' stdout output:
+127.0.0.1 - - [02/Feb/2020:17:28:19 +0000] "GET /favicon.ico HTTP/1.0" 404 179 "http://www.critr.app/" "Mozilla/5.0 (Linux; Android 9; SM-G950F Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.128 Mobile Safari/537.36 (Ecosia android@69.0.3497.128)"
+
+2020-02-02 17:28:21,003 DEBG 'gunicorn' stdout output:
+127.0.0.1 - - [02/Feb/2020:17:28:20 +0000] "POST / HTTP/1.0" 200 9320 "http://www.critr.app/" "Mozilla/5.0 (Linux; Android 9; SM-G950F Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.128 Mobile Safari/537.36 (Ecosia android@69.0.3497.128)"
+
+2020-02-02 17:28:26,578 DEBG 'gunicorn' stdout output:
+127.0.0.1 - - [02/Feb/2020:17:28:26 +0000] "POST /maps/get_track_ID HTTP/1.0" 500 145 "http://www.critr.app/" "Mozilla/5.0 (Linux; Android 9; SM-G950F Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.128 Mobile Safari/537.36 (Ecosia android@69.0.3497.128)"
+
+2020-02-02 17:28:29,181 DEBG 'gunicorn' stdout output:
+127.0.0.1 - - [02/Feb/2020:17:28:29 +0000] "POST /maps/save_track_data HTTP/1.0" 500 145 "http://www.critr.app/" "Mozilla/5.0 (Linux; Android 9; SM-G950F Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.128 Mobile Safari/537.36 (Ecosia android@69.0.3497.128)"
+
+2020-02-02 17:41:25,155 DEBG 'gunicorn' stdout output:
+127.0.0.1 - - [02/Feb/2020:17:41:25 +0000] "GET /.env HTTP/1.0" 404 179 "-" "curl/7.58.0"
+
+2020-02-02 17:47:39,140 DEBG 'gunicorn' stdout output:
+127.0.0.1 - - [02/Feb/2020:17:47:39 +0000] "GET / HTTP/1.0" 200 2656 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36"
+
+2020-02-02 18:32:42,405 DEBG 'gunicorn' stdout output:
+127.0.0.1 - - [02/Feb/2020:18:32:42 +0000] "GET / HTTP/1.0" 200 2656 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0"
+

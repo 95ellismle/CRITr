@@ -23,8 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 with open("./secret.key", 'r') as f:
     SECRET_KEY = f.read().strip()
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# This is manually changed with a bash script when using the ./startApp.sh script
+DEBUG = False
 
 ALLOWED_HOSTS = ["0.0.0.0"]
 
