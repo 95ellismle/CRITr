@@ -22,7 +22,5 @@ else
 	
 	MANAGE_PY_FILE="$SETTINGS_DIRECTORY/../manage.py"
 	
-	pipenv shell
-	
-	gunicorn -c "$SETTINGS_DIRECTORY/../config/gunicorn/conf.py" CRITr4.wsgi:application
+	pipenv run gunicorn -c "$SETTINGS_DIRECTORY/../config/gunicorn/conf.py" CRITr4.wsgi:application
 fi
