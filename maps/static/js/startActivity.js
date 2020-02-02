@@ -31,33 +31,18 @@ function startActivity() {
   }
 }
 
-function endActivity() {
+function endPatrol() {
   document.getElementById("fullOverlay").setAttribute('onclick','resetMapsPage();');
 
-  var anonChoice = getChoice("choiceAnon");
-  if (anonChoice == "makeAnon_yes") {
-    var anon = true;
-  } else if (anonChoice == "makeAnon_no") {
-    var anon = false;
-  } else {
-    var msg = "Something went wrong! Please let Matt know at 95ellismle@gmail.com";
-    msg += " To get the problem solved ASAP please explain exactly what you were ";
-    msg += " doing and quote the following: 'The choice for anonymising tracking data";
-    msg += " neither makeAnon_yes or makeAnon_no'. Thanks!";
-    alert(msg);
-    throw msg;
-  };
-
-  var saveChoice = getChoice("choiceSaveTrack");
-  if (saveChoice == "saveTrack_yes") {
-      saveTrackData(anon);
-  };
-
+  saveTrackData();
+  window.patrolOn = false;
   // Go back to normal home page
   resetMapsPage();
 }
 
 function startPatrol(startTime) {
+  patrolOn = true;
+
   document.getElementById("fullOverlay").style.display = "none";
   document.getElementById("startActivityOverlay").style.display = "none";
   document.getElementById("patrolOverlay").style.display = "block";

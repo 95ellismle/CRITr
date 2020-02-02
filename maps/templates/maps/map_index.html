@@ -14,6 +14,7 @@
         'save_track_data': "{% url 'save_track_data' %}",
         'get_track_ID': "{% url 'get_track_ID' %}",
   };
+  window.patrolOn = false;
 </script>
 <link rel="stylesheet" href="{% static 'css/startActivityOverlay.css' %}">
 {% csrf_token %}
@@ -153,39 +154,10 @@
       <div style="padding: 10px;">
         {% comment %} Ask about saving data {% endcomment %}
         <div id="saveChoiceRow" class="choiceRow" style="height: auto;">
-          <h5>Would you like to save the tracking data?</h5>
-          <div class="choiceSaveTrack active selected" id="saveTrack_yes"
-               onclick="selectActivity(this, 'choiceSaveTrack')">
-              <div class="tableDisplay">
-                <p class="tableText">Yes</p>
-              </div>
-          </div>
-          <div class="choiceSaveTrack active" id="saveTrack_no"
-               onclick="selectActivity(this, 'choiceSaveTrack')">
-             <div class="tableDisplay">
-               <p class="tableText">No</p>
-             </div>
-          </div>
+          <h5>Thanks for patrolling!</h5>
         </div>
 
-        {% comment %} Ask about anonymising data{% endcomment %}
-        <div id="anonChoiceRow" class="choiceRow" style="margin-top: 10px;">
-          <h5>Would you like this data to be anonymised?</h5>
-          <div class="choiceAnon active" id="makeAnon_yes"
-               onclick="selectActivity(this, 'choiceAnon')">
-              <div class="tableDisplay">
-                <p class="tableText">Yes</p>
-              </div>
-          </div>
-          <div class="choiceAnon active selected" id="makeAnon_no"
-               onclick="selectActivity(this, 'choiceAnon')">
-             <div class="tableDisplay">
-               <p class="tableText">No</p>
-             </div>
-          </div>
-        </div>
-
-        <button class="activitySubmitBtn" onclick="endActivity()">End Activity</button>
+        <button class="activitySubmitBtn" onclick="endPatrol()">End Activity</button>
       </div> <!-- End the overlay content div -->
 
     </div> <!-- End overlay div -->

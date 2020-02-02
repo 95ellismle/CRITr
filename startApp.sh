@@ -16,11 +16,13 @@ done
 
 if [ $DEVELOPMENT_MODE == "true" ]
 then
-	python3 manage.py runserver 0.0.0.0:8000
+	python3 manage.py runserver 127.0.0.1:8000
+
 else
-	SETTINGS_DIRECTORY="$HOME/Documents/CRITr/CRITr4"
+    echo "BOB"
+	SETTINGS_DIRECTORY="$HOME/Documents/CRITr/CRITr"
 	
 	MANAGE_PY_FILE="$SETTINGS_DIRECTORY/../manage.py"
 	
-	pipenv run gunicorn -c "$SETTINGS_DIRECTORY/../config/gunicorn/conf.py" CRITr4.wsgi:application
+	pipenv run gunicorn -c "$SETTINGS_DIRECTORY/../config/gunicorn/conf.py" CRITr.wsgi:application
 fi
