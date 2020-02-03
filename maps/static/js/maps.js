@@ -65,8 +65,14 @@ require([
 	});
 
 
+	var hr = (new Date()).getHours();
+	if (hr >= 19) {
+		 var basemap = "streets-night-vector";
+	} else {
+		var basemap = "streets-navigation-vector";
+	}
 	const map = new Map({
-		basemap: "streets-navigation-vector",
+		basemap: basemap,
 		layers: [graphicsLayer],
 		slider: false
 	});

@@ -31,38 +31,45 @@ function startActivity() {
   }
 }
 
-function endActivity() {
+/*
+Will handle the ending of an activity and close relevant overlays etc...
+
+  * @param[string] activity     The name of the activity to end. Choose from: 'patrol'.
+*/
+function endActivity(activity) {
   document.getElementById("fullOverlay").setAttribute('onclick','resetMapsPage();');
 
-  var anonChoice = getChoice("choiceAnon");
-  if (anonChoice == "makeAnon_yes") {
-    var anon = true;
-  } else if (anonChoice == "makeAnon_no") {
-    var anon = false;
-  } else {
-    var msg = "Something went wrong! Please let Matt know at 95ellismle@gmail.com";
-    msg += " To get the problem solved ASAP please explain exactly what you were ";
-    msg += " doing and quote the following: 'The choice for anonymising tracking data";
-    msg += " neither makeAnon_yes or makeAnon_no'. Thanks!";
-    alert(msg);
-    throw msg;
-  };
+  if (activity == "patrol") {
+    saveTrackData();
+    window.patrolOn = false;
+    // Go back to normal home page
+    resetMapsPage();
+  }
 
-  var saveChoice = getChoice("choiceSaveTrack");
-  if (saveChoice == "saveTrack_yes") {
-      saveTrackData(anon);
-  };
-
-  // Go back to normal home page
-  resetMapsPage();
+  document.getElementById("openActivitiesOverlay").setAttribute("onclick",
+                                                    "openActivitiesOverlay();");
 }
 
+/*
+Will handle the starting of a patrol e.g. open relevant overlays and start timer
+
+  * @param[Date] startTime    The time the patrol started (for the clock).
+*/
 function startPatrol(startTime) {
+  window.patrolOn = true;
+
+  // Open the relevant overlays
   document.getElementById("fullOverlay").style.display = "none";
   document.getElementById("startActivityOverlay").style.display = "none";
   document.getElementById("patrolOverlay").style.display = "block";
   startTracking();
 
+  // Make the plus symbol now report an incident
+  // document.getElementById("openActivitiesOverlay").removeAttribute("onclick")
+  document.getElementById("openActivitiesOverlay").setAttribute("onclick",
+                                                    "openPatrolReport();");
+
+  // Update the clock every second
   window.patrolTimer_incrementClock = setInterval(function(){
     // Adjust the timer
     var endTime = new Date();
@@ -70,6 +77,7 @@ function startPatrol(startTime) {
     document.getElementById("patrolTimer").innerHTML = secToTimer(timeDiff);
   }, 1000);
 
+  // Draw a point every 5 seconds
   window.patrolTimer_drawPoint = setInterval(function() {
     drawTrackPoint();
   }, 5000);
@@ -87,7 +95,7 @@ function endPatrol() {
   stopTracking();
 
   // Open the final end patrol window
-  openEndActivity();
+  openEndPatrol();
 }
 
 

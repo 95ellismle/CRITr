@@ -1,20 +1,15 @@
 #!/usr/bin/env bash
 
-SETTINGS_DIRECTORY="$HOME/Documents/CRITr/CRITr4"
-GUNICORN_PATH="/home/critr/.local/bin/gunicorn"
-
+SETTINGS_DIRECTORY="./CRITr"
 MANAGE_PY_FILE="$SETTINGS_DIRECTORY/../manage.py"
 
-# Activate the pip virtual enviroment
-pipenv shell
-
 # Collect static files and make migrations
-python3 $MANAGE_PY_FILE collectstatic --noinput
-python3 $MANAGE_PY_FILE makemigrations
-python3 $MANAGE_PY_FILE migrate --noinput
+pipenv run python3 $MANAGE_PY_FILE collectstatic --noinput
+pipenv run python3 $MANAGE_PY_FILE makemigrations
+pipenv run python3 $MANAGE_PY_FILE migrate --noinput
+
 
 # Read the flags
-
 DEVELOPMENT_MODE="false"
 while getopts d option
 do
@@ -28,7 +23,6 @@ done
 
 
 # Set the value of DEBUG in the settings.py file
-
 FILE_TO_CHANGE="$SETTINGS_DIRECTORY/settings.py"
 DEBUG_STR=$(grep "DEBUG" $FILE_TO_CHANGE)
 if [ $DEVELOPMENT_MODE == "true" ]
@@ -53,7 +47,6 @@ fi
 
 
 # Set the secret key
-
 SECRET_KEY_FILEPATH="$SETTINGS_DIRECTORY/../secret.key"
 if ! [ -f $SECRET_KEY_FILEPATH ]
 then
@@ -61,9 +54,8 @@ then
     echo $SECRET_KEY > $SECRET_KEY_FILEPATH
 fi
 
+# If in development mode run the app
 if [ $DEVELOPMENT_MODE ]
 then
-    python3 $MANAGE_PY_FILE runserver 127.0.0.1:8000
-else
-    $GUNICORN_PATH -c "$SETTINGS_DIRECTORY/../config/gunicorn/conf.py" CRITr4.wsgi:application --pid = /tmp/gunicorn.pid;
+    pipenv run python3 $MANAGE_PY_FILE runserver 127.0.0.1:8000
 fi
