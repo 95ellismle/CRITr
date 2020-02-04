@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-PSQL_PASS="0SXCSV0GOARvIyTN"
+PSQL_PASS=`tail -1 password.key`
 PSQL_USER="critr"
 PSQL_DB="critr_db"
 

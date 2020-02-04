@@ -2,10 +2,12 @@
 secret.key
 *.key
 secret*
+secret*.key
+password.key
+password*.key
+password*
 
-*.jpg
-*.png
-*.gif
+# Don't upload the media folder -the media shouldn't be here but this is just in case
 media/
 CRITr/media/
 CRITr/media/*

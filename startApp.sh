@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
-# Read the flags
+SETTINGS_DIRECTORY="$HOME/Documents/CRITr/CRITr"
+MANAGE_PY_FILE="$SETTINGS_DIRECTORY/../manage.py"
+SETTINGS_FILE="$SETTINGS_DIRECTORY/settings.py";
+DEVELOPMENT_MODE="false"
 
+# Read the flags
 DEVELOPMENT_MODE="false"
 while getopts d option
 do
@@ -12,15 +16,31 @@ esac
 done
 
 
-
-echo "DEV MODE = " $DEVELOPMENT_MODE;
+# 
 if [ $DEVELOPMENT_MODE == "true" ]
 then
+    echo "In Development Mode"
     ./init_app.sh -d
 	python3 manage.py runserver 127.0.0.1:8000
 else
+    echo "-----------------------------------------------------------------"
+    echo "|                                                               |"
+    echo "|   ########   ##########   ########### ########### ##########  |"
+    echo "| ##########   ###########  ########### ########### ########### |"
+    echo "| #####        ###     ###      ###         ###     ###     ### |"
+    echo "| ###          ###     ###      ###         ###     ###     ### |"
+    echo "| ###          ###########      ###         ###     ########### |"
+    echo "| ###          ##########       ###         ###     #########   |"
+    echo "| #####        ###  ####        ###         ###     ###  ####   |"
+    echo "| ##########   ###   ####   ###########     ###     ###   ####  |"
+    echo "|   ########   ###    ####  ###########     ###     ###    #### |"
+    echo "|                                                               |"
+    echo "|---------------------------------------------------------------|"
+    echo "|            Communities Resolving Issues Together              |"
+    echo "-----------------------------------------------------------------"
+    echo ""
+    echo ""
 	SETTINGS_DIRECTORY="$HOME/Documents/CRITr/CRITr"
-	
 	MANAGE_PY_FILE="$SETTINGS_DIRECTORY/../manage.py"
 	
     ./init_app.sh

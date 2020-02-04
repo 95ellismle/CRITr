@@ -47,13 +47,22 @@ else
 fi
 
 
-
 # Set the secret key
 SECRET_KEY_FILEPATH="$SETTINGS_DIRECTORY/../secret.key"
 if ! [ -f $SECRET_KEY_FILEPATH ]
 then
     SECRET_KEY=`head /dev/urandom | tr -dc A-Za-z0-9 | head -c 72 ; echo ""`
     echo $SECRET_KEY > $SECRET_KEY_FILEPATH
+fi
+
+
+# Change the db host
+CURR_HOST_STR=`grep "'HOST':.*'," $SETTINGS_FILE`
+if [ $DEVELOPMENT_MODE == "true" ]
+then
+    sed -i "s/$CURR_HOST_STR/        'HOST': 'localhost',/" $SETTINGS_FILE;
+else
+    sed -i "s/$CURR_HOST_STR/        'HOST': '',/" $SETTINGS_FILE;
 fi
 
 
