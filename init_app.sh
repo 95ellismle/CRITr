@@ -1,15 +1,14 @@
 #!/usr/bin/env bash
 
 SETTINGS_DIRECTORY="./CRITr"
+MAPS_DIRECTORY="./maps"
 MANAGE_PY_FILE="$SETTINGS_DIRECTORY/../manage.py"
-
-# Activate the pip virtual enviroment
-pipenv shell
+BASE_HTML_FILE="$MAPS_DIRECTORY/templates/base.html"
 
 # Collect static files and make migrations
-python3 $MANAGE_PY_FILE collectstatic --noinput
-python3 $MANAGE_PY_FILE makemigrations
-python3 $MANAGE_PY_FILE migrate --noinput
+pipenv run python3 $MANAGE_PY_FILE collectstatic --noinput
+pipenv run python3 $MANAGE_PY_FILE makemigrations
+pipenv run python3 $MANAGE_PY_FILE migrate --noinput
 
 
 # Read the flags
@@ -57,8 +56,13 @@ then
     echo $SECRET_KEY > $SECRET_KEY_FILEPATH
 fi
 
-# If in development mode run the app
-if [ $DEVELOPMENT_MODE ]
+
+# Use the downloaded jquery in development mode (as the developer may be offline, though for production the jquery CDN should be faster)
+
+# Will comment an html line
+if [ $DEVELOPMENT_MODE == "true" ]
 then
-    python3 $MANAGE_PY_FILE runserver 127.0.0.1:8000
+    sed -i "s/https:\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/3.4.1\/jquery.min.js/{% static 'js\/jquery.js'}/" $BASE_HTML_FILE
+else
+    sed -i "s/{% static 'js\/jquery.js'}/https:\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/3.4.1\/jquery.min.js/" $BASE_HTML_FILE
 fi
