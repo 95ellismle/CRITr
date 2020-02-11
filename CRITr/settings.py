@@ -26,7 +26,7 @@ with open("./secret.key", 'r') as f:
 # This is manually changed with a bash script when using the ./startApp.sh script
 DEBUG = False
 
-ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1"]
+ALLOWED_HOSTS = ["www.critr.app", "127.0.0.1"]
 
 # Application definition
 
@@ -113,7 +113,11 @@ LOGOUT_REDIRECT_URL = '/'
 #SESSION_COOKIE_AGE = 3600 # on hour in seconds
 #SESSION_COOKIE_SECURE=True
 #SESSION_COOKIE_HTTPONLY=True
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 
 # Internationalization
