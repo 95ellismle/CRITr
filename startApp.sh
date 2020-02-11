@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
 
+echo $HOME
 SETTINGS_DIRECTORY="$HOME/Documents/CRITr/CRITr"
 MANAGE_PY_FILE="$SETTINGS_DIRECTORY/../manage.py"
 SETTINGS_FILE="$SETTINGS_DIRECTORY/settings.py";
 DEVELOPMENT_MODE="false"
 
 # Collect static files and make migrations
-pipenv run python3 $MANAGE_PY_FILE collectstatic --noinput
-pipenv run python3 $MANAGE_PY_FILE makemigrations
-pipenv run python3 $MANAGE_PY_FILE migrate --noinput
+PIPENV=/home/critr/.local/bin/pipenv
+$PIPENV run python3 $MANAGE_PY_FILE collectstatic --noinput
+$PIPENV run python3 $MANAGE_PY_FILE makemigrations
+$PIPENV run python3 $MANAGE_PY_FILE migrate --noinput
 
 
 # Read the flags
@@ -19,7 +21,7 @@ do
     case "${option}"
     in
     d)  echo "In Development Mode"
-        $DEVELOPMENT_MODE="true"
+        DEVELOPMENT_MODE="true";;
 esac
 done
 
@@ -35,7 +37,7 @@ fi
 
 # Set the value of DEBUG in the settings.py file
 DEBUG_STR=$(grep "DEBUG" $SETTINGS_FILE)
-if [ $DEVELOPMENT_MODE == "true" ]
+if [ "$DEVELOPMENT_MODE" == "true" ]
 then
     echo "Setting DEBUG = True"
     if ! [ -z "$DEBUG_STR" ]; then
@@ -58,7 +60,7 @@ fi
 
 # Change the db host
 CURR_HOST_STR=`grep "'HOST':.*'," $SETTINGS_FILE`
-if [ $DEVELOPMENT_MODE == "true" ]
+if [ "$DEVELOPMENT_MODE" == "true" ]
 then
     sed -i "s/$CURR_HOST_STR/        'HOST': 'localhost',/" $SETTINGS_FILE;
 else
@@ -67,7 +69,7 @@ fi
 
 
 
-if [ $DEVELOPMENT_MODE == "true" ]
+if [ "$DEVELOPMENT_MODE" == "true" ]
 then
 	python3 manage.py runserver 127.0.0.1:8000
     exit
@@ -76,5 +78,5 @@ else
 	
 	MANAGE_PY_FILE="$SETTINGS_DIRECTORY/../manage.py"
 	
-	pipenv run gunicorn -c "$SETTINGS_DIRECTORY/../config/gunicorn/conf.py" CRITr.wsgi:application
+	$PIPENV run gunicorn -c "$SETTINGS_DIRECTORY/../config/gunicorn/conf.py" CRITr.wsgi:application
 fi
