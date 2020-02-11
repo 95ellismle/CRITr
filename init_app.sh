@@ -1,7 +1,26 @@
 #!/usr/bin/env bash
 
 SETTINGS_DIRECTORY="./CRITr"
+SETTINGS_FILE="$SETTINGS_DIRECTORY/settings.py"
+MAPS_DIRECTORY="./maps"
 MANAGE_PY_FILE="$SETTINGS_DIRECTORY/../manage.py"
+BASE_HTML_FILE="$MAPS_DIRECTORY/templates/base.html"
+
+if ! [ -f "$BASE_HTML_FILE" ]
+then
+    echo "Can't find file $BASE_HTML_FILE. PWD = $(echo pwd)"
+    exit 1
+fi
+if ! [ -f "$MANAGE_PY_FILE" ]
+then
+    echo "Can't find file $MANAGE_PY_FILE. PWD = $(echo pwd)"
+    exit 1
+fi
+if ! [ -f "$SETTINGS_FILE" ]
+then
+    echo "Can't find file $SETTINGS_FILE. PWD = $(echo pwd)"
+    exit 1
+fi
 
 # Collect static files and make migrations
 pipenv run python3 $MANAGE_PY_FILE collectstatic --noinput
@@ -22,28 +41,34 @@ done
 
 
 
+
 # Set the value of DEBUG in the settings.py file
 FILE_TO_CHANGE="$SETTINGS_DIRECTORY/settings.py"
 DEBUG_STR=$(grep "DEBUG" $FILE_TO_CHANGE)
-if [ $DEVELOPMENT_MODE == "true" ]
+if [ "$DEVELOPMENT_MODE" == "true" ]
 then 
     echo "Setting DEBUG = True"
     if ! [ -z "$DEBUG_STR" ]; then
         sed -i "s/$DEBUG_STR/DEBUG = True/" $FILE_TO_CHANGE
+        echo "Set DEBUG = True"
     else
         echo "ERROR: No DEBUG setting found in settings.py"
         exit 1;
     fi
 else
-    echo "Setting DEBUG to False"
+    echo "Setting DEBUG = False"
     if ! [ -z "$DEBUG_STR" ]; then
+        if ! [ -f "$FILE_TO_CHANGE" ]
+        then
+            echo "Can't find file $FILE_TO_CHANGE. pwd = $(echo pwd)"
+        fi
         sed -i "s/$DEBUG_STR/DEBUG = False/" $FILE_TO_CHANGE
+        echo "Set DEBUG = False"
     else
         echo "ERROR: No DEBUG setting found in settings.py"
         exit 1;
     fi
 fi
-
 
 
 # Set the secret key
@@ -53,9 +78,28 @@ then
     SECRET_KEY=`head /dev/urandom | tr -dc A-Za-z0-9 | head -c 72 ; echo ""`
     echo $SECRET_KEY > $SECRET_KEY_FILEPATH
 fi
+echo "Created Secret Key"
 
-# If in development mode run the app
-if [ $DEVELOPMENT_MODE ]
+
+# Change the db host
+CURR_HOST_STR=`grep "'HOST':.*'," $SETTINGS_FILE`
+echo $CURR_HOST_STR
+if [ "$DEVELOPMENT_MODE" == "true" ]
 then
-    pipenv run python3 $MANAGE_PY_FILE runserver 127.0.0.1:8000
+    sed -i "s/$CURR_HOST_STR/        'HOST': 'localhost',/" $SETTINGS_FILE;
+else
+    sed -i "s/$CURR_HOST_STR/        'HOST': '',/" $SETTINGS_FILE;
+fi
+echo "Changed Host String"
+
+
+# Use the downloaded jquery in development mode (as the developer may be offline, though for production the jquery CDN should be faster)
+# Will comment an html line
+if [ "$DEVELOPMENT_MODE" == "true" ]
+then
+    sed -i "s/{% static 'js\/jquery.js'}/https:\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/3.4.1\/jquery.min.js/" $BASE_HTML_FILE
+    echo "Set jquery path to local"
+else
+    sed -i "s/https:\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/3.4.1\/jquery.min.js/{% static 'js\/jquery.js'}/" $BASE_HTML_FILE
+    echo "Set jquery path to CDN"
 fi
