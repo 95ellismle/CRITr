@@ -24,7 +24,7 @@ with open("./secret.key", 'r') as f:
     SECRET_KEY = f.read().strip()
 
 # This is manually changed with a bash script when using the ./startApp.sh script
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1"]
 
@@ -76,13 +76,14 @@ WSGI_APPLICATION = 'CRITr.wsgi.application'
 
 with open("password.key", "r") as f:
     pwd = f.readlines()[-1]
+print(pwd)
 DATABASES = {
     'default': {
         'ENGINE': "django.db.backends.postgresql_psycopg2",
         "NAME": "critr_db",
         "USER": "critr",
         "PASSWORD": pwd,
-        'HOST': '',
+        'HOST': 'localhost',
         "PORT": "",
     }
 }
