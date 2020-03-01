@@ -26,7 +26,7 @@ with open("./secret.key", 'r') as f:
 # This is manually changed with a bash script when using the ./startApp.sh script
 DEBUG = True
 
-ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1"]
+ALLOWED_HOSTS = ["www.critr.app", "127.0.0.1"]
 
 # Application definition
 
@@ -75,8 +75,8 @@ WSGI_APPLICATION = 'CRITr.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 with open("password.key", "r") as f:
-    pwd = f.readlines()[-1]
-print(pwd)
+    pwd = f.readlines()[-1].strip("\n")
+
 DATABASES = {
     'default': {
         'ENGINE': "django.db.backends.postgresql_psycopg2",
@@ -84,7 +84,7 @@ DATABASES = {
         "USER": "critr",
         "PASSWORD": pwd,
         'HOST': 'localhost',
-        "PORT": "",
+        #"PORT": "",
     }
 }
 
@@ -110,11 +110,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # Where to go after logging in
 LOGIN_REDIRECT_URL = '/maps'
 LOGOUT_REDIRECT_URL = '/'
-#SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-#SESSION_COOKIE_AGE = 3600 # on hour in seconds
-#SESSION_COOKIE_SECURE=True
-#SESSION_COOKIE_HTTPONLY=True
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
+# SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+# SESSION_COOKIE_HTTPONLY = True
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SECURE_SSL_REDIRECT = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_AGE = 3600 # on hour in seconds
 
 
 # Internationalization
