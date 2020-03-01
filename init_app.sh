@@ -1,32 +1,5 @@
 #!/usr/bin/env bash
 
-SETTINGS_DIRECTORY="./CRITr"
-SETTINGS_FILE="$SETTINGS_DIRECTORY/settings.py"
-MAPS_DIRECTORY="./maps"
-MANAGE_PY_FILE="$SETTINGS_DIRECTORY/../manage.py"
-BASE_HTML_FILE="$MAPS_DIRECTORY/templates/base.html"
-
-if ! [ -f "$BASE_HTML_FILE" ]
-then
-    echo "Can't find file $BASE_HTML_FILE. PWD = $(echo pwd)"
-    exit 1
-fi
-if ! [ -f "$MANAGE_PY_FILE" ]
-then
-    echo "Can't find file $MANAGE_PY_FILE. PWD = $(echo pwd)"
-    exit 1
-fi
-if ! [ -f "$SETTINGS_FILE" ]
-then
-    echo "Can't find file $SETTINGS_FILE. PWD = $(echo pwd)"
-    exit 1
-fi
-
-# Collect static files and make migrations
-pipenv run python3 $MANAGE_PY_FILE collectstatic --noinput
-pipenv run python3 $MANAGE_PY_FILE makemigrations
-pipenv run python3 $MANAGE_PY_FILE migrate --noinput
-
 
 # Read the flags
 DEVELOPMENT_MODE="false"
@@ -40,6 +13,43 @@ esac
 done
 
 
+# Set up all the filepaths for development and production
+if [ "$DEVELOPMENT_MODE" == "true" ]
+then
+    HOME_DIRECTORY="~"
+    ROOT_DIRECTORY="."
+else
+    HOME_DIRECTORY="/home/critr"
+    ROOT_DIRECTORY="$HOME_DIRECTORY/Documents/CRITr"
+fi
+
+SETTINGS_DIRECTORY="$ROOT_DIRECTORY/CRITr"
+SETTINGS_FILE="$SETTINGS_DIRECTORY/settings.py"
+MAPS_DIRECTORY="$ROOT_DIRECTORY/maps"
+MANAGE_PY_FILE="$ROOT_DIRECTORY/manage.py"
+BASE_HTML_FILE="$MAPS_DIRECTORY/templates/base.html"
+
+
+if ! [ -f "$BASE_HTML_FILE" ]
+then
+    echo "Can't find file $BASE_HTML_FILE. PWD = $(pwd)"
+    exit 1
+fi
+if ! [ -f "$MANAGE_PY_FILE" ]
+then
+    echo "Can't find file $MANAGE_PY_FILE. PWD = $(pwd)"
+    exit 1
+fi
+if ! [ -f "$SETTINGS_FILE" ]
+then
+    echo "Can't find file $SETTINGS_FILE. PWD = $(pwd)"
+    exit 1
+fi
+
+# Collect static files and make migrations
+pipenv run python3 $MANAGE_PY_FILE collectstatic --noinput
+pipenv run python3 $MANAGE_PY_FILE makemigrations
+pipenv run python3 $MANAGE_PY_FILE migrate --noinput
 
 
 # Set the value of DEBUG in the settings.py file
@@ -60,7 +70,7 @@ else
     if ! [ -z "$DEBUG_STR" ]; then
         if ! [ -f "$FILE_TO_CHANGE" ]
         then
-            echo "Can't find file $FILE_TO_CHANGE. pwd = $(echo pwd)"
+            echo "Can't find file $FILE_TO_CHANGE. pwd = $(pwd)"
         fi
         sed -i "s/$DEBUG_STR/DEBUG = False/" $FILE_TO_CHANGE
         echo "Set DEBUG = False"
@@ -72,7 +82,7 @@ fi
 
 
 # Set the secret key
-SECRET_KEY_FILEPATH="$SETTINGS_DIRECTORY/../secret.key"
+SECRET_KEY_FILEPATH="$ROOT_DIRECTORY/secret.key"
 if ! [ -f $SECRET_KEY_FILEPATH ]
 then
     SECRET_KEY=`head /dev/urandom | tr -dc A-Za-z0-9 | head -c 72 ; echo ""`
@@ -95,7 +105,7 @@ echo "Changed Host String"
 
 # Use the downloaded jquery in development mode (as the developer may be offline, though for production the jquery CDN should be faster)
 # Will comment an html line
-if [ "$DEVELOPMENT_MODE" == "true" ]
+if [ "$DEVELOPMENT_MODE" == "false" ]
 then
     sed -i "s/{% static 'js\/jquery.js'}/https:\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/3.4.1\/jquery.min.js/" $BASE_HTML_FILE
     echo "Set jquery path to local"
