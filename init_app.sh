@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
+echo $SETTINGS_FILE
 
 # Set the value of DEBUG in the settings.py file
-FILE_TO_CHANGE="$SETTINGS_DIRECTORY/settings.py"
-DEBUG_STR=$(grep "DEBUG" $FILE_TO_CHANGE)
+DEBUG_STR=$(grep "DEBUG" $SETTINGS_FILE)
 if [ "$DEVELOPMENT_MODE" == "true" ]
 then 
     echo "Setting DEBUG = True"
     if ! [ -z "$DEBUG_STR" ]; then
-        sed -i "s/$DEBUG_STR/DEBUG = True/" $FILE_TO_CHANGE
+        sed -i "s/$DEBUG_STR/DEBUG = True/" $SETTINGS_FILE
         echo "Set DEBUG = True"
     else
         echo "ERROR: No DEBUG setting found in settings.py"
@@ -17,11 +17,11 @@ then
 else
     echo "Setting DEBUG = False"
     if ! [ -z "$DEBUG_STR" ]; then
-        if ! [ -f "$FILE_TO_CHANGE" ]
+        if ! [ -f "$SETTINGS_FILE" ]
         then
-            echo "Can't find file $FILE_TO_CHANGE. pwd = $(pwd)"
+            echo "Can't find file $SETTINGS_FILE. pwd = $(pwd)"
         fi
-        sed -i "s/$DEBUG_STR/DEBUG = False/" $FILE_TO_CHANGE
+        sed -i "s/$DEBUG_STR/DEBUG = False/" $SETTINGS_FILE
         echo "Set DEBUG = False"
     else
         echo "ERROR: No DEBUG setting found in settings.py"
@@ -52,34 +52,47 @@ fi
 echo "Changed Host String"
 
 
+
 # Use the downloaded jquery in development mode (as the developer may be offline, though for production the jquery CDN should be faster)
 # Will comment an html line
+DEV_STR="{% static 'js\/jquery.js' %}"
+PROD_STR="https:\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/3.4.1\/jquery.min.js"
 if [ "$DEVELOPMENT_MODE" == "false" ]
 then
-    sed -i "s/{% static 'js\/jquery.js'}/https:\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/3.4.1\/jquery.min.js/" $BASE_HTML_FILE
+    sed -i s/"$DEV_STR"/"$PROD_STR"/ $BASE_HTML_FILE
     echo "Set jquery path to local"
 else
-    sed -i "s/https:\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/3.4.1\/jquery.min.js/{% static 'js\/jquery.js'}/" $BASE_HTML_FILE
+    sed -i s/"$PROD_STR"/"$DEV_STR"/ $BASE_HTML_FILE
     echo "Set jquery path to CDN"
 fi
 
+
+
 # Choose to turn on or off the secure http settings for development or production
+
+# Create an array of variables to comment
+declare -a lines_to_comment=("SECURE_SSL_REDIRECT" "SECURE_PROXY_SSL_HEADER" "SESSION_COOKIE_SECURE" "CSRF_COOKIE_SECURE" "STATIC_ROOT")
+
+# If in dev mode then comment them
 if [ "$DEVELOPMENT_MODE" == "true" ]
 then
-    declare -a lines_to_comment=("SECURE_SSL_REDIRECT" "SECURE_PROXY_SSL_HEADER" "SESSION_COOKIE_SECURE" "CSRF_COOKIE_SECURE")
     for line in "${lines_to_comment[@]}"
     do
         line_commented=$(grep "# *$line" $SETTINGS_FILE)
         if [ -z "$line_commented" ]
         then
             sed -i s/"$line"/"# $line"/ $SETTINGS_FILE
-        else
-            echo "Don't recomment"
         fi
     done
+
 else
-    sed -i s/"# *SECURE_PROXY_SSL_HEADER"/"SECURE_PROXY_SSL_HEADER"/ $SETTINGS_FILE
+
+    for line in "${lines_to_comment[@]}"
+    do
+        sed -i s/"# *$line"/"$line"/ $SETTINGS_FILE
+    done
 fi
+
 
 # Collect static files and make migrations
 echo "Collecting static and making migrations"

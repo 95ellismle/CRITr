@@ -137,6 +137,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = "%s/CRITr_Docs/static" % (os.getenv("HOME"))
+# STATIC_ROOT = "%s/CRITr_Docs/static" % (os.getenv("HOME"))
 MEDIA_ROOT = '%s/CRITr_Docs/media'   % (os.getenv("HOME"))
 

@@ -155,13 +155,21 @@
 
 <div id="incidentChoice">
   <div class="titleRow">
-    <strong>Report Incident:</strong> incident type
+    <strong>Report Incident:</strong> Incident Type
   </div>
 
-  <div class="addRow"> <i class="material-icons">delete_outline</i> Littering </div>
-  <div class="addRow"> <i class="material-icons">group</i> Loittering  </div>
-  <div class="addRow"> <i class="material-icons">photo</i> Graffiti  </div>
-  <div class="addRow"> <i class="material-icons">directions_car</i> Speeding  </div>
+  <div class="addRow" onclick="addPatrolIncident('littering')">
+    <i class="material-icons">delete_outline</i> Littering
+  </div>
+  <div class="addRow" onclick="addPatrolIncident('loittering')">
+    <i class="material-icons">group</i> Loittering
+  </div>
+  <div class="addRow" onclick="addPatrolIncident('graffiti')">
+    <i class="material-icons">photo</i> Graffiti
+  </div>
+  <div class="addRow" onclick="addPatrolIncident('speeding')">
+    <i class="material-icons">directions_car</i> Speeding
+  </div>
 </div>
 
 
@@ -170,11 +178,10 @@
 
 </body>
 {% endblock %} {% block additionalScriptsFoot %}
+<script src="{% static 'js/incidentIcons.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/reportIncidentInMap.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/maps.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/cards.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/startActivity.js' %}" type="text/javascript"></script>
 <script src="{% static 'js/overlays.js' %}" type="text/javascript"></script>
-<script>
-</script>
 {% endblock %}

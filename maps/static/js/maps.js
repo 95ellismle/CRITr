@@ -2,6 +2,7 @@ var ptsLoaded = {};
 var trackPtsDrawn = [];
 var locations_to_save = {'x': [], 'y': [], 'lat': [], 'lon': []};
 var prevLocation = {'latitude':-1000, 'longitude': -1000};
+var iconsToRemove = [];
 var trackID;
 
 
@@ -36,6 +37,7 @@ function startTracking(){};
 function stopTracking(){};
 function drawTrackPoint(){};
 function saveTrackData(){};
+function addIconAtCurrentPos(){};
 var reportedPoints = [];
 
 require([
@@ -49,12 +51,12 @@ require([
 	"esri/layers/GraphicsLayer",
 	"esri/widgets/Sketch/SketchViewModel",
 	"esri/widgets/Track",
-	"esri/geometry/Point",
+	// "esri/geometry/Point",
 ],
 
 		function(Map, MapView, Locate, Graphic,
 					   GraphicsLayer, SketchViewModel, Track,
-						 Search, Point) {
+						 Search) {
 
 	let editGraphic;
 
@@ -260,6 +262,25 @@ require([
 				prevLocation.longitude = location.longitude;
 			}
 		}, 5000);
+
+		/*
+		Will add an icon at the user's current position
+		*/
+		addIconAtCurrentPos = function(iconName) {
+			var location = track.graphic.geometry;
+
+			var iconPoint = {
+				type: "point",
+				longitude: location.longitude,
+				latitude: location.latitude,
+			};
+			const mapIcon = new Graphic({
+				geometry: iconPoint,
+				symbol: incidentIcons[iconName],
+			});
+			view.graphics.add(mapIcon);
+			iconsToRemove.push(mapIcon);
+		}
 
 		startTracking = function() {
 			// Get the trackID

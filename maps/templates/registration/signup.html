@@ -238,6 +238,7 @@
 					data: {'email': email},
 					success: function(data) {
 						validate_emailFnc(data);
+						console.log(data)
 					},
 					error: function( jqXhr, textStatus, errorThrown ){
 						console.log( errorThrown );

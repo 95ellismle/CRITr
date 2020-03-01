@@ -27,7 +27,6 @@ function centerOverlayDiv(overlayDiv) {
   var windowHeight = window.innerHeight;
   var vertMargin = Math.floor((windowHeight - activityDiv.clientHeight)/2) - 10;
   activityDiv.style.top = vertMargin.toString() + "px";
-  console.log(windowHeight, vertMargin, activityDiv.clientHeight);
 
   // Set the left margin
   var windowWidth = window.innerWidth;
@@ -100,6 +99,13 @@ function openPatrolReport() {
   centerOverlayDiv('incidentChoice');
 }
 
+/*
+Will add an icon to the map and save the recording of an incident.
+*/
+function addPatrolIncident(incident) {
+   resetMapsPage();
+   addIconAtCurrentPos(incident);
+}
 
 /*
 Will hide overlays and show divs in order to return to the first page the user

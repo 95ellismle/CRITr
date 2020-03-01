@@ -17,6 +17,7 @@ then
     ROOT_DIRECTORY="."
 else
     ROOT_DIRECTORY="$HOME/Documents/CRITr"
+    ROOT_DIRECTORY="."
 fi
 
 SETTINGS_DIRECTORY="$ROOT_DIRECTORY/CRITr"
@@ -53,7 +54,11 @@ export PIPENV
 
 if [ "$DEVELOPMENT_MODE" == "true" ]
 then
-    echo "Running app in development mode"
+    echo "..................................."
+    echo ".                                 ."
+    echo ". Running app in development mode ."
+    echo ".                                 ."
+    echo "..................................."
 
 	$PIPENV run python3 manage.py runserver 127.0.0.1:8000
 else
