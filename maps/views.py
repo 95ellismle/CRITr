@@ -11,7 +11,7 @@ from django.contrib.auth import authenticate, login
 import re
 import json
 
-from .forms import IncidentForm, SignUpForm
+from .forms import IncidentForm, SignUpForm, PatrolIncidentForm
 from .models import Track
 
 def user_login(request):
@@ -100,7 +100,7 @@ def validate_email(request):
     }
     return JsonResponse(data)
 
-
+@login_required
 def save_track_data(request):
     if request.is_ajax():
         anonymise = True if request.POST['anon'] == 'true' else False
@@ -140,6 +140,7 @@ def get_last_track_ID(user):
 
     return lastTrackID
 
+@login_required
 def get_track_ID(request):
     """
     Will get the last trackID saved in the database.
@@ -152,3 +153,24 @@ def get_track_ID(request):
         data = {'trackID': False}
 
     return JsonResponse(data)
+
+@login_required
+def end_patrol_report(request):
+    """
+    Points to the end of patrol reporting page.
+    """
+    if request.method == "POST":
+        form = PatrolIncidentForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = request.user
+            trackID = get_last_track_ID(request.user)
+            post.trackID = trackID
+            post.save()
+            return redirect("successful_report")
+
+    else:
+        form = PatrolIncidentForm()
+
+    return render(request, "reporting/endPatrolReport.html",
+                  {'form': form, "succes": False})

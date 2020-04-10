@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{# https://docs.djangoproject.com/en/3.0/ref/templates/builtins/ #}
+
+
+{% block title %}Report an incident{% endblock %}
+
+
+{% block addtionalScriptsHead %}
+<style type="text/css">
+	.card {
+		border-radius: 10px;
+		width: 100%;
+		height: 85%;
+		box-shadow: 2px 4px 10px #888888;
+		margin-top: 3%;
+		scroll-snap-align: start;
+		margin-bottom: 4%;
+		padding: 10px;
+	}
+	.container {
+		height: 100%;
+		width: 100%;
+		padding: 0;
+		margin: 1%;
+		padding-bottom: 20px;
+		scroll-snap-type: y mandatory;
+  		overflow-x: hidden;
+  		overflow-y: auto;
+	}
+</style>
+{% endblock %}
+
+
+{% block additionalScriptsFoot %}
+{% endblock %}
+
+
+{% block content %}
+<!-- Reporting incident navbar -->
+<div id="reportIncidentBar" style="display: block">
+    <!-- Back Button -->
+    <a href="{% url 'maps' %}" style="color: inherit;">
+        <div class="navBarElm" style="width: 60px; float: left; display:flex; align-items:center;">
+           <i class="material-icons" style="margin-left: 25%;">arrow_back</i>
+        </div>
+    </a>
+
+    <!-- NavBar Title -->
+    <div class="navBarElm" style="width: calc(100% - 60px); float: right;">
+      <p  class="titleReportTxt" style="height: 75%; margin-top: 15px;">
+        Review Incidents
+      </p>
+    </div>
+</div>
+
+<div class='container'>
+	<div class='card'>
+		<h2></h2>
+	</div>
+	<div class='card'>
+		
+	</div>
+	<div class='card'>
+		
+	</div>
+
+	<div style="height: 100px;">
+		
+	</div>
+</div>
+
+
+{% endblock %}

@@ -1,4 +1,4 @@
-#startActivityOverlay, #endTrack, #incidentChoice {
+div[id^="addDetails"], #startActivityOverlay, #endPatrol, #incidentChoice, #getPhoto {
 	position: fixed;
   display: none;
 	width: 80%;
@@ -9,6 +9,19 @@
 	top: 0;
   z-index: 3;
   padding: 0;
+}
+#addDetails-title {
+  width: calc(100%-50px);
+  height: 100%; 
+  line-height: 100%; 
+  display: inline-block; 
+  padding:10px;
+}
+.addDetails-title-button {
+  float: right; 
+  display: inline-block; 
+  height: 100%; 
+  width: 50px;
 }
 .title {
   margin: 20px 0 20px 10px;
@@ -52,6 +65,7 @@
 	font-size: 18px;
 	padding: 10px;
 	background-color: #ff5722;
+  height: 47px;
 	/* padding: 0; */
   /* margin: 10px; */
   width: 100%;

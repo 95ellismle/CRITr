@@ -18,4 +18,5 @@ urlpatterns = [
         name='validate_email'),
     url('maps/save_track_data', views.save_track_data, name="save_track_data"),
     url('maps/get_track_ID', views.get_track_ID, name="get_track_ID"),
+    url("end_patrol_report", views.end_patrol_report, name="end_patrol_report")
 ]

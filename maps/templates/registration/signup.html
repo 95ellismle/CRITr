@@ -33,7 +33,7 @@
 						<!-- </div> -->
 
 
-					  <!-- Add the buttons -->
+				<!-- Add the buttons -->
 		        <!-- Just the next button -->
  		        {% if forloop.counter == 1 %}
 		          <button class="nextBtn btn" id="nxtBtn_{{ forloop.counter }}"
@@ -81,6 +81,9 @@
 			<div class="loginFormRow">
 				<input type="password" placeholder="Password" name="password" class="loginFormInput">
 			</div> -->
+	<div class="loginFormRow" style="text-align: center;     position: absolute;">
+		<a href="{% url 'login' %}"style="text-decoration: underline; color: #ff5722;">login</a>
+	</div>
   </form>
 </div>
 {% endblock %}

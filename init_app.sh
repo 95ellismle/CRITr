@@ -71,7 +71,7 @@ fi
 # Choose to turn on or off the secure http settings for development or production
 
 # Create an array of variables to comment
-declare -a lines_to_comment=("SECURE_SSL_REDIRECT" "SECURE_PROXY_SSL_HEADER" "SESSION_COOKIE_SECURE" "CSRF_COOKIE_SECURE" "STATIC_ROOT")
+declare -a lines_to_comment=("SECURE_SSL_REDIRECT" "SECURE_PROXY_SSL_HEADER" "SESSION_COOKIE_SECURE" "CSRF_COOKIE_SECURE")
 
 # If in dev mode then comment them
 if [ "$DEVELOPMENT_MODE" == "true" ]
@@ -93,9 +93,18 @@ else
     done
 fi
 
+# Change static root to maps/static for development
+#staticRoot=`grep "STATIC_ROOT" $SETTINGS_FILE`
+if [ "$DEVELOPMENT_MODE" == "true" ]
+then
+    sed -i s/"STATIC_ROOT *=.*"/"STATIC_ROOT = '.\/maps\/static'"/g $SETTINGS_FILE
+else
+    sed -i s/"STATIC_ROOT *=.*"/"STATIC_ROOT = \"%s\/CRITr_Docs\/static\" % (os.getenv(\"HOME\"))"/g $SETTINGS_FILE
+    $PIPENV run python3 $MANAGE_PY_FILE collectstatic --noinput
+fi
+
 
 # Collect static files and make migrations
 echo "Collecting static and making migrations"
-$PIPENV run python3 $MANAGE_PY_FILE collectstatic --noinput
 $PIPENV run python3 $MANAGE_PY_FILE makemigrations
 $PIPENV run python3 $MANAGE_PY_FILE migrate --noinput

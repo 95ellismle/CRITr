@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 
+{# https://docs.djangoproject.com/en/3.0/ref/templates/builtins/ #}
+
 {% block title %}Report an incident{% endblock %}
 
 {% block addtionalScriptsHead %}
@@ -18,12 +20,13 @@
   .flatpickr-prev-month, .flatpickr-next-month {
     display: none;
   }
+
+
 </style>
 
   <script src="{% static 'js/forms.js' %}"></script>
   <script>
     var coords = JSON.parse(window.localStorage.getItem("coords"));
-    console.log(coords);
     document.getElementById("id_latitude").value = coords['lat'];
     document.getElementById("id_longitude").value = coords['lon'];
     document.getElementById("id_x").value = coords['x'];
@@ -88,7 +91,13 @@
 
   <form action="" onclick="getValsFromForm()" method="POST" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>
     {% csrf_token %}
-    <div style="display: none">{{ form.as_p }}</div>
+    <div style="display: none">
+      {% for i in form %}
+          {% if i.label != "PhotoPath" %}
+            <p> {{ i }} </p>
+          {% endif %}
+      {% endfor %}
+    </div>
     <div class="formRow">
   	  {{ form.photoPath }}
       <!-- <input type="file"> -->
@@ -127,31 +136,31 @@
     <div class="formBoxes"
          onclick="selectIncident('Littering')">
       <p class="formTitle">
-        <i class="material-icons">delete_outline</i> &nbsp; Littering
+        <span class="icon litter_icon"></span>&nbsp; Littering
       </p>
     </div>
     <div class="formBoxes"
          onclick="selectIncident('Loitering')">
       <p class="formTitle">
-        <i class="material-icons">group</i>&nbsp; Loitering
+        <span class="icon loittering_icon"></span>&nbsp; Loitering
       </p>
     </div>
     <div class="formBoxes"
          onclick="selectIncident('Graffiti')">
       <p class="formTitle">
-        <i class="material-icons">photo</i>&nbsp; Graffiti
+        <span class="icon graffiti_icon"></span>&nbsp; Graffiti
       </p>
     </div>
     <div class="formBoxes"
          onclick="selectIncident('Speeding')">
       <p class="formTitle">
-        <i class="material-icons">directions_car</i>&nbsp; Speeding
+        <span class="icon speeding_icon"></span>&nbsp; Speeding
       </p>
     </div>
     <div class="formBoxes"
          onclick="selectIncident('Parking')">
       <p class="formTitle">
-        <i class="material-icons">local_parking</i>&nbsp; Parking
+        <span class="icon parking_icon"></span>&nbsp; Parking
       </p>
     </div>
   </div>
@@ -159,10 +168,10 @@
 
 <!-- The extra details part -->
 <div id="overlayDetails" class="overlayBox">
-    <div style="height: 15%; vertical-align: middle">
-      <h2 style="text-align: left; width: 85%; height: 100%; line-height: 100%; display: inline-block; margin: 0; padding:0">&nbsp; Extra Details</h2>
+    <div style="height: 50px;">
+      <h2 style="width: calc(100%-50px); height: 100%; line-height: 100%; display: inline-block; padding:10px;">&nbsp; Details of ...</h2>
       <button class="btn btn-success" id="deetsOK"
-              style="float: right; display: inline-block; height: 100%; width: 15%;"
+              style="float: right; display: inline-block; height: 100%; width: 50px;"
               onclick="closeOverlay()">
         OK</button>
     </div>

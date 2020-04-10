@@ -1,3 +1,5 @@
+incidents = [];
+
 /*
 Will open the activities menu that appears in the top-right of the screen
 */
@@ -37,9 +39,10 @@ function centerOverlayDiv(overlayDiv) {
 /*
 Will center an overlay and a row of divs inside it.
 
-   * @param[string] className   The name of the class within the div to set the width of.
-   * @param[string] overlayDiv   The div to center in the window.
-   * @param[string] choiceRowDiv   The div to change according to div width.
+   * @param[string] className     The name of the class within the div to set the width of.
+   * @param[string] overlayDiv    The div to center in the window.
+   * @param[string] choiceRowDiv  The div to change according to div width.
+   * @param[bool]   changeHeight  Whether to change the height of the buttons
 */
 function setStartActDim(className, overlayDiv, choiceRowDiv, changeHeight=true) {
   // Set the button heights
@@ -80,14 +83,16 @@ function openStartActivity() {
 /*
 Will open the end patrol overlay.
 */
-function openEndPatrol() {
+function openEndPatrol(distTravelled) {
   document.getElementById("fullOverlay").removeAttribute("onclick");
+  distTravelled = distTravelled / 1000
 
   $('#overlayAdd').hide();
   $('#openActivitiesOverlay').show();
   $("#fullOverlay").show();
-  $("#endTrack").show();
-  centerOverlayDiv("endTrack");
+  $("#distTravelled").html("You travelled "+ distTravelled.toString() + "km!")
+  $("#endPatrol").show();
+  centerOverlayDiv("endPatrol");
 }
 
 /*
@@ -97,14 +102,6 @@ function openPatrolReport() {
   $('#fullOverlay').show();
   $('#incidentChoice').show();
   centerOverlayDiv('incidentChoice');
-}
-
-/*
-Will add an icon to the map and save the recording of an incident.
-*/
-function addPatrolIncident(incident) {
-   resetMapsPage();
-   addIconAtCurrentPos(incident);
 }
 
 /*
@@ -118,10 +115,11 @@ function resetMapsPage() {
   $('#overlayAdd').hide();
   $('#incidentChoice').hide();
   $('#overlayAccount').hide();
+  $('#getPhoto').hide();
   if (! window.patrolOn) {
     $('#patrolOverlay').hide();
-  }
-  $('#endTrack').hide();
+  };
+  $('#endPatrol').hide();
 
   // Show some overlays
   $('#openActivitiesOverlay').show();

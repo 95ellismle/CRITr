@@ -23,19 +23,31 @@ const loitteringIcon = {
 const graffitiIcon = {
   type: "text", // autocasts as new TextSymbol()
   // color: "#7A003C",
-  text: "<i class=\"material-icons\">directions_car</i>", // esri-icon-map-pin
+  text: "\ue65f", // esri-icon-map-pin
   font: {
     // autocasts as new Font()
     size: fontsize,
+    family: "CalciteWebCoreIcons" // Esri Icon Font
   }
 };
 const speedingIcon = {
   type: "text", // autocasts as new TextSymbol()
   // color: "#7A003C",
-  text: "<i class=\"material-icons\">photo</i>", // esri-icon-map-pin
+  text: "\ue646", // esri-icon-map-pin
   font: {
     // autocasts as new Font()
     size: fontsize,
+    family: "CalciteWebCoreIcons" // Esri Icon Font
+  }
+};
+const parkingIcon = {
+  type: "text", // autocasts as new TextSymbol()
+  // color: "#7A003C",
+  text: "P", // esri-icon-map-pin
+  font: {
+    // autocasts as new Font()
+    size: fontsize,
+    family: "CalciteWebCoreIcons" // Esri Icon Font
   }
 };
 
@@ -44,4 +56,5 @@ var incidentIcons = {
   'loittering': loitteringIcon,
   'graffiti': graffitiIcon,
   'speeding': speedingIcon,
+  'parking': parkingIcon,
 }

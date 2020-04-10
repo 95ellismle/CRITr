@@ -10,7 +10,7 @@ class IncidentForm(forms.ModelForm):
         super(IncidentForm, self).__init__(*args, **kwargs)
         for key in ('incidentType', 'incidentTime', 'incidentDate',
                     'longitude', 'x', 'y', 'timeSubmitted',
-                    'latitude',): #'userID',
+                    'latitude',):
             self.fields[key].required = True
 
         for key in ("details", "photoPath"):
@@ -21,6 +21,24 @@ class IncidentForm(forms.ModelForm):
         fields = ('incidentType', 'incidentTime', 'incidentDate',
                   'longitude', 'x', 'y', 'details', 'photoPath',
                   'timeSubmitted', 'latitude')#, 'userID',)
+
+class PatrolIncidentForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(PatrolIncidentForm, self).__init__(*args, **kwargs)
+        for key in ('incidentType', 'incidentTime', 'incidentDate',
+                    'longitude', 'x', 'y', 'timeSubmitted',
+                    'latitude', 'trackID'):
+            self.fields[key].required = True
+
+        for key in ("details", "photoPath"):
+            self.fields[key].required = False
+
+    class Meta:
+        model = models.PatrolIncident
+        fields = ('incidentType', 'incidentTime', 'incidentDate',
+                  'longitude', 'x', 'y', 'details', 'photoPath',
+                  'timeSubmitted', 'latitude', 'trackID')#, 'userID',)
 
 
 class SignUpForm(UserCreationForm):

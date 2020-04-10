@@ -1,9 +1,11 @@
 var ptsLoaded = {};
 var trackPtsDrawn = [];
-var locations_to_save = {'x': [], 'y': [], 'lat': [], 'lon': []};
+var trackPtsLocation = [];
+var locationsToSave = {'x': [], 'y': [], 'lat': [], 'lon': []};
 var prevLocation = {'latitude':-1000, 'longitude': -1000};
 var iconsToRemove = [];
 var trackID;
+var graphicsLayer;
 
 
 function getData(table, columns="*", func=false, extraQ="") {
@@ -38,7 +40,8 @@ function stopTracking(){};
 function drawTrackPoint(){};
 function saveTrackData(){};
 function addIconAtCurrentPos(){};
-var reportedPoints = [];
+function endMapsPatrol(){};
+function getUserLocation(){};
 
 require([
 	// The map
@@ -55,14 +58,14 @@ require([
 ],
 
 		function(Map, MapView, Locate, Graphic,
-					   GraphicsLayer, SketchViewModel, Track,
-						 Search) {
+					   GraphicsLayer, SketchViewModel, Track
+					  ) {
 
 	let editGraphic;
 
 
 	// Add the drop pin functionality
-	const graphicsLayer = new GraphicsLayer({
+	graphicsLayer = new GraphicsLayer({
 		id: "dropPins"
 	});
 
@@ -253,10 +256,10 @@ require([
 
 			if (doSave)
 			{
-				locations_to_save['x'].push(location.x);
-				locations_to_save['y'].push(location.y);
-				locations_to_save['lat'].push(location.latitude);
-				locations_to_save['lon'].push(location.longitude);
+				locationsToSave['x'].push(location.x);
+				locationsToSave['y'].push(location.y);
+				locationsToSave['lat'].push(location.latitude);
+				locationsToSave['lon'].push(location.longitude);
 
 				prevLocation.latitude = location.latitude;
 				prevLocation.longitude = location.longitude;
@@ -274,13 +277,44 @@ require([
 				longitude: location.longitude,
 				latitude: location.latitude,
 			};
-			const mapIcon = new Graphic({
+			var mapIcon = new Graphic({
 				geometry: iconPoint,
 				symbol: incidentIcons[iconName],
 			});
+
 			view.graphics.add(mapIcon);
 			iconsToRemove.push(mapIcon);
+
+			return mapIcon;
+		};
+
+		/*
+		Will return the user's location
+		*/
+		getUserLocation = function() { 
+			return track.graphic.geometry;
 		}
+
+		/*
+		Will remove all icons in the list iconsToRemove from the graphicsLayer.
+
+		The iconsToRemove list was created to hold the patrol incident icons, though
+		it could hold others if required. Just be careful!
+
+		Inputs:
+			* arr <array> => A list of the graphics that need to be removed.
+
+		N.B I should probably look a bit more carefully into how to remove the graphics
+		rather than make them invisible.
+		*/
+		removeFromGraphics = function(arr) {
+			for (var i=0; i<arr.length; i++) {
+				arr[i].visible = false;
+				graphicsLayer.remove(arr[i]);
+			};
+
+		};
+
 
 		startTracking = function() {
 			// Get the trackID
@@ -301,22 +335,31 @@ require([
 
 			// Start the tracking
 			track.start();
-		}
+		};
 
+		/*
+		Will stop the tracking of the user and handle the calculate the distance
+		they travelled.
+		*/
 		stopTracking = function(save) {
 			// First turn off tracking
 			track.stop();
+			dist = calcDistanceTravelled(trackPtsLocation);
 
-			// Remove any graphics drawn
-			for (var i=0; i<trackPtsDrawn.length; i++) {
-				graphicsLayer.remove(trackPtsDrawn[i]);
-			}
+			return dist;
+		};
 
+		/*
+		Will end the patrol by resetting lists and removing the graphics produced etc..
+		*/
+		endMapsPatrol = function() {
+			removeFromGraphics(iconsToRemove);
+			removeFromGraphics(trackPtsDrawn);
 		}
 
 		saveTrackData = function(anon=false) {
 			var csrftoken = document.getElementsByName("csrfmiddlewaretoken")[0].getAttribute("value");
-			locData = JSON.stringify(locations_to_save);
+			locData = JSON.stringify(locationsToSave);
 			$.ajax({
 				headers: {'X-CSRFToken': csrftoken},
 				url: urls['save_track_data'],
@@ -337,16 +380,82 @@ require([
 			});
 
 			// Reset variables
-			locations_to_save = {'x': [], 'y': [], 'lat': [], 'lon': []};
+			locationsToSave = {'x': [], 'y': [], 'lat': [], 'lon': []};
 			trackPtsDrawn = [];
 			prevLocation = {'latitude':-1000, 'longitude': -1000};
-		}
+		};
 
+		/*
+		Will get the distance in meters between 2 point via latitude and longitude.
+
+		This function has been adapted from an answer on stackoverflow submitted by
+		user 'b-h-' and editted by 'Brian Burns'
+		*/
+		function calcDist(location1, location2){
+			  var lat1 = location1.latitude;
+			  var lon1 = location1.longitude;
+			  var lat2 = location2.latitude;
+			  var lon2 = location2.longitude;
+
+		    const R = 6378.137; // Radius of earth in KM
+		    var dLat = lat2 * Math.PI / 180 - lat1 * Math.PI / 180;
+		    var dLon = lon2 * Math.PI / 180 - lon1 * Math.PI / 180;
+
+		    var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+		    	Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+		    	Math.sin(dLon/2) * Math.sin(dLon/2);
+		    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+		    var d = R * c;
+		    return d * 1000; // meters
+		};
+
+		/*
+		Returns a bool value depending on whether the user is far enough away from
+		previous points to make is sensible to draw a point.
+		*/
+		function shouldDrawMapPoint(point, allPoints, minDist=5) {
+			 var shouldDraw = true;
+
+			 // Compare with the other points (starting from the last one  as this is
+		 	 //  probably closest).
+			 for (var i=allPoints.length-1; i>=0; i--) {
+				  distance = calcDist(point, allPoints[i]);
+					shouldDraw = false;
+					if (distance < minDist) {
+						break
+					}
+			 } return shouldDraw;
+		};
+
+		/*
+		Will get the distance travelled by the user over their whole patrol.
+		*/
+		function calcDistanceTravelled(points) {
+			sum = 0.0;
+			for (var i=0; i<points.length-1; i++) {
+				dist = calcDist(points[i], points[i+1]);
+				if (dist > 1) { // If the user moved more than a meter then sum up
+					sum = sum + dist
+				}
+			} return sum;
+		};
+
+		/*
+		Will draw a point on the map to show where the user has been patrolling.
+		*/
 		drawTrackPoint = function() {
-			var location = track.graphic.geometry;
+			// Get location
+			var location = getUserLocation();
+			// Exit if location is null
+			if (location != location) { return; };
 
-			var point = drawPoint(location.latitude, location.longitude);
-			trackPtsDrawn.push(point);
+			// Decide whether to draw or not and draw
+			var shouldDraw = shouldDrawMapPoint(location, trackPtsLocation);
+			if (shouldDraw) {
+				var point = drawPoint(location.latitude, location.longitude);
+				trackPtsDrawn.push(point);
+				trackPtsLocation.push(location);
+			}
 		}
 	}); // End view.when
 
