@@ -7,8 +7,8 @@ verify_ssl = true
 
 [packages]
 gunicorn = "*"
-django = "*"
-pillow = "*"
+django = ">=3.0.3"
+pillow = ">=6.2.2"
 requests = "*"
 bs4 = "*"
 psycopg2 = "*"
