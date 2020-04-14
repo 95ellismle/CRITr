@@ -8,6 +8,34 @@ window.start_time = 0.0;
 window.total_time = 0;
 
 
+window.numIncidents = 2;
+window.allIncidentInfo = {0: { 
+							  "incidentType": 'littering',
+							  "latitude": 1.1,
+							  "longitude": 2.2,
+							  "x": 3.3,
+							  "y": 4.4,
+							  "incidentTime": '12:00:00',
+							  "incidentDate": '2020/02/21',
+							  "details": "Bla Bla Bla",
+							  "photoPath": false,
+							  "trackID": 77,
+						   },
+						  1: { 
+							  "incidentType": 'loitering',
+							  "latitude": 1.2,
+							  "longitude": 2.3,
+							  "x": 3.4,
+							  "y": 4.5,
+							  "incidentTime": '12:01:00',
+							  "incidentDate": '2020/02/22',
+							  "details": "Bla2 Bla2 Bla2",
+							  "photoPath": false,
+							  "trackID": 77,
+						   }
+						};
+
+
 /*
 Will handle the starting of a patrol e.g. open relevant overlays and start timer
 
@@ -78,10 +106,11 @@ Will the date and time and return them in a struct
 */
 function getDateTime() {
   var today = new Date();
+  pad_zero = (num) => num.toString().padStart(2, '0');
   return {
 		  'DateObj': today,
-		  'date': today.getFullYear()+'/'+(today.getMonth()+1)+'/'+today.getDate(),
-		  'time': today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds(),
+		  'date': today.getFullYear()+'/'+pad_zero((today.getMonth()+1))+'/'+pad_zero(today.getDate()),
+		  'time': pad_zero(today.getHours()) + ":" + pad_zero(today.getMinutes()) + ":" + pad_zero(today.getSeconds()),
 		 };
 }
 
@@ -103,15 +132,15 @@ function addPatrolIncident(incidentType) {
    var dt = getDateTime();
    
    incident = {
-	  "type": incidentType,
+	  "incidentType": incidentType,
 	  "latitude": currLoc['latitude'],
 	  "longitude": currLoc['longitude'],
 	  "x": currLoc['x'],
 	  "y": currLoc['y'],
-	  "time": dt['time'],
-	  "date": dt['date'],
+	  "incidentTime": dt['time'],
+	  "incidentDate": dt['date'],
 	  "details": "",
-	  "photoPath": "",
+	  "photoPath": false,
 	  "trackID": trackID,
    };
 
@@ -198,6 +227,8 @@ class Patrol_Report {
 		this.incident_type_div = document.getElementById("incident_type_form_div");
 		this.incident_choice_div = document.getElementById("incidentChoice");
 		this.fullOverlay = document.getElementById("fullOverlay");
+		this.photo_input_name = "track_photo_incident";
+		this.photo_input_div = document.getElementById(this.photo_input_name);
 		// Final stats page
 		this.end_patrol_stats_div = document.getElementById("end_of_patrol_stats");
 		// Current page number
@@ -329,11 +360,13 @@ class Patrol_Report {
 	  		this.navbar_title.style.textAlign = "left";
 	  		this.navbar_title.innerHTML = "Review Incident " + (page_num + 1).toString();
 
+
 	  		this.form.style.display = "block";
 
 	  		// Now set the values of the various elements in the form
 	  		self = this;
 	  		this.details_txt.onchange = function() { self.save_details_text(self.curr_page); }
+	  		this.photo_input_div.onchange = function() { self.save_photo_path(self.curr_page); }
 	  		this.set_details_text(page_num);
 	  		this.set_incident_type_on_page(incidentData['type'])
 
@@ -352,6 +385,14 @@ class Patrol_Report {
 		this.navbar_subtitle.innerHTML = incident_type;
 		this.incident_type_title.innerHTML = "Incident Type: " + incident_type;
 		this.location_title.innnerHTML = incident_type + " Location";
+	}
+
+	/*
+	Will set the photo path and save it in the allIncidentInfo dictionary
+	*/
+	save_photo_path(page_num) {
+		var Photo = new PhotoPrepare(this.photo_input_name, 50*1024);
+		window.allIncidentInfo[page_num]['photoPath'] = Photo;
 	}
 
   	/*
@@ -524,13 +565,41 @@ class Patrol_Report {
 		removeMapsIcons();
 
 		// Save all the tracking location data.
-		saveTrackData();
+		// saveTrackData();
+		this.save_patrol_data();
 
 		// Reset image of clock
 		document.getElementById("patrolTimer").innerHTML = "00:00:00";
 
 		// Exit the stats page and reset map variables.
 		this.exit();
+  	}
+
+  	/*
+  	Will save all the patrol incident data.
+
+  	Uses AJAX to send data to the server to then save this in the database.
+  	*/
+  	save_patrol_data() {
+  		var csrftoken = document.getElementsByName("csrfmiddlewaretoken")[0].getAttribute("value");
+		var allData = JSON.stringify(window.allIncidentInfo);
+
+		$.ajax({
+			headers: {'X-CSRFToken': csrftoken},
+			url: urls['save_patrol_incidents'],
+			dataType: 'text',
+			type: 'POST',
+			contentType: 'application/x-www-form-urlencoded',
+			data:   {
+						'allData': allData,
+				  	},
+			success: function(data){
+				console.log(data);
+			},
+			error: function( jqXhr, textStatus, errorThrown ){
+				console.log( errorThrown );
+			}
+		});
   	}
 }
 

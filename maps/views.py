@@ -10,9 +10,10 @@ from django.contrib.auth import authenticate, login
 
 import re
 import json
+import datetime
 
-from .forms import IncidentForm, SignUpForm, PatrolIncidentForm
-from .models import Track
+from .forms import IncidentForm, SignUpForm
+from .models import Track, Incident
 
 def user_login(request):
     if request.method == "POST":
@@ -103,15 +104,19 @@ def validate_email(request):
 @login_required
 def save_track_data(request):
     if request.is_ajax():
+        # Check whether the user should be anonymised ... not useful feature...
         anonymise = True if request.POST['anon'] == 'true' else False
         if anonymise:
             user = User.objects.get(username="anon");
         else:
             user = request.user
+
+        # Get the latest track ID.
         lastTrackID = get_last_track_ID(user)
         if request.POST['trackID'] == lastTrackID:
             return HttpResponse("Naughty Person Using Website.")
 
+        # Save all the data
         locData = json.loads(request.POST['locations_to_save'])
         for x, y, lat, lon in zip(locData['x'], locData['y'],
                                   locData['lat'], locData['lon']):
@@ -126,6 +131,40 @@ def save_track_data(request):
         message = "Data not added check the serverside code."
 
     return HttpResponse(message)
+
+@login_required
+def save_patrol_incidents(request):
+    if request.is_ajax():
+        post = request.POST
+
+        if 'allData' in post:
+            user = request.user
+            all_data = json.loads(post['allData'])
+            for incident_id in all_data:
+                incident_data = all_data[incident_id]
+
+                photoPath = "" if incident_data['photoPath'] == "false" else incident_data['photoPath']
+                date = datetime.datetime.strptime(incident_data['incidentDate'], "%Y/%m/%d")
+                time = datetime.datetime.strptime(incident_data['incidentTime'], "%H:%M:%S")
+
+                Incident.objects.create(user=user,
+                                        incidentType=incident_data['incidentType'],
+                                        trackID=incident_data['trackID'],
+                                        latitude=incident_data['latitude'],
+                                        longitude=incident_data['longitude'],
+                                        x=incident_data['x'],
+                                        y=incident_data['y'],
+                                        details=incident_data['details'],
+                                        photoPath=photoPath,
+                                        incidentTime=time,
+                                        incidentDate=date,
+                                        )
+
+        else:
+            return HttpResponse("Data Save Failed.")
+
+    return HttpResponse("Saved All Data")
+
 
 def get_last_track_ID(user):
     """
@@ -153,24 +192,3 @@ def get_track_ID(request):
         data = {'trackID': False}
 
     return JsonResponse(data)
-
-@login_required
-def end_patrol_report(request):
-    """
-    Points to the end of patrol reporting page.
-    """
-    if request.method == "POST":
-        form = PatrolIncidentForm(request.POST, request.FILES)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.user = request.user
-            trackID = get_last_track_ID(request.user)
-            post.trackID = trackID
-            post.save()
-            return redirect("successful_report")
-
-    else:
-        form = PatrolIncidentForm()
-
-    return render(request, "reporting/endPatrolReport.html",
-                  {'form': form, "succes": False})
