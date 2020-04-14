@@ -384,10 +384,10 @@ require([
 				type: 'POST',
 				contentType: 'application/x-www-form-urlencoded',
 				data: {
-					 		  'locations_to_save': locData,
-			 					'trackID': trackID,
-								'anon': anon,
-							},
+					 	'locations_to_save': locData,
+			 			'trackID': trackID,
+						'anon': anon,
+					  },
 				success: function(data){
 				// console.log(data);
 				},

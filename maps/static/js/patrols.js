@@ -6,34 +6,32 @@ window.numIncidents = 0;
 window.allIncidentInfo = {};
 window.start_time = 0.0;
 window.total_time = 0;
-
-
-window.numIncidents = 2;
-window.allIncidentInfo = {0: { 
-							  "incidentType": 'littering',
-							  "latitude": 1.1,
-							  "longitude": 2.2,
-							  "x": 3.3,
-							  "y": 4.4,
-							  "incidentTime": '12:00:00',
-							  "incidentDate": '2020/02/21',
-							  "details": "Bla Bla Bla",
-							  "photoPath": false,
-							  "trackID": 77,
-						   },
-						  1: { 
-							  "incidentType": 'loitering',
-							  "latitude": 1.2,
-							  "longitude": 2.3,
-							  "x": 3.4,
-							  "y": 4.5,
-							  "incidentTime": '12:01:00',
-							  "incidentDate": '2020/02/22',
-							  "details": "Bla2 Bla2 Bla2",
-							  "photoPath": false,
-							  "trackID": 77,
-						   }
-						};
+// window.numIncidents = 2;
+// window.allIncidentInfo = {0: { 
+// 							  "incidentType": 'littering',
+// 							  "latitude": 1.1,
+// 							  "longitude": 2.2,
+// 							  "x": 3.3,
+// 							  "y": 4.4,
+// 							  "incidentTime": '12:00:00',
+// 							  "incidentDate": '2020/02/21',
+// 							  "details": "Bla Bla Bla",
+// 							  "photoPath": false,
+// 							  "trackID": 77,
+// 						   },
+// 						  1: { 
+// 							  "incidentType": 'loitering',
+// 							  "latitude": 1.2,
+// 							  "longitude": 2.3,
+// 							  "x": 3.4,
+// 							  "y": 4.5,
+// 							  "incidentTime": '12:01:00',
+// 							  "incidentDate": '2020/02/22',
+// 							  "details": "Bla2 Bla2 Bla2",
+// 							  "photoPath": false,
+// 							  "trackID": 77,
+// 						   }
+// 						};
 
 
 /*
@@ -565,7 +563,7 @@ class Patrol_Report {
 		removeMapsIcons();
 
 		// Save all the tracking location data.
-		// saveTrackData();
+		saveTrackData();
 		this.save_patrol_data();
 
 		// Reset image of clock
