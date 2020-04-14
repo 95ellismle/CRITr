@@ -40,8 +40,9 @@ function stopTracking(){};
 function drawTrackPoint(){};
 function saveTrackData(){};
 function addIconAtCurrentPos(){};
-function endMapsPatrol(){};
+function removeMapsIcons(){};
 function getUserLocation(){};
+function changeMapIcon(){};
 
 require([
 	// The map
@@ -280,6 +281,7 @@ require([
 			var mapIcon = new Graphic({
 				geometry: iconPoint,
 				symbol: incidentIcons[iconName],
+				color: [255., 255., 255., 0.5],
 			});
 
 			view.graphics.add(mapIcon);
@@ -287,6 +289,20 @@ require([
 
 			return mapIcon;
 		};
+
+		/*
+		Will change an icon on the map.
+
+		Nothing will happen if the icon's name doesn't exist
+
+		Inputs:
+			* icon_num <int> => The number of the icon in the iconsToRemove array.
+		*/
+		changeMapIcon = function(icon_num, newIconName) {
+			if (!incidentIcons[newIconName]) { return; }
+
+			iconsToRemove[icon_num].symbol = incidentIcons[newIconName];
+		}
 
 		/*
 		Will return the user's location
@@ -335,13 +351,14 @@ require([
 
 			// Start the tracking
 			track.start();
+			console.log("Start Tracking!");
 		};
 
 		/*
 		Will stop the tracking of the user and handle the calculate the distance
 		they travelled.
 		*/
-		stopTracking = function(save) {
+		stopTracking = function() {
 			// First turn off tracking
 			track.stop();
 			dist = calcDistanceTravelled(trackPtsLocation);
@@ -352,7 +369,7 @@ require([
 		/*
 		Will end the patrol by resetting lists and removing the graphics produced etc..
 		*/
-		endMapsPatrol = function() {
+		removeMapsIcons = function() {
 			removeFromGraphics(iconsToRemove);
 			removeFromGraphics(trackPtsDrawn);
 		}

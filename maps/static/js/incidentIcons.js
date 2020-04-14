@@ -10,7 +10,7 @@ const litterIcon = {
     family: "CalciteWebCoreIcons" // Esri Icon Font
   }
 };
-const loitteringIcon = {
+const loiteringIcon = {
   type: "text", // autocasts as new TextSymbol()
   // color: "#7A003C",
   text: "\ue655", // esri-icon-map-pin
@@ -53,7 +53,7 @@ const parkingIcon = {
 
 var incidentIcons = {
   'littering': litterIcon,
-  'loittering': loitteringIcon,
+  'loitering': loiteringIcon,
   'graffiti': graffitiIcon,
   'speeding': speedingIcon,
   'parking': parkingIcon,

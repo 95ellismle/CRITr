@@ -207,6 +207,9 @@ html {
 	font-size: 24px;
 	font-weight: 1000;
 }
+.navBtn:hover {
+	cursor: pointer;
+}
 .titleReportTxt {
 	font-size: 150%;
 }
@@ -225,10 +228,13 @@ html {
 
 }
 .formRow {
-	width:85%;
+	width:90%;
 	/* border: 2px dashed black; */
 	display: block;
 	contain: content;
+	height: 60px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 .formRow:hover {
 	background-color: #dfdfdf;
@@ -240,6 +246,7 @@ html {
 	font-size: 18px;
 	width: 100%;
 	margin-bottom: 5px;
+	height: 23px;
 }
 .formSubTitle {
 	text-align: left;
@@ -248,6 +255,7 @@ html {
 	padding: 0;
 	color: #6f6f6f;
 	font-size: 18px;
+	height: 27px;
 }
 .buttonRow {
 	float: right;

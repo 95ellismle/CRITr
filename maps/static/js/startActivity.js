@@ -31,24 +31,22 @@ function startActivity() {
   }
 }
 
-/*
-Will handle the ending of an activity and close relevant overlays etc...
+// /*
+// Will handle the ending of an activity and close relevant overlays etc...
 
-  * @param[string] activity     The name of the activity to end. Choose from: 'patrol'.
-*/
-function endActivity(activity) {
-  document.getElementById("fullOverlay").setAttribute('onclick','resetMapsPage();');
+//   * @param[string] activity     The name of the activity to end. Choose from: 'patrol'.
+// */
+// function endActivity(activity) {
+//   document.getElementById("fullOverlay").setAttribute('onclick','resetMapsPage();');
 
-  if (activity == "patrol") {
-    saveTrackData();
-    window.patrolOn = false;
+//   if (activity == "patrol") {
+//     saveTrackData();
+//     window.patrolOn = false;
 
-    // Go back to normal home page
-    resetMapsPage();
+//     // Go back to normal home page
+//     resetMapsPage();
 
-    openPatrolReview();
-  }
+//     openPatrolReview();
+//   }
 
-  document.getElementById("openActivitiesOverlay").setAttribute("onclick",
-                                                                "openActivitiesOverlay();");
-}
+// }

@@ -80,25 +80,25 @@ function openStartActivity() {
   setStartActDim("choiceAct", "startActivityOverlay", "activityChoices");
 }
 
-/*
-Will open the end patrol overlay.
-*/
-function openEndPatrol(distTravelled) {
-  document.getElementById("fullOverlay").removeAttribute("onclick");
-  distTravelled = distTravelled / 1000
+// /*
+// Will open the end patrol overlay.
+// */
+// function openEndPatrol(distTravelled) {
+//   document.getElementById("fullOverlay").removeAttribute("onclick");
+//   distTravelled = distTravelled / 1000
 
-  $('#overlayAdd').hide();
-  $('#openActivitiesOverlay').show();
-  $("#fullOverlay").show();
-  $("#distTravelled").html("You travelled "+ distTravelled.toString() + "km!")
-  $("#endPatrol").show();
-  centerOverlayDiv("endPatrol");
-}
+//   $('#overlayAdd').hide();
+//   $('#openActivitiesOverlay').show();
+//   $("#fullOverlay").show();
+//   $("#distTravelled").html("You travelled "+ distTravelled.toString() + "km!")
+//   $("#endPatrol").show();
+//   centerOverlayDiv("endPatrol");
+// }
 
 /*
 Will open the overlay that allows users to report an incident on patrols.
 */
-function openPatrolReport() {
+function open_on_patrol_incident_choice() {
   $('#fullOverlay').show();
   $('#incidentChoice').show();
   centerOverlayDiv('incidentChoice');
